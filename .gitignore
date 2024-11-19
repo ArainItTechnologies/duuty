@@ -7,3 +7,7 @@
 /DuutyApp/DuutyApp.Server/obj
 /DuutyApp/DuutyApp.Server/Properties/launchSettings.json
 /DuutyApp/DuutyApp.Server/bin/Debug/net8.0
+/DuutyApp/DuutyApp.Server/bin/Release/net8.0
+/DuutyApp/duutyapp.client/obj/Release
+/DuutyApp/DuutyApp.Server/Properties
+/DuutyApp/DuutyApp.Server/DuutyApp.Server.csproj.user
