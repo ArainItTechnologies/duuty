@@ -11,3 +11,5 @@
 /DuutyApp/duutyapp.client/obj/Release
 /DuutyApp/DuutyApp.Server/Properties
 /DuutyApp/DuutyApp.Server/DuutyApp.Server.csproj.user
+/DuutyApp/DuutyApp.Data/obj
+/DuutyApp/DuutyApp.Data/bin/Debug/net8.0

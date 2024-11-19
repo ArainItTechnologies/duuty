@@ -1,4 +1,17 @@
+using DuutyApp.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Add DbContext
+builder.Services.AddDbContext<DuutyAppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DuutyAppDbContext")));
+
+// Add Identity
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<DuutyAppDbContext>()
+    .AddDefaultTokenProviders();
 
 // Add services to the container.
 
@@ -11,6 +24,13 @@ var app = builder.Build();
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
+
+// Seed users and roles
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    await DuutyDbInitializer.SeedUsersAndRolesAsync(services);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
