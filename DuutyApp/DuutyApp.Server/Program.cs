@@ -28,11 +28,11 @@ app.UseDefaultFiles();
 app.UseStaticFiles();
 
 // Seed users and roles
-//using (var scope = app.Services.CreateScope())
-//{
-  //  var services = scope.ServiceProvider;
-    //await DuutyDbInitializer.SeedUsersAndRolesAsync(services);
-//}
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    await DuutyDbInitializer.SeedUsersAndRolesAsync(services);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
