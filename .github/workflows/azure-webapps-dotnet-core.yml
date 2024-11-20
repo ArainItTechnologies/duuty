@@ -53,10 +53,10 @@ jobs:
             ${{ runner.os }}-nuget-
       - name: Generate HTTPS Certificate
         run: |
-          mkdir -p .aspnet/https
+          mkdir -p certificates
           openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-            -keyout .aspnet/https/duutyapp.client.key \
-            -out .aspnet/https/duutyapp.client.pem \
+            -keyout certificates/duutyapp.client.key \
+            -out certificates/duutyapp.client.pem \
             -subj "/CN=localhost"
 
       - name: Build with dotnet
