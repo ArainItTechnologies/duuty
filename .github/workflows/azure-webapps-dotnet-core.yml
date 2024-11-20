@@ -57,6 +57,16 @@ jobs:
 
       - name: dotnet publish
         run: dotnet publish DuutyApp/DuutyApp.Server/DuutyApp.Server.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        
+      - name: Install EF Core Tools
+        run: dotnet tool install --global dotnet-ef
+        
+      - name: Run EF Core Migrations
+        run: |
+          # Run EF Core migrations (using the Azure App Service connection string or other methods)
+          dotnet ef database update --project DuutyApp/DuutyApp.Data/DuutyApp.Data.csproj --startup-project DuutyApp/DuutyApp.Server/DuutyApp.Server.csproj --connection-string $DATABASE_URL
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_CONNECTION_STRING }}
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
