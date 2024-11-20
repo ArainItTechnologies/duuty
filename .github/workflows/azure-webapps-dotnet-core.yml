@@ -64,7 +64,7 @@ jobs:
       - name: Run EF Core Migrations
         run: |
           # Run EF Core migrations (using the Azure App Service connection string or other methods)
-          dotnet ef database update --project DuutyApp/DuutyApp.Data/DuutyApp.Data.csproj --startup-project DuutyApp/DuutyApp.Server/DuutyApp.Server.csproj --connection-string $DATABASE_URL
+          dotnet ef database update --project DuutyApp/DuutyApp.Data/DuutyApp.Data.csproj --startup-project DuutyApp/DuutyApp.Server/DuutyApp.Server.csproj --connection $DATABASE_URL
         env:
           DATABASE_URL: ${{ secrets.DATABASE_CONNECTION_STRING }}
 
