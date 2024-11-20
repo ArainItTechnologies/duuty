@@ -8,21 +8,16 @@ import child_process from 'child_process';
 import { env } from 'process';
 
 const certificateName = "duutyapp.client";
-const certFilePath = path.resolve(__dirname, `certificates/${certificateName}.pem`);
-const keyFilePath = path.resolve(__dirname, `certificates/${certificateName}.key`);
 
+const baseFolder = path.resolve(__dirname, "certificates");
+const certFilePath = path.join(baseFolder, `${certificateName}.pem`);
+const keyFilePath = path.join(baseFolder, `${certificateName}.key`);
+
+// Check if certificate files exist
 if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
-    if (0 !== child_process.spawnSync('dotnet', [
-        'dev-certs',
-        'https',
-        '--export-path',
-        certFilePath,
-        '--format',
-        'Pem',
-        '--no-password',
-    ], { stdio: 'inherit', }).status) {
-        throw new Error("Could not create certificate.");
-    }
+  throw new Error(
+    "Certificate files are missing! Run the script to generate them."
+  );
 }
 
 const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
