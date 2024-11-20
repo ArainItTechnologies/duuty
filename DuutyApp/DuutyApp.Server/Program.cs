@@ -6,7 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add DbContext
 builder.Services.AddDbContext<DuutyAppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DuutyAppDbContext")));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DuutyAppDbContext"), 
+        sqlOptions => sqlOptions.EnableRetryOnFailure()));
 
 // Add Identity
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
