@@ -1,11 +1,83 @@
-﻿#root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+﻿/* Style for sticky header */
+.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333; /* Customize your header background color */
+    color: white;
+    padding: 10px 0;
+    z-index: 1000; /* Ensure it's on top of other elements */
 }
 
-th, td {
-    padding-left: 1rem;
-    padding-right: 1rem;
+/* Container to control layout of logo and nav links */
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Distribute space between logo and nav links */
+    align-items: center; /* Center items vertically */
+    max-width: 1200px; /* You can adjust the max width to suit your design */
+    margin: 0 auto;
+    padding: 0 20px; /* Add padding to the left and right */
+}
+
+/* Logo styling */
+.logo-image {
+    height: 40px; /* Adjust the size of the logo */
+    width: auto;
+}
+
+/* Navigation links style */
+.nav-links ul {
+    display: flex; /* Make the navigation items horizontal */
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    margin-left: 20px; /* Add spacing between the navigation items */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px; /* Adjust font size */
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+.nav-links a:hover {
+    background-color: #555; /* Add a hover effect */
+}
+
+
+/* Style for sticky footer */
+.sticky-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333; /* Customize your footer background color */
+    color: white;
+    padding: 10px 0;
+    z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+/* Body content area with padding to make space for the fixed header */
+.body-content {
+    margin-top: 60px; /* Adjust based on header height */
+    margin-bottom: 60px; /* Adjust based on footer height */
+    padding: 0 20px;
+}
+
+/* Optional: Make sure the page content is scrollable */
+.page-content {
+    min-height: 100vh; /* Ensure full viewport height */
+}
+
+
+@media (max-width: 768px) {
+    .sticky-header, .sticky-footer {
+        padding: 15px 0;
+        font-size: 14px;
+    }
 }
