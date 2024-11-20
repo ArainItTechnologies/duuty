@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "prepare-certificates": "node generate-certificates.js",
-    "dev": "vite",
+    "dev": "npm run prepare-certificates && vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
