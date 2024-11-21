@@ -70,6 +70,16 @@ since frontend is a linked project running backend will run frontend too.
 
 Visit the application at https://localhost:5173.
 
+### Project Structure
+
+```
+/DuutyApp
+|-- /DuutyApp.Server             # ASP.NET Core backend
+|-- /duutyapp.client             # React frontend
+|-- /.github/workflows           # GitHub Actions workflow
+|-- README.md                    # Project documentation
+```
+
 ## Deployment with GitHub Actions
 
 #### Secrets Configuration
