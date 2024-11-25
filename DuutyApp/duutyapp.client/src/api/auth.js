@@ -25,7 +25,7 @@ export const userLogin = async (data) => {
         });
 
         if (!response.ok) {
-            throw new Error("Failed to login");
+            console.log("Failed to login");
         }
 
         const responseData = await response.json();
@@ -33,6 +33,5 @@ export const userLogin = async (data) => {
     }
     catch (error) {
         console.error('API error:', error);
-        throw error;
     }
 }

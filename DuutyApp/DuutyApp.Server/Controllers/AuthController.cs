@@ -21,11 +21,11 @@ public class AuthController : ControllerBase
     public AuthController(
         UserManager<IdentityUser> userManager,
         SignInManager<IdentityUser> signInManager,
-        IOptions<JwtSettings> configuration)
+        IOptions<JwtSettings> jwtOptions)
     {
         _userManager = userManager;
         _signInManager = signInManager;
-        _jwtSettings = configuration.Value;
+        _jwtSettings = jwtOptions.Value;
     }
 
     // POST: api/Auth/Register
@@ -73,7 +73,7 @@ public class AuthController : ControllerBase
         if (user == null)
             return Unauthorized(new { Message = "Email is not registered." });
 
-        var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, false, false);
+        var result = await _signInManager.PasswordSignInAsync(user.UserName!, model.Password, false, false);
 
         if (result.Succeeded)
         {
@@ -81,11 +81,11 @@ public class AuthController : ControllerBase
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+                new Claim(JwtRegisteredClaimNames.Sub, user.UserName!),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.Role, roles.First<string>()),
-                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Name, user.UserName!),
+                new Claim(ClaimTypes.Role, string.Join(",", roles)),
+                new Claim(ClaimTypes.Email, user.Email!),
             };
 
             var token = GenerateJwtToken(claims);
