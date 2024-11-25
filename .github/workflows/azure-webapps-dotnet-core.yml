@@ -101,7 +101,7 @@ jobs:
       - name: Replace variables in appsettings.json
         uses: microsoft/variable-substitution@v1
         with:
-          files: 'appsettings.json'
+          files: '${{env.DOTNET_ROOT}}/myapp/appsettings.json'
         env:
           ConnectionStrings.DuutyAppDbContext: ${{ secrets.DATABASE_CONNECTION_STRING }}
           JwtSettings.SecretKey: ${{ secrets.JWT_SECRET_KEY }}
