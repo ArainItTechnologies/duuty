@@ -22,7 +22,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 
 // Add services to the container.
 
-builder.Services.AddOptions<JwtSettings>().Bind(configuration.GetSection(nameof(JwtSettings)));
+builder.Services.Configure<JwtSettings>(configuration.GetSection(nameof(JwtSettings)));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
