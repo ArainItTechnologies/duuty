@@ -46,7 +46,7 @@ public class AuthController : ControllerBase
         return BadRequest(result.Errors);
     }
 
-    private string GenerateJwtToken(IdentityUser user, Claim[] claims)
+    private string GenerateJwtToken(Claim[] claims)
     {
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.SecretKey));
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -88,7 +88,7 @@ public class AuthController : ControllerBase
                 new Claim(ClaimTypes.Email, user.Email),
             };
 
-            var token = GenerateJwtToken(user, claims);
+            var token = GenerateJwtToken(claims);
             return Ok(new { Message = "Login successful.", Token = token });
         }
 
