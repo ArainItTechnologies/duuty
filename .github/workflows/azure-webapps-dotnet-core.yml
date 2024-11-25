@@ -102,3 +102,6 @@ jobs:
         uses: microsoft/variable-substitution@v1
         with:
           files: 'appsettings.json'
+        env:
+          ConnectionStrings.DuutyAppDbContext: ${{ secrets.DATABASE_CONNECTION_STRING }}
+          JwtSettings.SecretKey: ${{ secrets.JWT_SECRET_KEY }}
