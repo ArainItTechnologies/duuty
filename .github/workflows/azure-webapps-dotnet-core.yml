@@ -101,4 +101,4 @@ jobs:
       - name: Replace variables in appsettings.json
         uses: microsoft/variable-substitution@v1
         with:
-          target-files: 'appsettings.json'
+          files: 'appsettings.json'
