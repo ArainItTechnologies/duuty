@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Navbar,
   NavbarBrand,
@@ -10,14 +11,29 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem 
+  DropdownItem,
 } from "reactstrap";
 import logo from "../assets/logo.png";
+import { userLogout } from "../api/auth";
 
 const NavMenu = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  const handleLogout = async () => {
+    const token = localStorage.getItem("token");
+
+    const result = await userLogout(token);
+
+    if (result.success) {
+      localStorage.removeItem("token"); // Clear token
+      navigate("/login"); // Redirect to login page
+    } else {
+      alert(`Logout failed: ${result.message}`);
+    }
+  };
 
   return (
     <div>
@@ -40,22 +56,16 @@ const NavMenu = () => {
               <NavLink href="/register">Register</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu end>
-                  <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Logout
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+              <DropdownToggle nav caret>
+                Options
+              </DropdownToggle>
+              <DropdownMenu end>
+                <DropdownItem>Option 1</DropdownItem>
+                <DropdownItem>Option 2</DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem onClick={handleLogout}>Logout</DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
           </Nav>
         </Collapse>
       </Navbar>
