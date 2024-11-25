@@ -2,6 +2,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace DuutyApp.Server.Controllers;
 
@@ -41,6 +45,22 @@ public class AuthController : ControllerBase
         return BadRequest(result.Errors);
     }
 
+    private string GenerateJwtToken(IdentityUser user, Claim[] claims)
+    {
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:SecretKey"]));
+        var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+        var token = new JwtSecurityToken(
+            issuer: _configuration["JwtSettings:Issuer"],
+            audience: _configuration["JwtSettings:Audience"],
+            claims: claims,
+            expires: DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["JwtSettings:ExpiryInMinutes"])),
+            signingCredentials: credentials
+        );
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+
     // POST: api/Auth/Login
     [HttpPost("Login")]
     public async Task<IActionResult> Login([FromBody] LoginModel model)
@@ -50,14 +70,25 @@ public class AuthController : ControllerBase
 
         var user = await _userManager.FindByEmailAsync(model.Email);
         if (user == null)
-            return Unauthorized(new { Message = "Invalid email or password." });
+            return Unauthorized(new { Message = "Email is not registered." });
 
         var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, false, false);
 
         if (result.Succeeded)
         {
-            // Normally, you would generate a JWT token here.
-            return Ok(new { Message = "Login successful." });
+            var roles = await _userManager.GetRolesAsync(user);
+
+            var claims = new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.Role, roles.First<string>()),
+                new Claim(ClaimTypes.Email, user.Email),
+            };
+
+            var token = GenerateJwtToken(user, claims);
+            return Ok(new { Message = "Login successful.", Token = token });
         }
 
         return Unauthorized(new { Message = "Invalid email or password." });

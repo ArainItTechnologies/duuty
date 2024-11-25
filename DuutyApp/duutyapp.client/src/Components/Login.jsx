@@ -2,7 +2,9 @@ import { useState } from "react";
 import Logo from "../assets/logo.png";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa6";
+import {userLogin} from "../api/auth";
 import "./Login.css";
+
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,11 +18,10 @@ const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Form Data:", formData);
-    // Add registration logic here
+    await userLogin(formData)
   };
 
   return (

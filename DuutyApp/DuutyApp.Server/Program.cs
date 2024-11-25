@@ -1,13 +1,17 @@
 using DuutyApp.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 // Add DbContext
 builder.Services.AddDbContext<DuutyAppDbContext>(options =>
     options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DuutyAppDbContext"), 
+        configuration.GetConnectionString("DuutyAppDbContext"), 
         sqlOptions => sqlOptions.EnableRetryOnFailure()));
 
 // Add Identity
@@ -22,7 +26,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddAuthentication();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidIssuer = configuration["JwtSettings:Issuer"],
+            ValidAudience = configuration["JwtSettings:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:SecretKey"]))
+        };
+    });
+
 
 var app = builder.Build();
 

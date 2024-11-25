@@ -4,9 +4,9 @@ namespace DuutyApp.Data.Models;
 
 public class ResetPasswordModel
 {
-    public string Email { get; set; }
-    public string Token { get; set; }
+    public required string Email { get; set; }
+    public required string Token { get; set; }
     [Required]
     [MinLength(6)]
-    public string NewPassword { get; set; }
+    public required string NewPassword { get; set; }
 }
