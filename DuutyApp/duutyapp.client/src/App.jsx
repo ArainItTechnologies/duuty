@@ -1,23 +1,22 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './App.css'; // Assuming your CSS file is called App.css
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// Components
-import Login from './Components/Login'; // Import Login component
-import Register from './Components/Register'; // Import Register component
-import Home from './Components/Home'; // Assuming there's a Home component
+import Login from "./Components/Login";
+import Register from "./Components/Register";
+import Home from "./Components/Home";
+import Layout from "./Layout/Layout";
 
 const App = () => {
-    return (
-
-        <BrowserRouter>
-            <Routes>
-                <Route exact path="/" element={<Home/>} />
-                <Route path="/login" element={<Login/>} />
-                <Route path="/register" element={<Register/>} />
-            </Routes>
-        </BrowserRouter>
-
-    );
+  return (
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </Layout>
+    </Router>
+  );
 };
 
 export default App;

@@ -1,67 +1,142 @@
-/* Login.css */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* General Styles */
+.login-main {
+  display: flex;
+  height: 100vh;
+}
+
+.login-left {
+  flex: 1;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-left img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.login-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-right-container {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+}
+
+.login-logo img {
+  width: 150px;
+  display: block;
+  margin: 0 auto;
+}
+
+.login-center {
+  text-align: center;
+}
+
+.login-center h2 {
+  margin-bottom: 10px;
+}
+
+.login-center p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Make both input fields the same width */
+input {
+  width: 100%;  /* Ensures full-width input fields */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.pass-input-div {
+  position: relative;
+}
+
+.pass-input-div svg {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* Align options on one line */
+.login-center-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; /* Adjust spacing as needed */
+}
+
+.login-center-options .remember-div {
+  display: flex;
+  align-items: center;
+}
+
+.login-center-options .remember-div input {
+  margin-right: 5px;
+}
+
+.forgot-pass-link {
+  color: #007bff;
+  text-decoration: none;
+  margin-left: 10px; /* Space between remember me and forgot password */
+}
+
+.login-center-buttons button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-center-buttons button:hover {
+  background-color: #0056b3;
+}
+
+.login-bottom-p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-bottom-p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Mobile Screen Styles */
+@media screen and (max-width: 768px) {
+  .login-main {
+    flex-direction: column;
   }
-  
-  body, html {
-    height: 100%;
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
+
+  .login-left {
+    display: none;
   }
-  
-  /* Center the container using flexbox */
-  .login-container {
-    display: flex;
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
-    height: 100vh; /* Full viewport height */
-  }
-  
-  .login-form {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .login-right {
     width: 100%;
-    max-width: 400px; /* Restrict the width on larger screens */
   }
-  
-  .login-form h2 {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .form-group input {
-    width: 100%;
+
+  .login-right-container {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
   }
-  
-  .btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+
+  .login-logo img {
+    width: 120px;
   }
-  
-  .btn:hover {
-    background-color: #0056b3;
-  }
-  
+}

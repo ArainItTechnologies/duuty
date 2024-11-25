@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Logo from "../assets/logo.png";
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -27,11 +28,7 @@ const Register = () => {
         <div style={styles.container}>
             {/* Left Side: Image */}
             <div style={styles.imageSection}>
-                <img
-                    src="https://via.placeholder.com/1600x800" // Replace with your image URL
-                    alt="Placeholder"
-                    style={styles.image}
-                />
+                <img src={Logo} alt="" style={styles.image}/>
             </div>
 
             {/* Right Side: Register Form */}
