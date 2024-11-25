@@ -33,12 +33,13 @@ const Login = () => {
             // Get the user's role
             const role = getRoleFromToken(authToken);
 
-            console.log(role);
-
             // Navigate based on the role
             switch (role) {
                 case "Admin":
                     navigate("/admin-dashboard");
+                    break;
+                case "SuperAdmin":
+                    navigate("/super-admin-dashboard");
                     break;
                 case "User":
                     navigate("/user-dashboard");
