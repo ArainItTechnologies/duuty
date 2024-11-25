@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Navbar,
@@ -16,20 +16,25 @@ import {
 import logo from "../assets/logo.png";
 import { userLogout } from "../api/auth";
 
+import { FaUser } from "react-icons/fa6";
+
 const NavMenu = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem("token") !== null;
+  });
 
   const toggle = () => setIsOpen(!isOpen);
 
   const handleLogout = async () => {
     const token = localStorage.getItem("token");
-
     const result = await userLogout(token);
 
     if (result.success) {
-      localStorage.removeItem("token"); // Clear token
-      navigate("/login"); // Redirect to login page
+      localStorage.removeItem("token");
+      setIsAuthenticated(false);
+      navigate("/login");
     } else {
       alert(`Logout failed: ${result.message}`);
     }
@@ -49,15 +54,15 @@ const NavMenu = () => {
         <Collapse isOpen={isOpen} navbar>
           {/* Add ms-auto here to float the Nav items to the right */}
           <Nav className="ms-auto" navbar>
-            <NavItem>
+            <NavItem hidden={isAuthenticated}>
               <NavLink href="/login">Login</NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem hidden={isAuthenticated}>
               <NavLink href="/register">Register</NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
+            <UncontrolledDropdown nav inNavbar hidden={!isAuthenticated}>
               <DropdownToggle nav caret>
-                Options
+                <FaUser />
               </DropdownToggle>
               <DropdownMenu end>
                 <DropdownItem>Option 1</DropdownItem>
