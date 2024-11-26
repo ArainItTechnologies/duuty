@@ -74,12 +74,12 @@ jobs:
           # Run EF Core migrations (using the Azure App Service connection string or other methods)
           dotnet-ef database update --project DuutyApp/DuutyApp.Data/DuutyApp.Data.csproj --startup-project DuutyApp/DuutyApp.Server/DuutyApp.Server.csproj --connection $DATABASE_URL
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_CONNECTION_STRING }}
+          DATABASE_URL: ${{ secrets.MIGRATION_DB_CONNECTION }}
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-          name: .net-app
+          name: duutyApp
           path: ${{env.DOTNET_ROOT}}/myapp
 
   deploy:
@@ -95,7 +95,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: .net-app
+          name: duutyApp
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
