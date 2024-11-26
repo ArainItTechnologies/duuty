@@ -55,6 +55,14 @@ jobs:
       - name: Build with dotnet
         run: dotnet build DuutyApp/DuutyApp.sln --configuration Release
 
+      - name: Replace variables in appsettings.json
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: 'DuutyApp/DuutyApp.Server/appsettings.json'
+        env:
+          ConnectionStrings.DuutyAppDbContext: ${{ secrets.DATABASE_CONNECTION_STRING }}
+          JwtSettings.SecretKey: ${{ secrets.JWT_SECRET_KEY }}
+          
       - name: dotnet publish
         run: dotnet publish DuutyApp/DuutyApp.Server/DuutyApp.Server.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
         
@@ -97,11 +105,3 @@ jobs:
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
           restart: true
-          
-      - name: Replace variables in appsettings.json
-        uses: microsoft/variable-substitution@v1
-        with:
-          files: '**/appsettings.json'
-        env:
-          ConnectionStrings.DuutyAppDbContext: ${{ secrets.DATABASE_CONNECTION_STRING }}
-          JwtSettings.SecretKey: ${{ secrets.JWT_SECRET_KEY }}
