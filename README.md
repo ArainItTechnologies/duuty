@@ -96,4 +96,5 @@ Go to **Settings > Secrets and variables > Actions > New repository secret**.
 
 ##### Name: **AZURE_WEBAPP_PUBLISH_PROFILE**, Value: Paste the content of your publish profile.
 ##### Name: **DATABASE_CONNECTION_STRING**, Value: Paste your database connection string.
+##### NAME: **MIGRATION_DB_CONNECTION**, Value: Paste your database connection string surround with double quotes.
 
