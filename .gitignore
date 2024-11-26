@@ -15,3 +15,7 @@
 /DuutyApp/DuutyApp.Data/bin/Debug/net8.0
 /DuutyApp/DuutyApp.Data/bin/Release/net8.0
 /DuutyApp/.vs/ProjectEvaluation
+
+/DuutyApp/duutyapp.client/certificates
+/DuutyApp/duutyapp.client/obj/Debug
+/DuutyApp/duutyapp.client/obj/Debug/package.g.props
