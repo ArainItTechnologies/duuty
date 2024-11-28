@@ -1,0 +1,104 @@
+CSS- body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #0C67A0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.form-toggle {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.form-toggle button {
+    width: 50%;
+    padding: 10px;
+    background-color: #f3f3f3;
+    background-color: transparent; 
+    border: none;
+    color: #6c757d;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 10px 10px 0 0;
+}
+
+.form-toggle .active {
+    background-color: #033452;
+    color: white;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form h2 {
+    margin-bottom: 20px;
+}
+
+.form input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.login-form .btn,
+.signup-form .btn {
+    padding: 10px;
+    background-color: #033452;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 20px 0;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+.login-form .nav-link,
+.signup-form .nav-link {
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 10px;
+    float: right;
+}
+
+.form p {
+    text-align: center;
+}
+
+p {
+    display: inline;
+    white-space: nowrap;
+}
+
+p .nav-link {
+    text-decoration: none;
+    color: #007bff;
+    cursor: pointer;
+}
+
+p .nav-link:hover {
+    text-decoration: underline;
+}

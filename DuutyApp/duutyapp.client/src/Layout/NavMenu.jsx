@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  Button,
   Navbar,
   NavbarBrand,
   NavbarToggler,
@@ -16,7 +17,7 @@ import {
 import logo from "../assets/logo.png";
 import { userLogout } from "../api/auth";
 
-import { FaUser } from "react-icons/fa6";
+import { FaRightFromBracket } from "react-icons/fa6";
 
 const NavMenu = () => {
   const navigate = useNavigate();
@@ -60,17 +61,9 @@ const NavMenu = () => {
             <NavItem hidden={isAuthenticated}>
               <NavLink href="/register">Register</NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar hidden={!isAuthenticated}>
-              <DropdownToggle nav caret>
-                <FaUser />
-              </DropdownToggle>
-              <DropdownMenu end>
-                <DropdownItem>Option 1</DropdownItem>
-                <DropdownItem>Option 2</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem onClick={handleLogout}>Logout</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+            <NavLink onClick={handleLogout} hidden={!isAuthenticated}>
+                <FaRightFromBracket />
+            </NavLink>
           </Nav>
         </Collapse>
       </Navbar>

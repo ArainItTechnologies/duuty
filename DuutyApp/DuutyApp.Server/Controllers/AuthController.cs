@@ -16,15 +16,18 @@ public class AuthController : ControllerBase
 {
     private readonly UserManager<IdentityUser> _userManager;
     private readonly SignInManager<IdentityUser> _signInManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
     private readonly JwtSettings _jwtSettings;
 
     public AuthController(
         UserManager<IdentityUser> userManager,
         SignInManager<IdentityUser> signInManager,
+        RoleManager<IdentityRole> roleManager,
         IOptions<JwtSettings> jwtOptions)
     {
         _userManager = userManager;
         _signInManager = signInManager;
+        _roleManager = roleManager;
         _jwtSettings = jwtOptions.Value;
     }
 
@@ -40,6 +43,7 @@ public class AuthController : ControllerBase
 
         if (result.Succeeded)
         {
+            await _userManager.AddToRoleAsync(user, "User");
             return Ok(new { Message = "User registered successfully." });
         }
 

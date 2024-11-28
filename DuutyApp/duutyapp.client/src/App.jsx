@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Login from "./Components/Login";
-import Register from "./Components/Register";
 import Home from "./Components/Home";
 import Layout from "./Layout/Layout";
 import PublicRoute from "./PublicRoute";
@@ -11,6 +9,7 @@ import SuperAdminDashboard from "./Components/SuperAdminDashboard";
 import AdminDashboard from "./Components/AdminDashboard";
 import UnauthorizedPage from "./Components/UnauthorizedPage";
 import RoleProtectedRoute from "./RoleProtectedRoute";
+import AuthComponent from "./Components/AuthComponent";
 
 const App = () => {
     const [isAuthenticated] = useState(() => {
@@ -33,7 +32,7 @@ const App = () => {
                         path="/login"
                         element={
                             <PublicRoute isAuthenticated={isAuthenticated}>
-                                <Login />
+                                <AuthComponent route="login"/>
                             </PublicRoute>
                         }
                     />
@@ -41,7 +40,7 @@ const App = () => {
                         path="/register"
                         element={
                             <PublicRoute isAuthenticated={isAuthenticated}>
-                                <Register />
+                                <AuthComponent route="register"/>
                             </PublicRoute>
                         }
                     />

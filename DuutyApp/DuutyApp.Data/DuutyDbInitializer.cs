@@ -11,7 +11,7 @@ public static class DuutyDbInitializer
         var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
         // Roles
-        string[] roleNames = { "Admin", "SuperAdmin" };
+        string[] roleNames = ["Admin", "SuperAdmin"];
         foreach (var roleName in roleNames)
         {
             if (!await roleManager.RoleExistsAsync(roleName))
