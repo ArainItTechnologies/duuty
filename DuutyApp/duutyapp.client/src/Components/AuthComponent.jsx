@@ -66,10 +66,11 @@ const AuthComponent = ({ route }) => {
     var response = await userRegister(registerFormData);
 
     alert(response.message);
+    navigate("/login");
   };
 
   return (
-    <div className="container">
+    <div>
       <div className="form-container">
         <div className="form-toggle">
           <Button

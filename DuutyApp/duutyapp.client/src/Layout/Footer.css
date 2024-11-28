@@ -1,0 +1,58 @@
+/* Make the footer sticky at the bottom of the page */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer content container */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Social media links container */
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.social-link:hover {
+    text-decoration: underline;
+}
+
+/* About Us link */
+.about-us-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.about-us-link:hover {
+    text-decoration: underline;
+}
+
+/* Footer bottom with copyright text */
+.footer-bottom {
+    margin-top: 5pxpx;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    color: #bbb;
+}

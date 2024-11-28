@@ -10,6 +10,7 @@ import AdminDashboard from "./Components/AdminDashboard";
 import UnauthorizedPage from "./Components/UnauthorizedPage";
 import RoleProtectedRoute from "./RoleProtectedRoute";
 import AuthComponent from "./Components/AuthComponent";
+import AboutUs from "./Components/AboutUs";
 
 const App = () => {
     const [isAuthenticated] = useState(() => {
@@ -25,6 +26,14 @@ const App = () => {
                         element={
                             <PublicRoute isAuthenticated={isAuthenticated}>
                                 <Home />
+                            </PublicRoute>
+                        }
+                    />
+                    <Route
+                        path="/about-us"
+                        element={
+                            <PublicRoute isAuthenticated={isAuthenticated}>
+                                <AboutUs />
                             </PublicRoute>
                         }
                     />
