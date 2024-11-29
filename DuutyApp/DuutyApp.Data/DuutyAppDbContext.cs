@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using DuutyApp.Data.Entities;
+using DuutyApp.Data.Enums;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using DuutyApp.Data.Entities;
 
 namespace DuutyApp.Data
 {
@@ -22,23 +23,16 @@ namespace DuutyApp.Data
         private void SeedRoles(ModelBuilder builder)
         {
             builder.Entity<IdentityRole>()
-                .HasData(new IdentityRole
+                .HasData(
+                Enum.GetValues(typeof(RoleNames))
+                .Cast<RoleNames>()
+                .Select(role => new IdentityRole
                 {
-                    Name = "SuperAdmin",
-                    ConcurrencyStamp = "1",
-                    NormalizedName = "SuperAdmin"
-                },new IdentityRole
-                {
-                    Name = "Admin",
-                    ConcurrencyStamp = "2",
-                    NormalizedName = "Admin"
-                },
-                new IdentityRole
-                {
-                    Name = "User",
-                    ConcurrencyStamp = "3",
-                    NormalizedName = "User"
-                });
+                    Name = role.ToString(),
+                    NormalizedName = role.ToString().ToUpper(),
+                    ConcurrencyStamp = ((int)role).ToString()
+                })
+                .ToArray());
         }
     }
 }

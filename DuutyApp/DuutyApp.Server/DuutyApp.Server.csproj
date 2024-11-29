@@ -27,7 +27,7 @@
 		<ProjectReference Include="..\duutyapp.client\duutyapp.client.esproj">
 			<ReferenceOutputAssembly>false</ReferenceOutputAssembly>
 		</ProjectReference>
-		<ProjectReference Include="..\DuutyApp.Data\DuutyApp.Data.csproj" />
+		<ProjectReference Include="..\DuutyApp.Service\DuutyApp.Service.csproj" />
 	</ItemGroup>
 
 </Project>
