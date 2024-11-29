@@ -40,11 +40,11 @@ public static class DuutyDbInitializer
                 }
 
                 // Assign Roles
-                if (config.UserName.Contains("admin", StringComparison.OrdinalIgnoreCase))
+                if (config.UserName.StartsWith("admin", StringComparison.OrdinalIgnoreCase))
                 {
                     await userManager.AddToRoleAsync(user, RoleNames.Admin.ToString());
                 }
-                else if (config.UserName.Contains("superadmin", StringComparison.OrdinalIgnoreCase))
+                else if (config.UserName.StartsWith("superadmin", StringComparison.OrdinalIgnoreCase))
                 {
                     await userManager.AddToRoleAsync(user, RoleNames.SuperAdmin.ToString());
                 }
