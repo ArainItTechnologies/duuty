@@ -43,10 +43,7 @@ jobs:
         env:
           ConnectionStrings.DuutyAppDbContext: ${{ secrets.DATABASE_CONNECTION_STRING }}
           JwtSettings.SecretKey: ${{ secrets.JWT_SECRET_KEY }}
-          ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
-          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
-          SUPERADMIN_USERNAME: ${{ secrets.SUPERADMIN_USERNAME }}
-          SUPERADMIN_PASSWORD: ${{ secrets.SUPERADMIN_PASSWORD }}
+          SeedUserConfigs: ${{ secrets.SEED_USER_CONFIGS }}
           
       - name: dotnet publish
         run: dotnet publish DuutyApp/DuutyApp.Server/DuutyApp.Server.csproj -c Release -o ${{env.DOTNET_ROOT}}/duuty
