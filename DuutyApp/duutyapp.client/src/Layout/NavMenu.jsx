@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  Button,
   Navbar,
   NavbarBrand,
   NavbarToggler,
@@ -9,10 +8,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from "reactstrap";
 import logo from "../assets/logo.png";
 import { userLogout } from "../api/auth";
