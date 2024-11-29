@@ -1,11 +1,13 @@
 {
   "name": "duutyapp.client",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "author": "ArainItTechnologies",
   "type": "module",
+  "keywords": [ "react", "vite", "asp.net", "webapp" ],
   "scripts": {
     "prepare-certificates": "node generate-certificates.js",
-    "dev": "npm run prepare-certificates && vite",
+    "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
