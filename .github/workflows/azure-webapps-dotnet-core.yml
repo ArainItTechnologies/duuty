@@ -1,4 +1,4 @@
-name: CI Build and Deploy
+name: CI Build and Deploy To Azure
 
 env:
   AZURE_WEBAPP_NAME: react-web-bff
