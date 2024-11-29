@@ -9,10 +9,15 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
+if (configuration is null)
+{
+    throw new ArgumentNullException($"{nameof(configuration)}, cannot be null");
+}
+
 // Add DbContext
 builder.Services.AddDbContext<DuutyAppDbContext>(options =>
     options.UseSqlServer(
-        configuration.GetConnectionString("DuutyAppDbContext"), 
+        configuration.GetConnectionString("DuutyAppDbContext"),
         sqlOptions => sqlOptions.EnableRetryOnFailure()));
 
 // Add Identity
@@ -21,7 +26,6 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddDefaultTokenProviders();
 
 // Add services to the container.
-
 builder.Services.Configure<JwtSettings>(configuration.GetSection(nameof(JwtSettings)));
 
 builder.Services.AddControllers();
@@ -39,7 +43,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateLifetime = true,
             ValidIssuer = configuration["JwtSettings:Issuer"],
             ValidAudience = configuration["JwtSettings:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:SecretKey"]))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:SecretKey"]!))
         };
     });
 
