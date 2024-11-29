@@ -19,3 +19,8 @@
 /DuutyApp/duutyapp.client/certificates
 /DuutyApp/duutyapp.client/obj/Debug
 /DuutyApp/duutyapp.client/obj/Debug/package.g.props
+/DuutyApp/DuutyApp.Interfaces/bin/Debug/net8.0
+/DuutyApp/DuutyApp.Interfaces/obj
+/DuutyApp/DuutyApp.Service/bin/Debug/net8.0
+/DuutyApp/DuutyApp.Service/obj
+/DuutyApp/DuutyApp.Service/obj/Debug/net8.0/ref/DuutyApp.Service.dll

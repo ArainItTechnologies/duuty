@@ -1,41 +1,54 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using DuutyApp.Data.Enums;
+using DuutyApp.Data.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DuutyApp.Data;
 
 public static class DuutyDbInitializer
 {
-    public static async Task SeedUsersAndRolesAsync(IServiceProvider serviceProvider)
+    public static async Task SeedUsersAndRolesAsync(IServiceProvider serviceProvider, List<SeedUserConfig> seedUserConfigs)
     {
         var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
         var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
-        // Roles
-        string[] roleNames = ["Admin", "SuperAdmin"];
-        foreach (var roleName in roleNames)
+        foreach (var role in Enum.GetValues(typeof(RoleNames)).Cast<RoleNames>())
         {
+            var roleName = role.ToString();
             if (!await roleManager.RoleExistsAsync(roleName))
             {
                 await roleManager.CreateAsync(new IdentityRole(roleName));
             }
         }
 
-        // Admin User
-        var adminUser = await userManager.FindByEmailAsync("admin@duuty.in");
-        if (adminUser == null)
+        // Seed Users
+        foreach (var config in seedUserConfigs)
         {
-            adminUser = new IdentityUser { UserName = "admin@duuty.in", Email = "admin@duuty.in", EmailConfirmed = true };
-            await userManager.CreateAsync(adminUser, "Admin@123"); // Change password as needed
-            await userManager.AddToRoleAsync(adminUser, "Admin");
-        }
+            var user = await userManager.FindByEmailAsync(config.UserName);
+            if (user == null)
+            {
+                user = new IdentityUser
+                {
+                    UserName = config.UserName,
+                    Email = config.UserName,
+                    EmailConfirmed = true
+                };
+                var result = await userManager.CreateAsync(user, config.Password);
+                if (!result.Succeeded)
+                {
+                    throw new Exception($"Failed to create user '{config.UserName}': {string.Join(", ", result.Errors.Select(e => e.Description))}");
+                }
 
-        // Super Admin User
-        var superAdminUser = await userManager.FindByEmailAsync("superadmin@duuty.in");
-        if (superAdminUser == null)
-        {
-            superAdminUser = new IdentityUser { UserName = "superadmin@duuty.in", Email = "superadmin@duuty.in", EmailConfirmed = true };
-            await userManager.CreateAsync(superAdminUser, "SuperAdmin@123"); // Change password as needed
-            await userManager.AddToRoleAsync(superAdminUser, "SuperAdmin");
+                // Assign Roles
+                if (config.UserName.Contains("admin", StringComparison.OrdinalIgnoreCase))
+                {
+                    await userManager.AddToRoleAsync(user, RoleNames.Admin.ToString());
+                }
+                else if (config.UserName.Contains("superadmin", StringComparison.OrdinalIgnoreCase))
+                {
+                    await userManager.AddToRoleAsync(user, RoleNames.SuperAdmin.ToString());
+                }
+            }
         }
     }
 }

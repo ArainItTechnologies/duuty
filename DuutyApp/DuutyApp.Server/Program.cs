@@ -1,5 +1,7 @@
 using DuutyApp.Data;
 using DuutyApp.Data.Models;
+using DuutyApp.Interfaces;
+using DuutyApp.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +29,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 
 // Add services to the container.
 builder.Services.Configure<JwtSettings>(configuration.GetSection(nameof(JwtSettings)));
+
+builder.Services.AddServicesIoC();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -57,7 +61,8 @@ app.UseStaticFiles();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    await DuutyDbInitializer.SeedUsersAndRolesAsync(services);
+    var seedUserConfigs = configuration.GetSection("SeedUserConfigs").Get<List<SeedUserConfig>>();
+    await DuutyDbInitializer.SeedUsersAndRolesAsync(services, seedUserConfigs!);
 }
 
 // Configure the HTTP request pipeline.

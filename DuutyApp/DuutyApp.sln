@@ -9,6 +9,10 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "duutyapp.client", "duutyapp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuutyApp.Data", "DuutyApp.Data\DuutyApp.Data.csproj", "{D8A9C928-76BE-4273-A67A-C31BA3B99F5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuutyApp.Service", "DuutyApp.Service\DuutyApp.Service.csproj", "{A4EB0B35-4F71-442F-886E-2197F6DE76CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuutyApp.Interfaces", "DuutyApp.Interfaces\DuutyApp.Interfaces.csproj", "{0F334B0D-08CC-4E32-A674-25CB3DE37FB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,14 @@ Global
 		{D8A9C928-76BE-4273-A67A-C31BA3B99F5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8A9C928-76BE-4273-A67A-C31BA3B99F5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8A9C928-76BE-4273-A67A-C31BA3B99F5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4EB0B35-4F71-442F-886E-2197F6DE76CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4EB0B35-4F71-442F-886E-2197F6DE76CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4EB0B35-4F71-442F-886E-2197F6DE76CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4EB0B35-4F71-442F-886E-2197F6DE76CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F334B0D-08CC-4E32-A674-25CB3DE37FB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F334B0D-08CC-4E32-A674-25CB3DE37FB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F334B0D-08CC-4E32-A674-25CB3DE37FB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F334B0D-08CC-4E32-A674-25CB3DE37FB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
-﻿using DuutyApp.Data.Models;
+﻿using DuutyApp.Data.Enums;
+using DuutyApp.Data.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -43,7 +44,7 @@ public class AuthController : ControllerBase
 
         if (result.Succeeded)
         {
-            await _userManager.AddToRoleAsync(user, "User");
+            await _userManager.AddToRoleAsync(user, nameof(RoleNames.Guest));
             return Ok(new { Message = "User registered successfully." });
         }
 
