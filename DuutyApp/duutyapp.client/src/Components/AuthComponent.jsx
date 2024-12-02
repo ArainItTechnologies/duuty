@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import "./Auth.css";
 import { Button, Form, FormGroup, Input, Label, NavLink } from "reactstrap";
 import { userLogin, userRegister } from "../api/auth";
 import { getRoleFromToken } from "../utils/jwtUtils";
@@ -41,10 +40,8 @@ const AuthComponent = ({ route }) => {
     if (authToken !== null) {
       localStorage.setItem("token", authToken);
 
-      // Get the user's role
       const role = getRoleFromToken(authToken);
-
-      // Navigate based on the role
+      
       switch (role) {
         case "Admin":
           navigate("/admin-dashboard");
@@ -55,6 +52,9 @@ const AuthComponent = ({ route }) => {
         case "User":
           navigate("/user-dashboard");
           break;
+        case "Guest":
+          navigate("/guest");
+          break;              
       }
     } else {
       navigate("/login");
@@ -63,7 +63,7 @@ const AuthComponent = ({ route }) => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    var response = await userRegister(registerFormData);
+    const response = await userRegister(registerFormData);
 
     alert(response.message);
     navigate("/login");

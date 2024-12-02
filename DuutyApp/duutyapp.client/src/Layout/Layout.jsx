@@ -1,16 +1,16 @@
-import PropTypes from "prop-types"; // Import PropTypes
+import PropTypes from "prop-types";
 import { Container } from "reactstrap";
-import NavMenu from "./NavMenu";
+import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
     <div className="duuty-app">
       {/* Navbar */}
-      <NavMenu />
+      <Navbar />
 
       {/* Main Content */}
-      <Container style={{ marginTop: "20px" }}>{children}</Container>
+      <Container className="content" >{children}</Container>
       
       {/* Footer */}
       <Footer />

@@ -30,4 +30,9 @@
 		<ProjectReference Include="..\DuutyApp.Service\DuutyApp.Service.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="Properties\PublishProfiles\react-web-bff - Zip Deploy.pubxml" />
+	  <None Remove="Properties\ServiceDependencies\react-web-bff - Zip Deploy\profile.arm.json" />
+	</ItemGroup>
+
 </Project>

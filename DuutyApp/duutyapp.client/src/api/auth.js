@@ -1,19 +1,3 @@
-// Function to fetch weather forecast data
-export const fetchWeatherData = async () => {
-    try {
-        const response = await fetch("weatherforecast"); // Replace with the correct API endpoint if needed
-        if (!response.ok) {
-            throw new Error("Failed to fetch weather data");
-        }
-        const data = await response.json();
-        return data; // Return the weather data
-    } catch (error) {
-        console.error("Error fetching weather data:", error);
-        throw error; // Propagate error to be handled by the caller
-    }
-};
-
-
 export const userLogin = async (data) => {
     try {
         const response = await fetch("/api/Auth/Login", {
@@ -28,8 +12,7 @@ export const userLogin = async (data) => {
             console.log("Failed to login");
         }
 
-        const responseData = await response.json();
-        return responseData;
+        return await response.json();
     }
     catch (error) {
         console.error('API error:', error);
@@ -50,8 +33,7 @@ export const userRegister = async (data) => {
           console.log("Failed to register");
       }
 
-      const responseData = await response.json();
-      return responseData;
+      return  await response.json();
   }
   catch (error) {
       console.error('API error:', error);

@@ -4,7 +4,12 @@
   "version": "1.0.0",
   "author": "ArainItTechnologies",
   "type": "module",
-  "keywords": [ "react", "vite", "asp.net", "webapp" ],
+  "keywords": [
+    "react",
+    "vite",
+    "asp.net",
+    "webapp"
+  ],
   "scripts": {
     "prepare-certificates": "node generate-certificates.js",
     "dev": "vite",
@@ -16,10 +21,12 @@
     "bootstrap": "^5.3.3",
     "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
+    "react-data-table-component": "^7.6.2",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",
     "react-router-dom": "^6.28.0",
-    "reactstrap": "^9.2.3"
+    "reactstrap": "^9.2.3",
+    "sass": "^1.81.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
