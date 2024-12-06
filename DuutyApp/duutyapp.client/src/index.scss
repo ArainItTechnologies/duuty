@@ -9,6 +9,15 @@
   margin: 0;
 }
 
+/* Prevent horizontal overflow */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
 :root {
   --header-height: 4rem;
   --first-color: hsl(28, 88%, 62%);

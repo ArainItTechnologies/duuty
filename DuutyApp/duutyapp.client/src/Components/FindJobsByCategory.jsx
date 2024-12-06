@@ -21,13 +21,14 @@ const FindJobsByCategory = () => {
 
   return (
     <div>
+    <h1 className="page-heading">Find Jobs</h1>
       <Nav tabs>
         <NavItem>
           <NavLink
             className={activeTab === "1" ? "active" : ""}
             onClick={() => toggle("1")}
           >
-            Jobs By City
+            By City
           </NavLink>
         </NavItem>
         <NavItem>
@@ -35,7 +36,7 @@ const FindJobsByCategory = () => {
             className={activeTab === "2" ? "active" : ""}
             onClick={() => toggle("2")}
           >
-            Jobs By Type
+            By Type
           </NavLink>
         </NavItem>
       </Nav>

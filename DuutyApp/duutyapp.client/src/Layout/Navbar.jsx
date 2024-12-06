@@ -11,6 +11,7 @@ import LanguageSelectionCard from "../Components/LanguageSelectionCard";
 import ToggleSwitch from "../CustomElements/ToggleSwitch";
 import { useTranslation } from "../translations/TranslationHook";
 import { supportedLanguages } from "../translations/SupportedLanguages";
+import Logo from "../assets/logo.png";
 
 const Navbar = () => {
   const { t, language, setLanguage } = useTranslation();
@@ -23,9 +24,7 @@ const Navbar = () => {
   const toggleSubMenu = () => setShowSubMenu(!showSubMenu);
 
   const closeMenuOnMobile = () => {
-    if (window.innerWidth <= 1150) {
-      setShowMenu(false);
-    }
+    setShowMenu(false);
   };
 
   const handleToggleChange = (checked) => {
@@ -44,7 +43,6 @@ const Navbar = () => {
 
   const handleLanguageChange = (lang) => {
     setLanguage(lang);
-    closeMenuOnMobile();
     toggleModal();
   };
 
@@ -52,7 +50,11 @@ const Navbar = () => {
     <header className="header">
       <nav className="nav__container">
         <NavLink to="/" className="nav__logo">
-          DUUTY
+          <img
+            src={Logo}
+            alt="DUUTY"
+            className="nav__logo-image"
+          />
         </NavLink>
 
         <div
