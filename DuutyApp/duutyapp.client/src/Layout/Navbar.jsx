@@ -36,14 +36,14 @@ const Navbar = () => {
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
-    if (isModalOpen) {
-      setIsToggleChecked(false);
-    }
+    // if (isModalOpen) {
+    //   setIsToggleChecked(false);
+    // }
   };
 
   const handleLanguageChange = (lang) => {
     setLanguage(lang);
-    toggleModal();
+    // toggleModal();
   };
 
   return (
@@ -65,7 +65,7 @@ const Navbar = () => {
             {/* Add Toggle Switch as the first item */}
             <li className="nav__item nav__toggle-switch">
               <ToggleSwitch
-                label={"Switch Language"}
+                label={"Translate"}
                 checked={isToggleChecked}
                 onChange={handleToggleChange}
               />

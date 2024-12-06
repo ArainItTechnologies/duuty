@@ -6,6 +6,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #f9f9f9;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
 }
 
 .language-box {
@@ -19,8 +20,10 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100px; /* Adjust box width */
+  box-sizing: border-box; /* Include padding and border in the element's total width */
 }
 
+/* Ensure language box doesn't overflow */
 .language-box .language-name {
   font-weight: bold;
   margin-bottom: 0.5rem;
@@ -34,14 +37,23 @@
   margin-top: 0.5rem;
 }
 
-/* Additional style for the label */
-.toggle-switch-container {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Adjust the space between the label and the toggle */
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  .language-card {
+    flex-direction: column; /* Stack language boxes vertically */
+    align-items: center; /* Center the items */
+    gap: 1rem; /* Space between items */
+  }
+
+  .language-box {
+    width: 80%; /* Adjust width to avoid overflow */
+    max-width: 200px; /* Limit the max width */
+  }
 }
 
-.toggle-switch-label-text {
-  font-size: 1rem;
-  color: var(--title-color); /* You can use a variable or fixed color */
+@media (max-width: 480px) {
+  .language-box {
+    width: 90%; /* Further reduce width on very small screens */
+    max-width: 180px; /* Further limit max width */
+  }
 }

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import "./ToggleSwitch.scss"; // Ensure the CSS for the toggle switch is imported
+import "./ToggleSwitch.scss";
 
 const ToggleSwitch = ({ label, checked, onChange }) => {
   return (
