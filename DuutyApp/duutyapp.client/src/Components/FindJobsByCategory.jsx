@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import {
   TabContent,
   TabPane,
@@ -7,11 +7,41 @@ import {
   NavLink,
   Card,
   CardTitle,
-  CardText
+  CardText,
 } from "reactstrap";
 
 const FindJobsByCategory = () => {
+//   const debounce = (func, delay) => {
+//     let timer;
+//     return (...args) => {
+//       clearTimeout(timer);
+//       timer = setTimeout(() => {
+//         func(...args);
+//       }, delay);
+//     };
+//   };
+
+//   const handleCitySelection = useCallback(
+//     debounce((cityCode) => {
+//       setSelectedCity(cityCode);
+//     }, 10), // 300ms debounce delay
+//     []
+//   );
+
+const handleCitySelection = useCallback((cityCode) => {
+    setSelectedCity(cityCode);
+  }, []);
+
+
   const [activeTab, setActiveTab] = useState("1");
+  const [selectedCity, setSelectedCity] = useState("ch");
+
+  const cities = [
+    { code: "ch", name: "Chennai" },
+    { code: "ban", name: "Banglore" },
+    { code: "hyd", name: "Hyderabad" },
+    { code: "cochin", name: "Cochin" },
+  ];
 
   const toggle = (tab) => {
     if (activeTab !== tab) {
@@ -21,7 +51,7 @@ const FindJobsByCategory = () => {
 
   return (
     <div>
-    <h1 className="page-heading">Find Jobs</h1>
+      <h1 className="page-heading">Find Jobs</h1>
       <Nav tabs>
         <NavItem>
           <NavLink
@@ -42,12 +72,21 @@ const FindJobsByCategory = () => {
       </Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
-        <Card body>
+          <Card body>
             <CardTitle>Search Jobs By City</CardTitle>
-            <CardText>
-              With supporting text below as a natural lead-in to additional
-              content.
-            </CardText>
+            <div className="city-box-container">
+              {cities.map((city) => (
+                <div
+                  key={city.code}
+                  className={`city-box ${
+                    selectedCity === city.code ? "selected" : ""
+                  }`}
+                  onClick={() => handleCitySelection(city.code)}
+                >
+                  <div className="city-name">{city.name}</div>
+                </div>
+              ))}
+            </div>
           </Card>
         </TabPane>
         <TabPane tabId="2">

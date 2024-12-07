@@ -1,0 +1,49 @@
+.city-box-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap */
+  justify-content: space-between; /* Add space between the items */
+  gap: 1rem; /* Add consistent space between the boxes */
+  padding: 1rem;
+}
+
+.city-box {
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: calc(33.33% - 1rem); /* 3 boxes per row with space */
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.city-box.selected {
+  background-color: #007bff; /* Highlight selected city */
+}
+
+.city-name {
+  font-size: 1rem;
+  color: #333;
+}
+
+.city-box:hover {
+  background-color: #f1f1f1; /* Light hover effect */
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .city-box {
+    width: calc(50% - 1rem); /* 2 boxes per row */
+  }
+}
+
+/* Small Mobile View */
+@media (max-width: 480px) {
+  .city-box {
+    width: 100%; /* 1 box per row */
+  }
+}

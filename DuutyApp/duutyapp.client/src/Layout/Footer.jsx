@@ -1,4 +1,9 @@
 import { NavLink } from "reactstrap";
+import {
+  IoLogoFacebook,
+  IoLogoTwitter,
+  IoLogoLinkedin
+} from "react-icons/io5";
 import "./Footer.css";
 
 const Footer = () => {
@@ -11,21 +16,21 @@ const Footer = () => {
             target="_blank"
             className="social-link"
           >
-            Facebook
+            <IoLogoFacebook/>
           </NavLink>
           <NavLink
             href="https://twitter.com"
             target="_blank"
             className="social-link"
           >
-            Twitter
+            <IoLogoTwitter/>
           </NavLink>
           <NavLink
             href="https://linkedin.com"
             target="_blank"
             className="social-link"
           >
-            LinkedIn
+            <IoLogoLinkedin/>
           </NavLink>
         </div>
         <div className="about-link">
