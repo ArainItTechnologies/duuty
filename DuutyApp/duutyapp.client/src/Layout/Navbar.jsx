@@ -32,6 +32,7 @@ const Navbar = () => {
   const closeMenuOnMobile = () => {
     setShowCandidateSubMenu(false);
     setShowEmployerSubMenu(false);
+    toggleMenu();
   };
 
   const toggleModal = () => {
