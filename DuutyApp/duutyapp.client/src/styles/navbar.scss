@@ -67,12 +67,12 @@
 }
 
 .nav__link:hover {
-  color: var(--first-color);
+  color: var(--title-color);
 }
 
 .nav__cta {
-  background-color: var(--first-color);
-  color: var(--title-color);
+  background-color: var(--title-color);
+  color: var(--first-color);
   padding: 0.7rem 2rem;
   border-radius: 5px;
   font-size: 1.2rem;
@@ -81,7 +81,7 @@
 }
 
 .nav__cta:hover {
-  background-color: var(--first-color);
+  background-color: var(--secondary-color);
   color: var(--title-color);
   transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }

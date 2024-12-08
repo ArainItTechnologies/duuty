@@ -8,7 +8,6 @@ import {
 } from "react-icons/io5";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import LanguageSelectionCard from "../Components/LanguageSelectionCard";
-import ToggleSwitch from "../CustomElements/ToggleSwitch";
 import { useTranslation } from "../translations/TranslationHook";
 import { supportedLanguages } from "../translations/SupportedLanguages";
 import Logo from "../assets/logo.png";
@@ -16,45 +15,38 @@ import Logo from "../assets/logo.png";
 const Navbar = () => {
   const { t, language, setLanguage } = useTranslation();
   const [showMenu, setShowMenu] = useState(false);
-  const [showSubMenu, setShowSubMenu] = useState(false);
+  const [showCandidateSubMenu, setShowCandidateSubMenu] = useState(false);
+  const [showEmployerSubMenu, setShowEmployerSubMenu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isToggleChecked, setIsToggleChecked] = useState(false);
 
   const toggleMenu = () => setShowMenu(!showMenu);
-  const toggleSubMenu = () => setShowSubMenu(!showSubMenu);
-
-  const closeMenuOnMobile = () => {
-    setShowMenu(false);
+  const toggleCandidateSubMenu = () => {
+    setShowCandidateSubMenu(!showCandidateSubMenu);
+    setShowEmployerSubMenu(false);
+  };
+  const toggleEmployerSubMenu = () => {
+    setShowCandidateSubMenu(false);
+    setShowEmployerSubMenu(!showEmployerSubMenu);
   };
 
-  const handleToggleChange = (checked) => {
-    setIsToggleChecked(checked);
-    if (checked) {
-      setIsModalOpen(true);
-    }
+  const closeMenuOnMobile = () => {
+    setShowCandidateSubMenu(false);
+    setShowEmployerSubMenu(false);
   };
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
-    // if (isModalOpen) {
-    //   setIsToggleChecked(false);
-    // }
   };
 
   const handleLanguageChange = (lang) => {
     setLanguage(lang);
-    // toggleModal();
   };
 
   return (
     <header className="header">
       <nav className="nav__container">
         <NavLink to="/" className="nav__logo">
-          <img
-            src={Logo}
-            alt="DUUTY"
-            className="nav__logo-image"
-          />
+          <img src={Logo} alt="DUUTY" className="nav__logo-image" />
         </NavLink>
 
         <div
@@ -62,33 +54,34 @@ const Navbar = () => {
           id="nav-menu"
         >
           <ul className="nav__list">
-            {/* Add Toggle Switch as the first item */}
-            <li className="nav__item nav__toggle-switch">
-              <ToggleSwitch
-                label={"Translate"}
-                checked={isToggleChecked}
-                onChange={handleToggleChange}
-              />
+            <li className="nav__item">
+              <NavLink to="/" className="nav__link" onClick={closeMenuOnMobile}>
+                Home
+              </NavLink>
             </li>
             <li className="nav__item dropdown">
               <div
                 className="nav__link dropdown__toggle"
-                onClick={toggleSubMenu}
+                onClick={toggleCandidateSubMenu}
               >
                 {t("navbar.candidate")}
                 <IoChevronDown
-                  className={`dropdown__icon ${showSubMenu ? "rotate" : ""}`}
+                  className={`dropdown__icon ${
+                    showCandidateSubMenu ? "rotate" : ""
+                  }`}
                 />
               </div>
               <ul
-                className={`nav__submenu ${showSubMenu ? "show-submenu" : ""}`}
+                className={`nav__submenu ${
+                  showCandidateSubMenu ? "show-submenu" : ""
+                }`}
               >
                 <li className="nav__submenu-item">
                   <NavLink
                     to="/Candidate/find-jobs-by-category"
                     onClick={() => {
                       closeMenuOnMobile();
-                      toggleSubMenu();
+                      toggleCandidateSubMenu();
                     }}
                   >
                     <IoArrowForward /> Find jobs by Category
@@ -96,36 +89,49 @@ const Navbar = () => {
                 </li>
               </ul>
             </li>
-            <li className="nav__item">
-              <NavLink
-                to="/employer"
-                className="nav__link"
-                onClick={closeMenuOnMobile}
+
+            <li className="nav__item dropdown">
+              <div
+                className="nav__link dropdown__toggle"
+                onClick={toggleEmployerSubMenu}
               >
-                Employer
-              </NavLink>
+                {t("navbar.employer")}
+                <IoChevronDown
+                  className={`dropdown__icon ${
+                    showEmployerSubMenu ? "rotate" : ""
+                  }`}
+                />
+              </div>
+              <ul
+                className={`nav__submenu ${
+                  showEmployerSubMenu ? "show-submenu" : ""
+                }`}
+              >
+                <li className="nav__submenu-item">
+                  <NavLink
+                    to="/Employer/hire-now"
+                    onClick={() => {
+                      closeMenuOnMobile();
+                      toggleEmployerSubMenu();
+                    }}
+                  >
+                    <IoArrowForward /> Hire Now
+                  </NavLink>
+                </li>
+              </ul>
             </li>
             <li className="nav__item">
               <NavLink
-                to="/company"
+                to="/about-us"
                 className="nav__link"
                 onClick={closeMenuOnMobile}
               >
-                Company
+                About Us
               </NavLink>
             </li>
             <li className="nav__item">
-              <NavLink
-                to="/find-a-job"
-                className="nav__link"
-                onClick={closeMenuOnMobile}
-              >
-                Find A Job
-              </NavLink>
-            </li>
-            <li className="nav__item">
-              <NavLink to="/hire-now" className="nav__link nav__cta">
-                Hire Now
+              <NavLink to="/auth" className="nav__link nav__cta">
+                Login/SignUp
               </NavLink>
             </li>
           </ul>

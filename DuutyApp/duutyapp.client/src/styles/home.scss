@@ -1,0 +1,90 @@
+/* Style for the container */
+.languages-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  justify-content: center;
+  gap: 20px 20px; /* First value: row gap, second value: column gap */
+  padding: 20px; /* Optional padding around the grid */
+}
+
+/* Style for each language box */
+.language-box {
+  display: flex; /* Enable flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center;
+  width: 120px; /* Fixed width */
+  height: 80px; /* Fixed height */
+  margin: auto; /* Center each box within its grid cell */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  color: var(--header-color);
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+/* Style for language name */
+.language-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--title-color);
+}
+
+.language-box:hover {
+  cursor: pointer;
+  background-color: var(--secondary-color);
+  color: var(--title-color);
+  transform: scale(1.05);
+}
+
+/* Style for the job options container */
+.job-options {
+  display: flex; /* Use Flexbox for layout */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  gap: 20px; /* Space between the boxes */
+  height: 40vh; /* Make the container fill the full viewport height */
+}
+
+/* Style for each job box */
+.find-a-job,
+.hire-now {
+  width: 200px; /* Fixed width */
+  height: 200px; /* Fixed height */
+  display: flex; /* Use Flexbox for centering text */
+  justify-content: center; /* Center text horizontally */
+  align-items: center; /* Center text vertically */
+  border: 2px solid var(--first-color); /* Add a border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  background-color: var(--secondary-color);
+  transition: transform 0.3s, background-color 0.3s; /* Smooth hover effect */
+  cursor: pointer;
+  text-align: center; /* Center text alignment for multi-line content */
+}
+
+/* Hover effect for the boxes */
+.find-a-job:hover,
+.hire-now:hover {
+  background-color: var(--text-color);
+  color: var(--first-color);
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.job-options .nav__link {
+  text-decoration: none; /* Remove underline */
+  font-size: 1.5rem; /* Font size for the text */
+  font-weight: bold;
+  color: var(--title-color);
+}
+
+.find-a-job:hover .nav__link,
+.hire-now:hover .nav__link {
+    color: var(--first-color); /* Change the text color */
+}
+
+.job-options .nav__link:hover{
+    color: var(--first-color);
+}

@@ -49,10 +49,10 @@ const App = () => {
             }
           />
           <Route
-            path="/login"
+            path="/auth"
             element={
               <PublicRoute isAuthenticated={isAuthenticated}>
-                <AuthComponent route="login" />
+                <AuthComponent route="auth" />
               </PublicRoute>
             }
           />

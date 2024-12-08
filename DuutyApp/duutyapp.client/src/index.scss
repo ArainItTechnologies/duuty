@@ -1,7 +1,9 @@
+@use "./styles/home.scss";
 @use "./styles/navbar.scss";
 @use "./styles/auth.scss";
 @use "./styles/languageSelectionCard.scss";
 @use "./styles/findJobs.scss";
+
 
 * {
   box-sizing: border-box;
@@ -20,10 +22,11 @@ html {
 
 :root {
   --header-height: 4rem;
-  --first-color: hsl(28, 88%, 62%);
+  --first-color: #091D52;
+  --secondary-color: #243258;
   --title-color: hsl(0, 0%, 95%);
   --text-color: hsl(0, 0%, 75%);
-  --header-color: hsl(0, 0%, 6%);
+  --header-color: #091D52;
   --body-color: hsl(0, 1%, 31%);
   --body-font: "Montserrat", sans-serif;
   --second-font: "Dancing Script", cursive;
@@ -41,7 +44,7 @@ body {
 }
 
 .content {
-  margin-top: 5rem;
+  margin-top: 7rem;
 }
 
 ul {
