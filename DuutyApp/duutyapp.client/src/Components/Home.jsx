@@ -11,14 +11,16 @@ const Home = () => {
     <div>
       <div className="languages-list">
         {supportedLanguages.map((lang) => (
-          <Button
-            outline
-            onClick={() => setLanguage(lang.code)}
-            key={lang.code}
-          >
-            {lang.name}
-          </Button>
-        ))}
+        <Button
+          key={lang.code}
+          outline
+          color={language === lang.code ? "primary" : "secondary"}
+          onClick={() => setLanguage(lang.code)}
+          active={language === lang.code} // This will mark the selected button as active
+        >
+          {lang.name}
+        </Button>
+      ))}
       </div>
       <div className="job-options">
         <div className="find-a-job">

@@ -1,43 +1,32 @@
-/* Style for the container */
 .languages-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  justify-content: center;
-  gap: 20px 20px; /* First value: row gap, second value: column gap */
-  padding: 20px; /* Optional padding around the grid */
+  grid-template-columns: repeat(5, 1fr); /* 5 items per row */
+  gap: 10px;
+  justify-items: center; /* Center items in their grid cells */
+  justify-content: center; /* Center the entire grid container */
+  padding: 20px;
 }
 
-/* Style for each language box */
-.language-box {
-  display: flex; /* Enable flexbox */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  text-align: center;
-  width: 120px; /* Fixed width */
-  height: 35px; /* Fixed height */
-  margin: auto; /* Center each box within its grid cell */
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  color: var(--header-color);
-  transition: transform 0.3s, background-color 0.3s;
+.languages-list button {
+  width: 100%; /* Make buttons fill the grid cells */
 }
 
-/* Style for language name */
-.language-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding-top: 10px;
-  color: var(--title-color);
+@media (max-width: 768px) {
+  .languages-list {
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ); /* 3 items per row on small screens */
+  }
 }
 
-.language-box:hover {
-  cursor: pointer;
-  background-color: var(--secondary-color);
-  color: var(--text-color);
-  transform: scale(1.05);
+@media (max-width: 480px) {
+  .languages-list {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* 2 items per row on very small screens */
+  }
 }
 
 /* Style for the job options container */

@@ -4,6 +4,8 @@ const languages = [
   { code: "te", name: "Telugu", order: 4 },
   { code: "or", name: "Oriya", order: 5 },
   { code: "be", name: "Bengali", order: 6 },
+  { code: "mal", name: "Malayalam", order: 7 },
+  { code: "ka", name: "Kannada", order: 8 },
   { code: "hi", name: "Hindi", order: 3 },
 ];
 

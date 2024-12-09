@@ -2,8 +2,14 @@
   "navbar": {
     "home": "Home",
     "about": "About Us",
-    "services": "Services",
-    "candidate": "வேட்பாளர்",
-    "employer": "முதலாளி"
+    "pricing": "Pricing",
+    "candidate": {
+      "heading": "வேட்பாளர்",
+      "findJob": "Find A Job"
+    },
+    "employer": {
+      "heading" : "முதலாளி",
+      "hirenow": "Hire Now"
+    }
   }
 }

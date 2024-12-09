@@ -2,8 +2,14 @@
   "navbar": {
     "home": "Home",
     "about": "About Us",
-    "services": "Services",
-    "candidate": "అభ్యర్థి",
-    "employer": "యజమాని"
+    "pricing": "Pricing",
+    "candidate": {
+      "heading": "అభ్యర్థి",
+      "findJob": "Find A Job"
+    },
+    "employer": {
+      "heading" : "యజమాని",
+      "hirenow": "Hire Now"
+    }
   }
 }

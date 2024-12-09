@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import { Container } from "reactstrap";
-import Navbar from "./Navbar";
+import NavbarMenu from "./NavbarMenu";
 import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
     <div className="duuty-app">
       {/* Navbar */}
-      <Navbar />
+      <NavbarMenu />
 
       {/* Main Content */}
       <Container className="content">{children}</Container>
