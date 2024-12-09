@@ -14,7 +14,7 @@
   align-items: center; /* Center vertically */
   text-align: center;
   width: 120px; /* Fixed width */
-  height: 80px; /* Fixed height */
+  height: 35px; /* Fixed height */
   margin: auto; /* Center each box within its grid cell */
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -29,13 +29,14 @@
 .language-name {
   font-size: 1.2rem;
   font-weight: bold;
+  padding-top: 10px;
   color: var(--title-color);
 }
 
 .language-box:hover {
   cursor: pointer;
   background-color: var(--secondary-color);
-  color: var(--title-color);
+  color: var(--text-color);
   transform: scale(1.05);
 }
 
@@ -69,7 +70,7 @@
 .find-a-job:hover,
 .hire-now:hover {
   background-color: var(--text-color);
-  color: var(--first-color);
+  color: var(--hover-text-color);
   transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
@@ -82,9 +83,9 @@
 
 .find-a-job:hover .nav__link,
 .hire-now:hover .nav__link {
-    color: var(--first-color); /* Change the text color */
+  color: var(--hover-text-color); /* Change the text color */
 }
 
-.job-options .nav__link:hover{
-    color: var(--first-color);
+.job-options .nav__link:hover {
+  color: var(--hover-text-color);
 }

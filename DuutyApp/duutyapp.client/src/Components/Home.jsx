@@ -1,21 +1,23 @@
 import { NavLink } from "react-router-dom";
 import { supportedLanguages } from "../translations/SupportedLanguages";
 import { useTranslation } from "../translations/TranslationHook";
+import { Button } from "reactstrap";
 
 const Home = () => {
-  const { setLanguage } = useTranslation();
+  const { language, setLanguage } = useTranslation();
+  console.log(language);
 
   return (
     <div>
       <div className="languages-list">
         {supportedLanguages.map((lang) => (
-          <div
+          <Button
+            outline
             onClick={() => setLanguage(lang.code)}
             key={lang.code}
-            className="language-box"
           >
-            <div className="language-name">{lang.name}</div>
-          </div>
+            {lang.name}
+          </Button>
         ))}
       </div>
       <div className="job-options">
@@ -25,7 +27,7 @@ const Home = () => {
           </NavLink>
         </div>
         <div className="hire-now">
-        <NavLink to="/Employer/hire-now" className="nav__link">
+          <NavLink to="/Employer/hire-now" className="nav__link">
             Hire Now
           </NavLink>
         </div>
