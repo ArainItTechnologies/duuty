@@ -1,21 +1,25 @@
 {
-  "banner": "India's First Job Portal for Kitchen Staff",
+  "banner": "किचन स्टाफ के लिए भारत का पहला जॉब पोर्टल",
   "slogan":"bdl;fmvb;ldmf pdjkfkpodjpofj pdjfg pdjof gjd fjgpo dfjg d",
   "joboptions": {
-    "findajob": "Find A Job",
-    "hirenow": "Hire Now"
+    "findajob": "एक नौकरी की तलाश",
+    "hirenow": "अभी किराये पर लें"
   },
   "navbar": {
-    "home": "Home",
-    "about": "About Us",
-    "candidate": {
-      "heading": "उम्मीदवार",
-      "findJob": "Find A Job"
+    "homepage": "मुखपृष्ठ",
+    "Company": "कंपनी",
+    "employee": {
+      "heading": "कर्मचारी",
+      "findJob": "एक नौकरी की तलाश"
+      "findJob": "श्रेणी के अनुसार नौकरियाँ खोजें"
+      "findJob": "स्थान के अनुसार नौकरियाँ खोजें"
     },
     "employer": {
-      "pricing": "Pricing",
-      "heading": "कर्मचारी",
-      "hirenow": "Hire Now"
+      "pricingplans": "मूल्य निर्धारण योजनाएँ",
+      "heading": "नियोक्ता",
+      "hirenow": "अभी किराये पर लें"
+      "refundpolicy": "भुगतान वापसी की नीति"
+      "FAQ's": "अक्सर पूछे जाने वाले प्रश्न"
     }
   }
 }
