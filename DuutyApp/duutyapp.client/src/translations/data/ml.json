@@ -1,14 +1,19 @@
 {
+  "banner": "India's First Kitchen Staff Recruitment",
+  "joboptions": {
+    "findajob": "Find A Job",
+    "hirenow": "Hire Now"
+  },
   "navbar": {
     "home": "Home",
     "about": "About Us",
-    "pricing": "Pricing",
     "candidate": {
       "heading": "প্রার্থী",
       "findJob": "Find A Job"
     },
     "employer": {
-      "heading" : "নিয়োগকর্তা",
+      "pricing": "Pricing",
+      "heading": "নিয়োগকর্তা",
       "hirenow": "Hire Now"
     }
   }

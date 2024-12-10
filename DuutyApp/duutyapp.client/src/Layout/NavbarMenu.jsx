@@ -48,11 +48,6 @@ const NavbarMenu = () => {
                 {t("navbar.about")}
               </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink className="nav-link" to="/pricing">
-                {t("navbar.pricing")}
-              </NavLink>
-            </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 {t("navbar.employer.heading")}
@@ -65,6 +60,15 @@ const NavbarMenu = () => {
                     to="/Employer/hire-now"
                   >
                     {t("navbar.employer.hirenow")}
+                  </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink
+                    className="nav-link"
+                    style={{ color: "inherit" }}
+                    to="/Employer/pricing"
+                  >
+                    {t("navbar.employer.pricing")}
                   </NavLink>
                 </DropdownItem>
               </DropdownMenu>

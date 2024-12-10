@@ -4,11 +4,11 @@ import { useTranslation } from "../translations/TranslationHook";
 import { Button } from "reactstrap";
 
 const Home = () => {
-  const { language, setLanguage } = useTranslation();
-
+  const { t, language, setLanguage } = useTranslation();
 
   return (
     <div>
+      <h1 className="banner">{t("banner")}</h1>
       <div className="languages-list">
         {supportedLanguages.map((lang) => (
           <Button
@@ -25,12 +25,12 @@ const Home = () => {
       <div className="job-options">
         <div className="find-a-job">
           <NavLink to="/Candidate/find-jobs-by-category" className="nav__link">
-            Find A job
+            {t("joboptions.findajob")}
           </NavLink>
         </div>
         <div className="hire-now">
           <NavLink to="/Employer/hire-now" className="nav__link">
-            Hire Now
+            {t("joboptions.hirenow")}
           </NavLink>
         </div>
       </div>

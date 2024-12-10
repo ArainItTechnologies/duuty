@@ -1,14 +1,19 @@
 {
+  "banner": "இந்தியாவின் முதல் சமையலறை பணியாளர்கள் ஆட்சேர்ப்பு",
+  "joboptions":{
+    "findajob": "Find A Job",
+    "hirenow": "Hire Now"
+  },
   "navbar": {
     "home": "Home",
     "about": "About Us",
-    "pricing": "Pricing",
     "candidate": {
       "heading": "வேட்பாளர்",
       "findJob": "Find A Job"
     },
     "employer": {
-      "heading" : "முதலாளி",
+      "pricing": "Pricing",
+      "heading": "முதலாளி",
       "hirenow": "Hire Now"
     }
   }

@@ -1,14 +1,20 @@
+.banner {
+    text-align: center; 
+    margin: 0 auto; 
+    font-size: 2rem;
+  }
+
 .languages-list {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 items per row */
+  grid-template-columns: repeat(4, 1fr); 
   gap: 10px;
-  justify-items: center; /* Center items in their grid cells */
-  justify-content: center; /* Center the entire grid container */
+  justify-items: center; 
+  justify-content: center; 
   padding: 20px;
 }
 
 .languages-list button {
-  width: 100%; /* Make buttons fill the grid cells */
+  width: 100%; 
 }
 
 @media (max-width: 768px) {
@@ -16,7 +22,7 @@
     grid-template-columns: repeat(
       3,
       1fr
-    ); /* 3 items per row on small screens */
+    ); 
   }
 }
 
@@ -25,24 +31,22 @@
     grid-template-columns: repeat(
       2,
       1fr
-    ); /* 2 items per row on very small screens */
+    );
   }
 }
 
-/* Style for the job options container */
 .job-options {
-  display: flex; /* Use Flexbox for layout */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  gap: 20px; /* Space between the boxes */
-  height: 40vh; /* Make the container fill the full viewport height */
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 20px; 
+  height: 20vh; 
 }
 
-/* Style for each job box */
 .find-a-job,
 .hire-now {
   width: 150px; /* Fixed width */
-  height: 150px; /* Fixed height */
+  height: 100px; /* Fixed height */
   display: flex; /* Use Flexbox for centering text */
   justify-content: center; /* Center text horizontally */
   align-items: center; /* Center text vertically */
