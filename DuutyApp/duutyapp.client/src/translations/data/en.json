@@ -1,21 +1,26 @@
 {
-  "banner": "India's First Job Portal for Kitchen Staff",
+  "banner": "India's 1st Job Portal for Kitchen Staff",
   "slogan":"bdl;fmvb;ldmf pdjkfkpodjpofj pdjfg pdjof gjd fjgpo dfjg d",
   "joboptions": {
     "findajob": "Find A Job",
     "hirenow": "Hire Now"
   },
   "navbar": {
-    "home": "Home",
-    "about": "About Us",
-    "candidate": {
-      "heading": "Candidate",
+    "home": "Home Page",
+    "about": "Company",
+    "Employee": {
+      "heading": "Employee",
       "findJob": "Find A Job"
+      "Find Jobs by Category": "Find Jobs by Category"
+      "Find Jobs by Location": "Find Jobs by Location"
+      "FAQ's": "FAQ's"
     },
     "employer": {
-      "pricing": "Pricing",
+      "pricing": "Pricing Plans",
       "heading": "Employer",
       "hirenow": "Hire Now"
+      "FAQ's": "FAQ's"
+      "Refundpolicy": "Refund Policy"
     }
   }
 }
