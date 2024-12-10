@@ -5,22 +5,22 @@ import { Button } from "reactstrap";
 
 const Home = () => {
   const { language, setLanguage } = useTranslation();
-  console.log(language);
+
 
   return (
     <div>
       <div className="languages-list">
         {supportedLanguages.map((lang) => (
-        <Button
-          key={lang.code}
-          outline
-          color={language === lang.code ? "primary" : "secondary"}
-          onClick={() => setLanguage(lang.code)}
-          active={language === lang.code} // This will mark the selected button as active
-        >
-          {lang.name}
-        </Button>
-      ))}
+          <Button
+            key={lang.code}
+            outline
+            color={language === lang.code ? "primary" : "secondary"}
+            onClick={() => setLanguage(lang.code)}
+            active={language === lang.code} // This will mark the selected button as active
+          >
+            {lang.name}
+          </Button>
+        ))}
       </div>
       <div className="job-options">
         <div className="find-a-job">

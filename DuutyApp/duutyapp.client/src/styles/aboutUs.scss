@@ -1,0 +1,9 @@
+p {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto; /* Adds hyphens for long words */
+}
+
+.text-justify {
+  text-align: justify;
+}

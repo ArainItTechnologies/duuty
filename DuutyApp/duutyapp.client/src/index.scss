@@ -3,6 +3,7 @@
 @use "./styles/auth.scss";
 @use "./styles/languageSelectionCard.scss";
 @use "./styles/findJobs.scss";
+@use "./styles/aboutUs.scss";
 
 
 * {
@@ -25,7 +26,7 @@ html {
   --first-color:#0A66C2;
   --secondary-color: #36529e;
   --title-color: hsl(0, 0%, 95%);
-  --text-color: hsl(0, 0%, 95%);
+  --text-color: black;
   --hover-text-color: black;
   --header-color: #0A66C2;
   --body-color: #FFFFFF;
@@ -45,7 +46,7 @@ body {
 }
 
 .content {
-  margin-top: 7rem;
+  margin-top: 2rem;
 }
 
 ul {
