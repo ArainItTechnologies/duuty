@@ -8,14 +8,19 @@
   "navbar": {
     "home": "Home",
     "about": "About Us",
-    "candidate": {
+    "employee": {
       "heading": "ପ୍ରାର୍ଥୀ",
-      "findJob": "Find A Job"
+      "findJob": "Find A Job",
+      "category": "Find Jobs by Category",
+      "location": "Find Jobs by Location",
+      "faqs": "FAQ's"
     },
     "employer": {
-      "pricing": "Pricing",
       "heading": "ନିଯୁକ୍ତିଦାତା |",
-      "hirenow": "Hire Now"
+      "hirenow": "Hire Now",
+      "pricing": "Pricing Plans",
+      "faqs": "FAQ's",
+      "refundpolicy": "Refund Policy"
     }
   }
 }

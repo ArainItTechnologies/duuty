@@ -1,11 +1,24 @@
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "../translations/TranslationHook";
 import LanguageSelection from "./LanguageSelection";
-import teaMasterImage from "../assets/tea-master.jpg";
-
+import Carousel from "./Carousel";
+import carousel1 from "../assets/carousel1.jpg";
+import carousel2 from "../assets/carousel2.jpg";
+import carousel3 from "../assets/carousel3.jpg";
+import carousel4 from "../assets/carousel4.jpg";
+import carousel5 from "../assets/carousel5.jpg";
+import carousel6 from "../assets/carousel6.jpg";
 
 const Home = () => {
   const { t } = useTranslation();
+  const images = [
+    carousel1,
+    carousel2,
+    carousel3,
+    carousel4,
+    carousel5,
+    carousel6,
+  ];
 
   return (
     <div>
@@ -15,25 +28,20 @@ const Home = () => {
       </div>
 
       <LanguageSelection />
+      <Carousel images={images} />
 
-      <div className="job-options-container">
-        <div className="job-options">
-          <div className="find-a-job">
-            <NavLink
-              to="/Candidate/find-jobs-by-category"
-              className="nav__link"
-            >
-              {t("joboptions.findajob")}
-            </NavLink>
-          </div>
-          <div className="hire-now">
-            <NavLink to="/Employer/hire-now" className="nav__link">
-              {t("joboptions.hirenow")}
-            </NavLink>
-          </div>
+      <div className="job-options">
+        <div className="find-a-job">
+          <NavLink to="/Employee/find-jobs-by-category" className="nav__link">
+            {t("joboptions.findajob")}
+          </NavLink>
+        </div>
+        <div className="hire-now">
+          <NavLink to="/Employer/hire-now" className="nav__link">
+            {t("joboptions.hirenow")}
+          </NavLink>
         </div>
       </div>
-      <div className="image-container" style={{ backgroundImage: `url(${teaMasterImage})` }}></div>
     </div>
   );
 };

@@ -73,7 +73,7 @@ const App = () => {
             }
           />
           <Route
-            path="/Candidate/find-jobs-by-category"
+            path="/Employee/find-jobs-by-category"
             element={
               <PublicRoute isAuthenticated={isAuthenticated}>
                 <FindJobsByCategory />

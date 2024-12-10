@@ -8,19 +8,19 @@
   "navbar": {
     "home": "Home Page",
     "about": "Company",
-    "Employee": {
+    "employee": {
       "heading": "Employee",
-      "findJob": "Find A Job"
-      "Find Jobs by Category": "Find Jobs by Category"
-      "Find Jobs by Location": "Find Jobs by Location"
-      "FAQ's": "FAQ's"
+      "findJob": "Find A Job",
+      "category": "Find Jobs by Category",
+      "location": "Find Jobs by Location",
+      "faqs": "FAQ's"
     },
     "employer": {
       "pricing": "Pricing Plans",
       "heading": "Employer",
-      "hirenow": "Hire Now"
-      "FAQ's": "FAQ's"
-      "Refundpolicy": "Refund Policy"
+      "hirenow": "Hire Now",
+      "faqs": "FAQ's",
+      "refundpolicy": "Refund Policy"
     }
   }
 }

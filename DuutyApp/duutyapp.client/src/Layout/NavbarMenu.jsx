@@ -75,16 +75,16 @@ const NavbarMenu = () => {
             </UncontrolledDropdown>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-              {t("navbar.candidate.heading")}
+              {t("navbar.employee.heading")}
               </DropdownToggle>
               <DropdownMenu end>
                 <DropdownItem>
                   <NavLink
                     className="nav-link"
                     style={{ color: "inherit" }}
-                    to="/Candidate/find-jobs-by-category"
+                    to="/Employee/find-jobs-by-category"
                   >
-                    {t("navbar.candidate.findJob")}
+                    {t("navbar.employee.findJob")}
                   </NavLink>
                 </DropdownItem>
               </DropdownMenu>
