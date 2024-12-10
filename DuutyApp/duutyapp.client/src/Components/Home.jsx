@@ -8,7 +8,10 @@ const Home = () => {
 
   return (
     <div>
-      <h1 className="banner">{t("banner")}</h1>
+    <div className="banner-section">
+      <h1>{t("banner")}</h1>
+      <p>{t("slogan")}</p>
+    </div>
       <div className="languages-list">
         {supportedLanguages.map((lang) => (
           <Button

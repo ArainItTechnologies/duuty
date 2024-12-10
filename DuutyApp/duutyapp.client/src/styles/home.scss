@@ -1,46 +1,81 @@
-.banner {
-    text-align: center; 
-    margin: 0 auto; 
+.banner-section {
+    text-align: center;
+    margin: 0 auto;
     font-size: 2rem;
+    padding: 1rem;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
   }
+  
+  .banner-section h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem; /* Reduce the space below the h1 */
+  }
+  
+  .banner-section p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-top: 0; /* Remove unnecessary margin above the paragraph */
+    max-width: 90%;
+    margin: 0 auto; /* Center the paragraph */
+  }
+  
+  @media (max-width: 768px) { /* For tablets and smaller devices */
+    .banner-section h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.3rem; /* Adjust for smaller screens */
+    }
+  
+    .banner-section p {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) { /* For mobile devices */
+    .banner-section h1 {
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem; /* Further reduce space for mobile */
+    }
+  
+    .banner-section p {
+      font-size: 0.8rem;
+    }
+  }  
+  
 
 .languages-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); 
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-  justify-items: center; 
-  justify-content: center; 
+  justify-items: center;
+  justify-content: center;
   padding: 20px;
 }
 
 .languages-list button {
-  width: 100%; 
+  width: 100%;
 }
 
 @media (max-width: 768px) {
   .languages-list {
-    grid-template-columns: repeat(
-      3,
-      1fr
-    ); 
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 480px) {
   .languages-list {
-    grid-template-columns: repeat(
-      2,
-      1fr
-    );
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 .job-options {
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  gap: 20px; 
-  height: 20vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 20vh;
 }
 
 .find-a-job,
