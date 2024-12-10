@@ -45,14 +45,11 @@ body {
   font-family: var(--body-font);
 }
 
-.content {
-  margin-top: 2rem;
-}
-
 ul {
   list-style: none;
 }
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
