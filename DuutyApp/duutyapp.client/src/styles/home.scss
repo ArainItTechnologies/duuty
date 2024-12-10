@@ -1,48 +1,50 @@
+/* General styles for the banner section */
 .banner-section {
-    text-align: center;
-    margin: 0 auto;
-    font-size: 2rem;
-    padding: 1rem;
-    max-width: 100%;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
+  text-align: center; /* Center the text horizontally */
+  padding: 1rem; /* Add some padding around the section */
+  max-width: 100%; /* Ensure the section does not overflow the screen */
+  margin: 0 auto; /* Center the container */
+  box-sizing: border-box; /* Include padding in width/height calculations */
+}
+
+/* Styles for the heading */
+.banner-heading {
+  font-size: 2rem; /* Default font size for mobile */
+  margin: 0; /* Remove default margin */
+  margin-bottom: 10px; /* Space below the heading */
+  line-height: 1.2; /* Adjust line height for readability */
+  word-wrap: break-word; /* Ensure long words break correctly */
+}
+
+/* Styles for the slogan */
+.banner-slogan {
+  font-size: 1rem; /* Smaller font size for the slogan */
+  margin: 0; /* Remove default margin */
+  line-height: 1.5; /* Set line height for better readability */
+  word-wrap: break-word; /* Ensure long words break correctly */
+}
+
+/* Responsive styles for larger screens */
+@media (min-width: 768px) {
+  .banner-heading {
+    font-size: 2.5rem; /* Increase heading size for larger screens */
   }
-  
-  .banner-section h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem; /* Reduce the space below the h1 */
+
+  .banner-slogan {
+    font-size: 1.2rem; /* Slightly larger slogan font size */
   }
-  
-  .banner-section p {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-top: 0; /* Remove unnecessary margin above the paragraph */
-    max-width: 90%;
-    margin: 0 auto; /* Center the paragraph */
+}
+
+@media (min-width: 1200px) {
+  .banner-heading {
+    font-size: 3rem; /* Even larger heading for very large screens */
   }
-  
-  @media (max-width: 768px) { /* For tablets and smaller devices */
-    .banner-section h1 {
-      font-size: 1.5rem;
-      margin-bottom: 0.3rem; /* Adjust for smaller screens */
-    }
-  
-    .banner-section p {
-      font-size: 0.9rem;
-    }
+
+  .banner-slogan {
+    font-size: 1.5rem; /* Match slogan size with heading scaling */
   }
-  
-  @media (max-width: 480px) { /* For mobile devices */
-    .banner-section h1 {
-      font-size: 1.2rem;
-      margin-bottom: 0.2rem; /* Further reduce space for mobile */
-    }
-  
-    .banner-section p {
-      font-size: 0.8rem;
-    }
-  }  
+}
+
   
 
 .languages-list {
