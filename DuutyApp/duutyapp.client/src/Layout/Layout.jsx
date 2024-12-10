@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
 
       {/* Main Content */}
       <Container className="content">{children}</Container>
-      
+
       {/* Footer */}
       <Footer />
     </div>
@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
 };
 
 export default Layout;

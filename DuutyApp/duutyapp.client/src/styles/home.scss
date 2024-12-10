@@ -45,8 +45,6 @@
   }
 }
 
-  
-
 .languages-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -58,18 +56,6 @@
 
 .languages-list button {
   width: 100%;
-}
-
-@media (max-width: 768px) {
-  .languages-list {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .languages-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 .job-options {
@@ -118,4 +104,31 @@
 
 .job-options .nav__link:hover {
   color: var(--hover-text-color);
+}
+
+.image-container {
+  width: 100%;
+  height: 400px;
+  margin-bottom: 50px;
+  background-size: contain; 
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  .image-container {
+    height: 250px;
+  }
+  .languages-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .image-container {
+    height: 200px;
+  }
+  .languages-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

@@ -1,42 +1,39 @@
 import { NavLink } from "react-router-dom";
-import { supportedLanguages } from "../translations/SupportedLanguages";
 import { useTranslation } from "../translations/TranslationHook";
-import { Button } from "reactstrap";
+import LanguageSelection from "./LanguageSelection";
+import teaMasterImage from "../assets/tea-master.jpg";
+
 
 const Home = () => {
-  const { t, language, setLanguage } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div>
-      <div class="banner-section">
-        <h1 class="banner-heading">{t("banner")}</h1>
-        <p class="banner-slogan">{t("slogan")}</p>
+      <div className="banner-section">
+        <h1 className="banner-heading">{t("banner")}</h1>
+        <p className="banner-slogan">{t("slogan")}</p>
       </div>
-      <div className="languages-list">
-        {supportedLanguages.map((lang) => (
-          <Button
-            key={lang.code}
-            outline
-            color={language === lang.code ? "primary" : "secondary"}
-            onClick={() => setLanguage(lang.code)}
-            active={language === lang.code} // This will mark the selected button as active
-          >
-            {lang.name}
-          </Button>
-        ))}
-      </div>
-      <div className="job-options">
-        <div className="find-a-job">
-          <NavLink to="/Candidate/find-jobs-by-category" className="nav__link">
-            {t("joboptions.findajob")}
-          </NavLink>
-        </div>
-        <div className="hire-now">
-          <NavLink to="/Employer/hire-now" className="nav__link">
-            {t("joboptions.hirenow")}
-          </NavLink>
+
+      <LanguageSelection />
+
+      <div className="job-options-container">
+        <div className="job-options">
+          <div className="find-a-job">
+            <NavLink
+              to="/Candidate/find-jobs-by-category"
+              className="nav__link"
+            >
+              {t("joboptions.findajob")}
+            </NavLink>
+          </div>
+          <div className="hire-now">
+            <NavLink to="/Employer/hire-now" className="nav__link">
+              {t("joboptions.hirenow")}
+            </NavLink>
+          </div>
         </div>
       </div>
+      <div className="image-container" style={{ backgroundImage: `url(${teaMasterImage})` }}></div>
     </div>
   );
 };
