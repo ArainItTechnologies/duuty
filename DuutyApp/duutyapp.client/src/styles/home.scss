@@ -85,7 +85,7 @@
 /* Hover effect for the boxes */
 .find-a-job:hover,
 .hire-now:hover {
-  background-color: var(--text-color);
+  background-color: var(--title-color);
   color: var(--hover-text-color);
   transform: scale(1.05); /* Slightly enlarge on hover */
 }
