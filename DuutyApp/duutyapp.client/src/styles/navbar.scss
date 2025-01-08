@@ -1,8 +1,60 @@
 .nav__logo-image {
-    height: 50px;
+  height: 50px;
 }
 
 .custom-navbar {
-    background-color: var(--first-color);
-    color: var(--text-color)
+  background-color: var(--first-color);
+  color: var(--text-color);
+  .nav-link {
+    color: #fff;
+    &:hover {
+      color: #ddd;
+    }
   }
+}
+
+.employer-modal {
+  position: fixed; /* Change to fixed positioning */
+  top: 85px; /* Adjust this value to match the height of your header */
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it appears above other content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .modal-content {
+    background-color: var(--secondary-color);
+    width: calc(100% - 30px); /* Adjust width to account for the left and right margins */
+    margin: 0 15px; /* Add 15px margin to the left and right */
+    height: 300px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    li {
+      margin: 10px 0;
+
+      a {
+        text-decoration: none;
+        color: #333;
+        font-size: 1.2rem;
+
+        &:hover {
+          color: #007bff;
+        }
+      }
+    }
+  }
+}

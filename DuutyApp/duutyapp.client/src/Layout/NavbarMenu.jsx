@@ -1,25 +1,17 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Button,
-} from "reactstrap";
-import Logo from "../assets/logo.png";
 import { useTranslation } from "../translations/TranslationHook";
+import { Button,Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
+import { NavLink } from "react-router-dom";
+import Logo from "../assets/logo.png"; // Adjust the path to your logo
 
 const NavbarMenu = () => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const toggle = () => setIsOpen(!isOpen);
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
+
   return (
     <div>
       <Navbar className="custom-navbar" dark expand="md">
@@ -47,6 +39,11 @@ const NavbarMenu = () => {
               <NavLink className="nav-link" to="/about-us">
                 {t("navbar.about")}
               </NavLink>
+            </NavItem>
+            <NavItem>
+              <div className="nav-link" onClick={toggleModal} style={{ cursor: "pointer" }}>
+                {t("navbar.employer.heading")}
+              </div>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
@@ -97,6 +94,17 @@ const NavbarMenu = () => {
           </Nav>
         </Collapse>
       </Navbar>
+      {isModalOpen && (
+        <div className="employer-modal" onClick={toggleModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <ul>
+              <li><NavLink to="/employer/submenu1">{t("navbar.submenu1")}</NavLink></li>
+              <li><NavLink to="/employer/submenu2">{t("navbar.submenu2")}</NavLink></li>
+              <li><NavLink to="/employer/submenu3">{t("navbar.submenu3")}</NavLink></li>
+            </ul>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
