@@ -44,6 +44,11 @@ public class AuthController : ControllerBase
 
         if (result.Succeeded)
         {
+            // Ensure the role exists before adding
+            if (!await _roleManager.RoleExistsAsync(nameof(RoleNames.Guest)))
+            {
+                await _roleManager.CreateAsync(new IdentityRole(nameof(RoleNames.Guest)));
+            }
             await _userManager.AddToRoleAsync(user, nameof(RoleNames.Guest));
             return Ok(new { Message = "User registered successfully." });
         }
@@ -148,4 +153,3 @@ public class AuthController : ControllerBase
         return Ok(new { Message = "Logout successful." });
     }
 }
-

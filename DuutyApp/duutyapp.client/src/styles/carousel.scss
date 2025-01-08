@@ -6,13 +6,22 @@
   margin: auto;
   overflow: hidden;
 }
+
 .carousel-images img {
   width: 99%;
   height: 99%;
   border-radius: 8px;
   border: var(--first-color) solid 1px;
 }
-// .slide_direction {
-//   display: flex;
-//   justify-content: space-between;
-// }
+
+@media (max-width: 768px) {
+  .carousel-images {
+    height: 300px;
+    max-width: 100%;
+  }
+
+  .carousel-images img {
+    width: 100%;
+    height: 100%;
+  }
+}
