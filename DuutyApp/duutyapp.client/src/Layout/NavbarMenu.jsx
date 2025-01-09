@@ -1,8 +1,22 @@
 import { useState } from "react";
 import { useTranslation } from "../translations/TranslationHook";
-import { Button,Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
+import {
+  Button,
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
+  Collapse,
+  Nav,
+  NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
 import { NavLink } from "react-router-dom";
-import Logo from "../assets/logo.png"; // Adjust the path to your logo
+import Logo from "../assets/logo.png";
+import { FaCaretDown } from "react-icons/fa";
+import SubMenuItem from "./Menu/SubMenuItem";
 
 const NavbarMenu = () => {
   const { t } = useTranslation();
@@ -11,6 +25,24 @@ const NavbarMenu = () => {
 
   const toggle = () => setIsOpen(!isOpen);
   const toggleModal = () => setIsModalOpen(!isModalOpen);
+
+  const employerSubMenuItems = [
+    {
+      to: "/Employer/hire-now",
+      title: t("navbar.employer.hirenow"),
+      description: t("navbar.employer.hirenownote"),
+    },
+    {
+      to: "/Employer/pricing",
+      title: t("navbar.employer.pricing"),
+      description: t("navbar.employer.pricingnote"),
+    },
+    {
+      to: "/employer/refundpolicy",
+      title: t("navbar.employer.refundpolicy"),
+      description: t("navbar.employer.refundpolicynote"),
+    },
+  ];
 
   return (
     <div>
@@ -41,38 +73,19 @@ const NavbarMenu = () => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <div className="nav-link" onClick={toggleModal} style={{ cursor: "pointer" }}>
+              <div
+                className="nav-link"
+                onClick={toggleModal}
+                onMouseEnter={toggleModal}
+                style={{ cursor: "pointer" }}
+              >
                 {t("navbar.employer.heading")}
+                <FaCaretDown style={{ fontSize: "24px" }}></FaCaretDown>
               </div>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                {t("navbar.employer.heading")}
-              </DropdownToggle>
-              <DropdownMenu end>
-                <DropdownItem>
-                  <NavLink
-                    className="nav-link"
-                    style={{ color: "inherit" }}
-                    to="/Employer/hire-now"
-                  >
-                    {t("navbar.employer.hirenow")}
-                  </NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink
-                    className="nav-link"
-                    style={{ color: "inherit" }}
-                    to="/Employer/pricing"
-                  >
-                    {t("navbar.employer.pricing")}
-                  </NavLink>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-              {t("navbar.employee.heading")}
+                {t("navbar.employee.heading")}
               </DropdownToggle>
               <DropdownMenu end>
                 <DropdownItem>
@@ -90,18 +103,26 @@ const NavbarMenu = () => {
               <NavLink to="/auth">
                 <Button color="info">Login/SignUp</Button>
               </NavLink>
-            </NavItem> 
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
       {isModalOpen && (
-        <div className="employer-modal" onClick={toggleModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <ul>
-              <li><NavLink to="/employer/submenu1">{t("navbar.submenu1")}</NavLink></li>
-              <li><NavLink to="/employer/submenu2">{t("navbar.submenu2")}</NavLink></li>
-              <li><NavLink to="/employer/submenu3">{t("navbar.submenu3")}</NavLink></li>
-            </ul>
+        <div className="menu-modal">
+          <div
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()}
+            style={{ display: "flex", flexWrap: "wrap", gap: "100px" }}
+          >
+            {employerSubMenuItems.map((item, index) => (
+              <SubMenuItem
+                key={index}
+                to={item.to}
+                onClick={toggleModal}
+                title={item.title}
+                description={item.description}
+              />
+            ))}
           </div>
         </div>
       )}

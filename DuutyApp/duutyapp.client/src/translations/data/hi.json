@@ -20,7 +20,10 @@
       "heading": "नियोक्ता",
       "hirenow": "अभी किराये पर लें",
       "refundpolicy": "भुगतान वापसी की नीति",
-      "faqs": "अक्सर पूछे जाने वाले प्रश्न"
+      "faqs": "अक्सर पूछे जाने वाले प्रश्न",
+      "pricingnote": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here",
+      "hirenownote": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
+      "refundpolicynote": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia"
     }
   }
 }

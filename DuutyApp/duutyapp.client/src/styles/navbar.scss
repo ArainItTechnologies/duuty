@@ -13,9 +13,9 @@
   }
 }
 
-.employer-modal {
+.menu-modal {
   position: fixed; /* Change to fixed positioning */
-  top: 85px; /* Adjust this value to match the height of your header */
+  top: 75px; /* Adjust this value to match the height of your header */
   left: 0;
   width: 100%;
   z-index: 1000; /* Ensure it appears above other content */
@@ -26,35 +26,31 @@
 
   .modal-content {
     background-color: var(--secondary-color);
-    width: calc(100% - 30px); /* Adjust width to account for the left and right margins */
-    margin: 0 15px; /* Add 15px margin to the left and right */
     height: 300px;
     padding: 20px;
     box-sizing: border-box;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    li {
-      margin: 10px 0;
-
-      a {
-        text-decoration: none;
-        color: #333;
-        font-size: 1.2rem;
-
-        &:hover {
-          color: #007bff;
-        }
-      }
+  .sub-menu-item {
+    width: 450px;
+    // height: 100px;
+    border: 2px solid var(--first-color);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--secondary-color);
+    transition: transform 0.3s, background-color 0.3s;
+    cursor: pointer;
+    p {
+      color: green;
+      font-size: 1rem;
+      margin: 0;
+      line-height: 1.5;
+      word-wrap: break-word;
+      overflow-wrap: break-word; 
+      width: 100%; 
+      box-sizing: border-box; 
+      white-space: normal;
     }
   }
 }
