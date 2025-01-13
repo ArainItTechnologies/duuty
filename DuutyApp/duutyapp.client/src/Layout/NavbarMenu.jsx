@@ -1,7 +1,6 @@
-import { useState } from "react";
-import { useTranslation } from "../translations/TranslationHook";
+import { useState, useContext } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
 import {
-  Button,
   Navbar,
   NavbarBrand,
   NavbarToggler,
@@ -12,35 +11,51 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  Button,
 } from "reactstrap";
-import { NavLink } from "react-router-dom";
-import Logo from "../assets/logo.png";
-import { FaCaretDown } from "react-icons/fa";
-import SubMenuItem from "./Menu/SubMenuItem";
+import { AuthContext } from "../contexts/AuthContext";
+import Logo from "../assets/logo.png"; // Adjust the path to your logo
 
 const NavbarMenu = () => {
-  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isLoggedIn, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const toggle = () => setIsOpen(!isOpen);
-  const toggleModal = () => setIsModalOpen(!isModalOpen);
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
   const employerSubMenuItems = [
     {
       to: "/Employer/hire-now",
-      title: t("navbar.employer.hirenow"),
-      description: t("navbar.employer.hirenownote"),
+      title: "Hire Now",
+      description: "Hire the best talent quickly.",
     },
     {
       to: "/Employer/pricing",
-      title: t("navbar.employer.pricing"),
-      description: t("navbar.employer.pricingnote"),
+      title: "Pricing",
+      description: "Check our pricing plans.",
     },
     {
       to: "/employer/refundpolicy",
-      title: t("navbar.employer.refundpolicy"),
-      description: t("navbar.employer.refundpolicynote"),
+      title: "Refund Policy",
+      description: "Learn about our refund policy.",
+    },
+  ];
+
+  const employeeSubMenuItems = [
+    {
+      to: "/employee/find-jobs",
+      title: "Find Jobs",
+      description: "Browse available jobs.",
+    },
+    {
+      to: "/employee/apply-now",
+      title: "Apply Now",
+      description: "Submit your application.",
     },
   ];
 
@@ -63,69 +78,64 @@ const NavbarMenu = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ms-auto" navbar>
             <NavItem>
-              <NavLink className="nav-link" to="/">
-                {t("navbar.home")}
-              </NavLink>
-            </NavItem>
-            <NavItem>
               <NavLink className="nav-link" to="/about-us">
-                {t("navbar.about")}
+                About Us
               </NavLink>
-            </NavItem>
-            <NavItem>
-              <div
-                className="nav-link"
-                onClick={toggleModal}
-                onMouseEnter={toggleModal}
-                style={{ cursor: "pointer" }}
-              >
-                {t("navbar.employer.heading")}
-                <FaCaretDown style={{ fontSize: "24px" }}></FaCaretDown>
-              </div>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                {t("navbar.employee.heading")}
+                Employer
               </DropdownToggle>
               <DropdownMenu end>
-                <DropdownItem>
-                  <NavLink
-                    className="nav-link"
-                    style={{ color: "inherit" }}
-                    to="/Employee/find-jobs-by-category"
-                  >
-                    {t("navbar.employee.findJob")}
-                  </NavLink>
-                </DropdownItem>
+                {employerSubMenuItems.map((item, index) => (
+                  <DropdownItem key={index}>
+                    <NavLink className="nav-link" to={item.to}>
+                      {item.title}
+                    </NavLink>
+                  </DropdownItem>
+                ))}
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Employee
+              </DropdownToggle>
+              <DropdownMenu end>
+                {employeeSubMenuItems.map((item, index) => (
+                  <DropdownItem key={index}>
+                    <NavLink className="nav-link" to={item.to}>
+                      {item.title}
+                    </NavLink>
+                  </DropdownItem>
+                ))}
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavItem>
-              <NavLink to="/auth">
-                <Button color="info">Login/SignUp</Button>
+              <NavLink className="nav-link" to="/pricing">
+                Pricing
               </NavLink>
             </NavItem>
+            <NavItem>
+              <Button color="primary" className="get-demo-btn">
+                Get Demo
+              </Button>
+            </NavItem>
+            {isLoggedIn ? (
+              <NavItem>
+                <Button color="danger" onClick={handleLogout}>
+                  Logout
+                </Button>
+              </NavItem>
+            ) : (
+              <NavItem>
+                <NavLink className="nav-link" to="/auth">
+                  <Button color="info">Login/SignUp</Button>
+                </NavLink>
+              </NavItem>
+            )}
           </Nav>
         </Collapse>
       </Navbar>
-      {isModalOpen && (
-        <div className="menu-modal">
-          <div
-            className="modal-content"
-            onClick={(e) => e.stopPropagation()}
-            style={{ display: "flex", flexWrap: "wrap", gap: "100px" }}
-          >
-            {employerSubMenuItems.map((item, index) => (
-              <SubMenuItem
-                key={index}
-                to={item.to}
-                onClick={toggleModal}
-                title={item.title}
-                description={item.description}
-              />
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 };

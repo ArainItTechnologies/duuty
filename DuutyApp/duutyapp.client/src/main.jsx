@@ -4,11 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
 import App from "./App.jsx";
 import { TranslationProvider } from "./translations/TranslationProvider.jsx";
+import { AuthProvider } from "./contexts/AuthProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <TranslationProvider>
-      <App />
-    </TranslationProvider>
+    <AuthProvider>
+      <TranslationProvider>
+        <App />
+      </TranslationProvider>
+    </AuthProvider>
   </StrictMode>
 );

@@ -14,13 +14,24 @@
   margin: 0;
 }
 
-/* Prevent horizontal overflow */
-body,
-html {
+// /* Prevent horizontal overflow */
+// body,
+// html {
+//   margin: 0;
+//   padding: 0;
+//   overflow-x: hidden;
+//   width: 100%;
+// }
+
+body {
+  background-image: url('https://buildeo.co.uk/wp-content/uploads/2022/04/How-to-Choose-the-Best-Commercial-Kitchen-Layout.jpg'); /* Replace with the URL of your chosen image */
+  // background-image: url('https://womenchefs.org/wp-content/uploads/2023/05/8-Female-Indian-Chefs-We-Adore.jpg'); /* Replace with the URL of your chosen image */
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  width: 100%;
+  font-family: Arial, sans-serif; /* Optional: Set a default font */
 }
 
 :root {
