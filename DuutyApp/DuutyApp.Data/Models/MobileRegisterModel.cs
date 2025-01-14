@@ -1,4 +1,6 @@
-   public class MobileRegisterModel
+using System.ComponentModel.DataAnnotations;
+
+public class MobileRegisterModel
    {
        [Required]
        public required string MobileNumber { get; set; }
