@@ -1,35 +1,44 @@
 .custom-navbar {
-  background-color: var(--first-color);
-  color: var(--text-color);
+  background-color: #343a40;
+
   .nav-link {
-    color: #fff;
+    color: #ffffff !important;
     margin-top: 13px;
     &:hover {
-      color: #ddd;
+      color: #007bff !important;
+    }
+    &.active {
+      font-weight: bold;
+      color: #007bff !important;
     }
   }
-}
 
-.nav__logo-image {
-  height: 50px;
-}
-
-.get-demo-btn {
-  margin-right: 1rem;
-}
-
-.get-demo-btn button{
-  background-color: var(--demo-color);
-  &:hover {
-    background-color: Red;
+  .nav__logo-image {
+    height: 50px;
   }
-}
-.login-btn .nav-link {
-  padding: 0px;
-}
 
-@media (max-width: 767px) {
-  .custom-navbar .navbar-toggler {
-    display: block;
+  .custom-dropdown {
+    background-color: #343a40;
+    border: none;
+
+    .dropdown-item {
+      color: #ffffff !important;
+
+      &:hover {
+        background-color: #495057;
+      }
+    }
+  }
+
+  .get-demo-btn {
+    padding-right: 1rem;
+    button {
+      background-color: #007bff;
+      border: none;
+
+      &:hover {
+        background-color: red($color: #000000);
+      }
+    }
   }
 }

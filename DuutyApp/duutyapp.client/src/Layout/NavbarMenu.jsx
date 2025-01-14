@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
-import { FiLogOut } from 'react-icons/fi'; 
+import { FiLogOut } from "react-icons/fi";
 import {
   Navbar,
   NavbarBrand,
@@ -18,7 +18,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import Logo from "../assets/logo.png";
 
 const NavbarMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // Main menu toggle
   const { isLoggedIn, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -26,60 +26,47 @@ const NavbarMenu = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/login");
+    handleMenuClose("/auth");
+  };
+
+  const handleMenuClose = (path) => {
+    setIsOpen(false); // Close the menu
+    navigate(path); // Navigate to the selected route
   };
 
   const employerSubMenuItems = [
-    {
-      to: "/Employer/hire-now",
-      title: "Hire Now",
-      description: "Hire the best talent quickly.",
-    },
-    {
-      to: "/Employer/pricing",
-      title: "Pricing",
-      description: "Check our pricing plans.",
-    },
-    {
-      to: "/employer/refundpolicy",
-      title: "Refund Policy",
-      description: "Learn about our refund policy.",
-    },
+    { to: "/Employer/hire-now", title: "Hire Now" },
+    { to: "/Employer/pricing", title: "Pricing" },
+    { to: "/employer/refundpolicy", title: "Refund Policy" },
   ];
 
   const employeeSubMenuItems = [
-    {
-      to: "/employee/find-jobs",
-      title: "Find Jobs",
-      description: "Browse available jobs.",
-    },
-    {
-      to: "/employee/apply-now",
-      title: "Apply Now",
-      description: "Submit your application.",
-    },
+    { to: "/employee/find-jobs", title: "Find Jobs" },
+    { to: "/employee/apply-now", title: "Apply Now" },
   ];
 
   return (
     <div>
-      <Navbar className="custom-navbar" dark expand="md">
+      <Navbar className="custom-navbar fixed-top" dark expand="md">
         <NavbarBrand>
           <NavLink
             to="/"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              cursor: "pointer",
-            }}
+            className="d-flex align-items-center"
+            onClick={() => handleMenuClose("/")}
           >
             <img src={Logo} alt="DUUTY" className="nav__logo-image" />
           </NavLink>
         </NavbarBrand>
-        <NavbarToggler onClick={toggle} />
+        <NavbarToggler onClick={toggle} style={{ maxWidth: "fit-content" }} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ms-auto align-items-center" navbar>
             <NavItem>
-              <NavLink className="nav-link" to="/about-us">
+              <NavLink
+                className="nav-link"
+                to="/about-us"
+                activeClassName="active"
+                onClick={() => handleMenuClose("/about-us")}
+              >
                 About Us
               </NavLink>
             </NavItem>
@@ -87,10 +74,14 @@ const NavbarMenu = () => {
               <DropdownToggle nav caret>
                 Employer
               </DropdownToggle>
-              <DropdownMenu dark end>
+              <DropdownMenu className="custom-dropdown" end>
                 {employerSubMenuItems.map((item, index) => (
                   <DropdownItem key={index}>
-                    <NavLink className="nav-link" to={item.to}>
+                    <NavLink
+                      className="nav-link"
+                      to={item.to}
+                      onClick={() => handleMenuClose(item.to)}
+                    >
                       {item.title}
                     </NavLink>
                   </DropdownItem>
@@ -101,10 +92,14 @@ const NavbarMenu = () => {
               <DropdownToggle nav caret>
                 Employee
               </DropdownToggle>
-              <DropdownMenu dark end>
+              <DropdownMenu className="custom-dropdown" end>
                 {employeeSubMenuItems.map((item, index) => (
                   <DropdownItem key={index}>
-                    <NavLink className="nav-link" to={item.to}>
+                    <NavLink
+                      className="nav-link"
+                      to={item.to}
+                      onClick={() => handleMenuClose(item.to)}
+                    >
                       {item.title}
                     </NavLink>
                   </DropdownItem>
@@ -112,24 +107,37 @@ const NavbarMenu = () => {
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavItem>
-              <NavLink className="nav-link" to="/pricing">
+              <NavLink
+                className="nav-link"
+                to="/pricing"
+                activeClassName="active"
+                onClick={() => handleMenuClose("/pricing")}
+              >
                 Pricing
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className="nav-link" to="/contact">
+              <NavLink
+                className="nav-link"
+                to="/contact"
+                activeClassName="active"
+                onClick={() => handleMenuClose("/contact")}
+              >
                 Contact
               </NavLink>
             </NavItem>
             <NavItem className="get-demo-btn pr-2">
-              <Button color="primary">
+              <Button
+                color="primary"
+                onClick={() => handleMenuClose("/get-demo")}
+              >
                 Get Demo
               </Button>
             </NavItem>
             {isLoggedIn ? (
               <NavItem>
                 <Button color="danger" onClick={handleLogout}>
-                <FiLogOut size={20} />
+                  <FiLogOut size={20} />
                 </Button>
               </NavItem>
             ) : (
@@ -137,7 +145,7 @@ const NavbarMenu = () => {
                 <Button
                   color="secondary"
                   className="auth-btn"
-                  onClick={() => navigate("/auth")}
+                  onClick={() => handleMenuClose("/auth")}
                 >
                   Login
                 </Button>
