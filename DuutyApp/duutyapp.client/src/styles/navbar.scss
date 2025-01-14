@@ -1,15 +1,15 @@
 .custom-navbar {
-  background-color: #343a40;
+  background-color: var(--header-color);
 
   .nav-link {
     color: #ffffff !important;
     margin-top: 13px;
     &:hover {
-      color: #007bff !important;
+      color: var(--hover-text-color) !important;
     }
     &.active {
       font-weight: bold;
-      color: #007bff !important;
+      color: var(--title-color) !important;
     }
   }
 
@@ -37,7 +37,7 @@
       border: none;
 
       &:hover {
-        background-color: red($color: #000000);
+        background-color: red;
       }
     }
   }

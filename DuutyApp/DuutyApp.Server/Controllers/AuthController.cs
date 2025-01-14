@@ -38,14 +38,14 @@ public class AuthController : ControllerBase
         _twilioSettings = twilioOptions.Value;
     }
 
-    // POST: api/Auth/RegisterMobile
-    [HttpPost("RegisterMobile")]
+    // POST: api/Auth/Register
+    [HttpPost("Register")]
     public async Task<IActionResult> RegisterMobile([FromBody] MobileRegisterModel model)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
-        var user = new IdentityUser { UserName = model.MobileNumber, PhoneNumber = model.MobileNumber };
+        var user = new IdentityUser { UserName = model.Mobile, PhoneNumber = model.Mobile };
         var result = await _userManager.CreateAsync(user, model.Password);
 
         if (result.Succeeded)
@@ -66,29 +66,6 @@ public class AuthController : ControllerBase
         return BadRequest(result.Errors);
     }
 
-    // POST: api/Auth/Register
-    [HttpPost("Register")]
-    public async Task<IActionResult> Register([FromBody] RegisterModel model)
-    {
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
-
-        var user = new IdentityUser { UserName = model.Email, Email = model.Email };
-        var result = await _userManager.CreateAsync(user, model.Password);
-
-        if (result.Succeeded)
-        {
-            // Ensure the role exists before adding
-            if (!await _roleManager.RoleExistsAsync(nameof(RoleNames.Guest)))
-            {
-                await _roleManager.CreateAsync(new IdentityRole(nameof(RoleNames.Guest)));
-            }
-            await _userManager.AddToRoleAsync(user, nameof(RoleNames.Guest));
-            return Ok(new { Message = "User registered successfully." });
-        }
-
-        return BadRequest(result.Errors);
-    }
 
     // POST: api/Auth/VerifyOtp
     [HttpPost("VerifyOtp")]

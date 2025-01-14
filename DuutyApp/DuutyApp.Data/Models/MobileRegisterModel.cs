@@ -3,10 +3,9 @@ using System.ComponentModel.DataAnnotations;
 public class MobileRegisterModel
    {
        [Required]
-       public required string MobileNumber { get; set; }
+       public required string Mobile { get; set; }
        
-       [Required]
-       public required string Otp { get; set; }
+       public required string Name { get; set; }
        
        [Required]
        [MinLength(6)]
