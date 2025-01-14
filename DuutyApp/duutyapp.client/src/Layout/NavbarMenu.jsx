@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
+import { FiLogOut } from 'react-icons/fi'; 
 import {
   Navbar,
   NavbarBrand,
@@ -14,7 +15,7 @@ import {
   Button,
 } from "reactstrap";
 import { AuthContext } from "../contexts/AuthContext";
-import Logo from "../assets/logo.png"; // Adjust the path to your logo
+import Logo from "../assets/logo.png";
 
 const NavbarMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,7 +77,7 @@ const NavbarMenu = () => {
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="ms-auto" navbar>
+          <Nav className="ms-auto align-items-center" navbar>
             <NavItem>
               <NavLink className="nav-link" to="/about-us">
                 About Us
@@ -86,7 +87,7 @@ const NavbarMenu = () => {
               <DropdownToggle nav caret>
                 Employer
               </DropdownToggle>
-              <DropdownMenu end>
+              <DropdownMenu dark end>
                 {employerSubMenuItems.map((item, index) => (
                   <DropdownItem key={index}>
                     <NavLink className="nav-link" to={item.to}>
@@ -100,7 +101,7 @@ const NavbarMenu = () => {
               <DropdownToggle nav caret>
                 Employee
               </DropdownToggle>
-              <DropdownMenu end>
+              <DropdownMenu dark end>
                 {employeeSubMenuItems.map((item, index) => (
                   <DropdownItem key={index}>
                     <NavLink className="nav-link" to={item.to}>
@@ -116,21 +117,30 @@ const NavbarMenu = () => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <Button color="primary" className="get-demo-btn">
+              <NavLink className="nav-link" to="/contact">
+                Contact
+              </NavLink>
+            </NavItem>
+            <NavItem className="get-demo-btn pr-2">
+              <Button color="primary">
                 Get Demo
               </Button>
             </NavItem>
             {isLoggedIn ? (
               <NavItem>
                 <Button color="danger" onClick={handleLogout}>
-                  Logout
+                <FiLogOut size={20} />
                 </Button>
               </NavItem>
             ) : (
               <NavItem>
-                <NavLink className="nav-link" to="/auth">
-                  <Button color="info">Login/SignUp</Button>
-                </NavLink>
+                <Button
+                  color="secondary"
+                  className="auth-btn"
+                  onClick={() => navigate("/auth")}
+                >
+                  Login
+                </Button>
               </NavItem>
             )}
           </Nav>

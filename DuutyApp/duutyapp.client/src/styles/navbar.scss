@@ -3,6 +3,7 @@
   color: var(--text-color);
   .nav-link {
     color: #fff;
+    margin-top: 13px;
     &:hover {
       color: #ddd;
     }
@@ -15,6 +16,16 @@
 
 .get-demo-btn {
   margin-right: 1rem;
+}
+
+.get-demo-btn button{
+  background-color: var(--demo-color);
+  &:hover {
+    background-color: Red;
+  }
+}
+.login-btn .nav-link {
+  padding: 0px;
 }
 
 @media (max-width: 767px) {

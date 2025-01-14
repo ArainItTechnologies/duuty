@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { userLogin, userRegister } from "../api/auth";
 import { getRoleFromToken } from "../utils/jwtUtils";
 import { AuthContext } from "../contexts/AuthContext";
-
+import { Button } from "reactstrap";
 
 const AuthComponent = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -35,6 +35,13 @@ const AuthComponent = () => {
       }
     }
   }, [navigate]);
+
+  useEffect(() => {
+    document.body.classList.add("auth-background");
+    return () => {
+      document.body.classList.remove("auth-background");
+    };
+  }, []);
 
   const switchForm = () => {
     setIsLogin(!isLogin);
@@ -117,13 +124,23 @@ const AuthComponent = () => {
     },
   });
 
+  const isFormValid = isLogin
+    ? loginFormik.isValid && loginFormik.dirty
+    : registerFormik.isValid && registerFormik.dirty;
+
   return (
     <div className="auth-container">
       <h2>{isLogin ? "Sign In" : "Sign Up"}</h2>
-      <form onSubmit={isLogin ? loginFormik.handleSubmit : registerFormik.handleSubmit}>
+      <form
+        onSubmit={
+          isLogin ? loginFormik.handleSubmit : registerFormik.handleSubmit
+        }
+      >
         {!isLogin && (
           <div className="form-group">
-            <label htmlFor="name">Name<span className="required">*</span></label>
+            <label htmlFor="name">
+              Name<span className="required">*</span>
+            </label>
             <input
               type="text"
               id="name"
@@ -131,7 +148,11 @@ const AuthComponent = () => {
               value={registerFormik.values.name}
               onChange={registerFormik.handleChange}
               onBlur={registerFormik.handleBlur}
-              className={registerFormik.touched.name && registerFormik.errors.name ? "error" : ""}
+              className={
+                registerFormik.touched.name && registerFormik.errors.name
+                  ? "error"
+                  : ""
+              }
             />
             {registerFormik.touched.name && registerFormik.errors.name && (
               <div className="error-message">{registerFormik.errors.name}</div>
@@ -139,43 +160,93 @@ const AuthComponent = () => {
           </div>
         )}
         <div className="form-group">
-          <label htmlFor="email">Email<span className="required">*</span></label>
+          <label htmlFor="email">
+            Email<span className="required">*</span>
+          </label>
           <input
             type="email"
             id="email"
             name="email"
-            value={isLogin ? loginFormik.values.email : registerFormik.values.email}
-            onChange={isLogin ? loginFormik.handleChange : registerFormik.handleChange}
-            onBlur={isLogin ? loginFormik.handleBlur : registerFormik.handleBlur}
-            className={(isLogin ? loginFormik.touched.email && loginFormik.errors.email : registerFormik.touched.email && registerFormik.errors.email) ? "error" : ""}
+            value={
+              isLogin ? loginFormik.values.email : registerFormik.values.email
+            }
+            onChange={
+              isLogin ? loginFormik.handleChange : registerFormik.handleChange
+            }
+            onBlur={
+              isLogin ? loginFormik.handleBlur : registerFormik.handleBlur
+            }
+            className={
+              (
+                isLogin
+                  ? loginFormik.touched.email && loginFormik.errors.email
+                  : registerFormik.touched.email && registerFormik.errors.email
+              )
+                ? "error"
+                : ""
+            }
           />
-          {(isLogin ? loginFormik.touched.email && loginFormik.errors.email : registerFormik.touched.email && registerFormik.errors.email) && (
-            <div className="error-message">{isLogin ? loginFormik.errors.email : registerFormik.errors.email}</div>
+          {(isLogin
+            ? loginFormik.touched.email && loginFormik.errors.email
+            : registerFormik.touched.email && registerFormik.errors.email) && (
+            <div className="error-message">
+              {isLogin ? loginFormik.errors.email : registerFormik.errors.email}
+            </div>
           )}
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password<span className="required">*</span></label>
+          <label htmlFor="password">
+            Password<span className="required">*</span>
+          </label>
           <input
             type="password"
             id="password"
             name="password"
-            value={isLogin ? loginFormik.values.password : registerFormik.values.password}
-            onChange={isLogin ? loginFormik.handleChange : registerFormik.handleChange}
-            onBlur={isLogin ? loginFormik.handleBlur : registerFormik.handleBlur}
-            className={(isLogin ? loginFormik.touched.password && loginFormik.errors.password : registerFormik.touched.password && registerFormik.errors.password) ? "error" : ""}
+            value={
+              isLogin
+                ? loginFormik.values.password
+                : registerFormik.values.password
+            }
+            onChange={
+              isLogin ? loginFormik.handleChange : registerFormik.handleChange
+            }
+            onBlur={
+              isLogin ? loginFormik.handleBlur : registerFormik.handleBlur
+            }
+            className={
+              (
+                isLogin
+                  ? loginFormik.touched.password && loginFormik.errors.password
+                  : registerFormik.touched.password &&
+                    registerFormik.errors.password
+              )
+                ? "error"
+                : ""
+            }
           />
-          {(isLogin ? loginFormik.touched.password && loginFormik.errors.password : registerFormik.touched.password && registerFormik.errors.password) && (
-            <div className="error-message">{isLogin ? loginFormik.errors.password : registerFormik.errors.password}</div>
+          {(isLogin
+            ? loginFormik.touched.password && loginFormik.errors.password
+            : registerFormik.touched.password &&
+              registerFormik.errors.password) && (
+            <div className="error-message">
+              {isLogin
+                ? loginFormik.errors.password
+                : registerFormik.errors.password}
+            </div>
           )}
         </div>
         {isLogin && (
           <div className="form-group">
-            <NavLink to="/forgot-password" className="forgot-password-link">Forgot Password?</NavLink>
+            <NavLink to="/forgot-password" className="forgot-password-link">
+              Forgot Password?
+            </NavLink>
           </div>
         )}
         {!isLogin && (
           <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password<span className="required">*</span></label>
+            <label htmlFor="confirmPassword">
+              Confirm Password<span className="required">*</span>
+            </label>
             <input
               type="password"
               id="confirmPassword"
@@ -183,14 +254,24 @@ const AuthComponent = () => {
               value={registerFormik.values.confirmPassword}
               onChange={registerFormik.handleChange}
               onBlur={registerFormik.handleBlur}
-              className={registerFormik.touched.confirmPassword && registerFormik.errors.confirmPassword ? "error" : ""}
+              className={
+                registerFormik.touched.confirmPassword &&
+                registerFormik.errors.confirmPassword
+                  ? "error"
+                  : ""
+              }
             />
-            {registerFormik.touched.confirmPassword && registerFormik.errors.confirmPassword && (
-              <div className="error-message">{registerFormik.errors.confirmPassword}</div>
-            )}
+            {registerFormik.touched.confirmPassword &&
+              registerFormik.errors.confirmPassword && (
+                <div className="error-message">
+                  {registerFormik.errors.confirmPassword}
+                </div>
+              )}
           </div>
         )}
-        <button type="submit">{isLogin ? "Sign In" : "Sign Up"}</button>
+        <Button color="primary" disabled={!isFormValid} type="submit">
+          {isLogin ? "Sign In" : "Sign Up"}
+        </Button>
       </form>
       <button onClick={switchForm} className="switch-form-link">
         {isLogin ? "Not a member? Register" : "Already a member? Sign In"}
