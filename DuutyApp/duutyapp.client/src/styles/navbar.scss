@@ -30,10 +30,26 @@
     }
   }
 
+  .get-demo-button {
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    .get-demo-button {
+      display: inline-block;
+      margin-right: 10px;
+      background-color: purple;
+    }
+    .get-demo-btn {
+      display: none;
+    }
+  }
+  
+
   .get-demo-btn {
     padding-right: 1rem;
     button {
-      background-color: #007bff;
+      background-color: green;
       border: none;
 
       &:hover {

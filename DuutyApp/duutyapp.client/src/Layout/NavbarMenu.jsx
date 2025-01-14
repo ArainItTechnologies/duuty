@@ -57,7 +57,16 @@ const NavbarMenu = () => {
             <img src={Logo} alt="DUUTY" className="nav__logo-image" />
           </NavLink>
         </NavbarBrand>
-        <NavbarToggler onClick={toggle} style={{ maxWidth: "fit-content" }} />
+        <div className="d-flex align-items-center">
+          <Button
+            color="primary"
+            className="get-demo-button"
+            onClick={() => handleMenuClose("/get-demo")}
+          >
+            Get Demo
+          </Button>
+          <NavbarToggler onClick={toggle} style={{ maxWidth: "fit-content" }} />
+        </div>
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ms-auto align-items-center" navbar>
             <NavItem>
