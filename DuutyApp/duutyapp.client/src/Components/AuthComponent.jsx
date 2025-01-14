@@ -48,19 +48,19 @@ const AuthComponent = () => {
   };
 
   const loginValidationSchema = yup.object({
-    email: yup
+    mobile: yup
       .string()
-      .email("Invalid email format")
-      .required("Email is required"),
+      .matches(/^[0-9]{10}$/, "Mobile number must be 10 digits")
+      .required("Mobile number is required"),
     password: yup.string().required("Password is required"),
   });
 
   const registerValidationSchema = yup.object({
     name: yup.string().required("Name is required"),
-    email: yup
+    mobile: yup
       .string()
-      .email("Invalid email format")
-      .required("Email is required"),
+      .matches(/^[0-9]{10}$/, "Mobile number must be 10 digits")
+      .required("Mobile number is required"),
     password: yup
       .string()
       .min(6, "Password must be at least 6 characters")
@@ -73,7 +73,7 @@ const AuthComponent = () => {
 
   const loginFormik = useFormik({
     initialValues: {
-      email: "",
+      mobile: "",
       password: "",
     },
     validationSchema: loginValidationSchema,
@@ -97,11 +97,11 @@ const AuthComponent = () => {
             navigate("/guest");
             break;
           default:
-            navigate("/login");
+            navigate("/auth");
             break;
         }
       } else {
-        navigate("/login");
+        navigate("/auth");
       }
     },
   });
@@ -109,7 +109,7 @@ const AuthComponent = () => {
   const registerFormik = useFormik({
     initialValues: {
       name: "",
-      email: "",
+      mobile: "",
       password: "",
       confirmPassword: "",
     },
@@ -117,7 +117,7 @@ const AuthComponent = () => {
     onSubmit: async (values) => {
       const response = await userRegister(values);
       if (response.success) {
-        navigate("/login");
+        navigate("/auth");
       } else {
         alert(response.message);
       }
@@ -160,38 +160,18 @@ const AuthComponent = () => {
           </div>
         )}
         <div className="form-group">
-          <label htmlFor="email">
-            Email<span className="required">*</span>
-          </label>
+          <label htmlFor="mobile">Mobile <span className="required">*</span></label>
           <input
-            type="email"
-            id="email"
-            name="email"
-            value={
-              isLogin ? loginFormik.values.email : registerFormik.values.email
-            }
-            onChange={
-              isLogin ? loginFormik.handleChange : registerFormik.handleChange
-            }
-            onBlur={
-              isLogin ? loginFormik.handleBlur : registerFormik.handleBlur
-            }
-            className={
-              (
-                isLogin
-                  ? loginFormik.touched.email && loginFormik.errors.email
-                  : registerFormik.touched.email && registerFormik.errors.email
-              )
-                ? "error"
-                : ""
-            }
+            type="text"
+            id="mobile"
+            name="mobile"
+            value={isLogin ? loginFormik.values.mobile : registerFormik.values.mobile}
+            onChange={isLogin ? loginFormik.handleChange : registerFormik.handleChange}
+            onBlur={isLogin ? loginFormik.handleBlur : registerFormik.handleBlur}
+            className={(isLogin ? loginFormik.touched.mobile && loginFormik.errors.mobile : registerFormik.touched.mobile && registerFormik.errors.mobile) ? "error" : ""}
           />
-          {(isLogin
-            ? loginFormik.touched.email && loginFormik.errors.email
-            : registerFormik.touched.email && registerFormik.errors.email) && (
-            <div className="error-message">
-              {isLogin ? loginFormik.errors.email : registerFormik.errors.email}
-            </div>
+          {(isLogin ? loginFormik.touched.mobile && loginFormik.errors.mobile : registerFormik.touched.mobile && registerFormik.errors.mobile) && (
+            <div className="error-message">{isLogin ? loginFormik.errors.mobile : registerFormik.errors.mobile}</div>
           )}
         </div>
         <div className="form-group">

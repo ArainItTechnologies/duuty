@@ -29,6 +29,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 
 // Add services to the container.
 builder.Services.Configure<JwtSettings>(configuration.GetSection(nameof(JwtSettings)));
+builder.Services.Configure<TwilioSettings>(configuration.GetSection(nameof(TwilioSettings)));
 
 builder.Services.AddServicesIoC();
 

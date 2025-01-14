@@ -8,6 +8,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Twilio;
+using Twilio.Rest.Verify.V2.Service;
+using Twilio.Types;
 
 namespace DuutyApp.Server.Controllers;
 
@@ -19,17 +22,48 @@ public class AuthController : ControllerBase
     private readonly SignInManager<IdentityUser> _signInManager;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly JwtSettings _jwtSettings;
+    private readonly TwilioSettings _twilioSettings;
 
     public AuthController(
         UserManager<IdentityUser> userManager,
         SignInManager<IdentityUser> signInManager,
         RoleManager<IdentityRole> roleManager,
-        IOptions<JwtSettings> jwtOptions)
+        IOptions<JwtSettings> jwtOptions,
+        IOptions<TwilioSettings> twilioOptions)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _roleManager = roleManager;
         _jwtSettings = jwtOptions.Value;
+        _twilioSettings = twilioOptions.Value;
+    }
+
+    // POST: api/Auth/RegisterMobile
+    [HttpPost("RegisterMobile")]
+    public async Task<IActionResult> RegisterMobile([FromBody] MobileRegisterModel model)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        var user = new IdentityUser { UserName = model.MobileNumber, PhoneNumber = model.MobileNumber };
+        var result = await _userManager.CreateAsync(user, model.Password);
+
+        if (result.Succeeded)
+        {
+            // Ensure the role exists before adding
+            if (!await _roleManager.RoleExistsAsync(nameof(RoleNames.Guest)))
+            {
+                await _roleManager.CreateAsync(new IdentityRole(nameof(RoleNames.Guest)));
+            }
+            await _userManager.AddToRoleAsync(user, nameof(RoleNames.Guest));
+
+            // Send OTP (implement your own logic to send OTP via SMS)
+            await SendOtpToUser(user.PhoneNumber!);
+
+            return Ok(new { Message = "User registered successfully. OTP sent to mobile number." });
+        }
+
+        return BadRequest(result.Errors);
     }
 
     // POST: api/Auth/Register
@@ -55,6 +89,29 @@ public class AuthController : ControllerBase
 
         return BadRequest(result.Errors);
     }
+
+    // POST: api/Auth/VerifyOtp
+    [HttpPost("VerifyOtp")]
+    public async Task<IActionResult> VerifyOtp([FromBody] VerifyOtpModel model)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        var user = await _userManager.FindByNameAsync(model.MobileNumber);
+
+        if (user == null)
+            return BadRequest(new { Message = "User not found." });
+
+        // Verify OTP using Twilio Verify API
+        var verifyOtpResult = await VerifyOtpForUser(user.PhoneNumber!, model.Otp);
+        if (verifyOtpResult)
+        {
+            return Ok(new { Message = "OTP verified successfully." });
+        }
+
+        return BadRequest(new { Message = "Invalid OTP." });
+    }
+
 
     private string GenerateJwtToken(Claim[] claims)
     {
@@ -151,5 +208,38 @@ public class AuthController : ControllerBase
     {
         await _signInManager.SignOutAsync();
         return Ok(new { Message = "Logout successful." });
+    }
+
+    private string GenerateOtp()
+    {
+        // Generate a 6-digit OTP
+        var random = new Random();
+        return random.Next(100000, 999999).ToString();
+    }
+
+    private async Task<bool> SendOtpToUser(string phoneNumber)
+    {
+        TwilioClient.Init(_twilioSettings.AccountSid, _twilioSettings.AuthToken);
+
+        var verification = await VerificationResource.CreateAsync(
+            to: phoneNumber,
+            channel: "sms",
+            pathServiceSid: _twilioSettings.VerifyServiceSid
+        );
+
+        return verification.Status == "pending";
+    }
+
+    private async Task<bool> VerifyOtpForUser(string phoneNumber, string otp)
+    {
+        TwilioClient.Init(_twilioSettings.AccountSid, _twilioSettings.AuthToken);
+
+        var verificationCheck = await VerificationCheckResource.CreateAsync(
+            to: phoneNumber, 
+            code: otp,
+            pathServiceSid: _twilioSettings.VerifyServiceSid
+        );
+
+        return verificationCheck.Status == "approved";
     }
 }
