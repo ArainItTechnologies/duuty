@@ -199,7 +199,7 @@ public class AuthController : ControllerBase
         TwilioClient.Init(_twilioSettings.AccountSid, _twilioSettings.AuthToken);
 
         var verification = await VerificationResource.CreateAsync(
-            to: phoneNumber,
+            to: $"+91{phoneNumber}",
             channel: "sms",
             pathServiceSid: _twilioSettings.VerifyServiceSid
         );
