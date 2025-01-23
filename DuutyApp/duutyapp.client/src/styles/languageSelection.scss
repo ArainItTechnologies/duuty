@@ -27,8 +27,8 @@
 
 .languages-list {
   display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(3, 1fr); /* Default for mobile */
+  row-gap: 0px; 
+  grid-template-columns: repeat(4, 1fr); /* Default for mobile */
 }
 
 .language-btn {
@@ -52,13 +52,6 @@
   color: white;
 }
 
-/* For screens larger than 430px */
-@media (min-width: 430px) {
-  .languages-list {
-    grid-template-columns: repeat(4, 1fr); /* 4 buttons per row */
-  }
-}
-
 /* For screens larger than 768px (tablet layout) */
 @media (min-width: 768px) {
   .languages-list {
@@ -72,6 +65,6 @@
     grid-template-columns: repeat(
       auto-fit,
       minmax(100px, 1fr)
-    ); /* Single line layout */
+    );
   }
 }

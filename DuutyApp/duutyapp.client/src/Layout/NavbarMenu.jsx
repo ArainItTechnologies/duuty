@@ -80,11 +80,11 @@ const NavbarMenu = () => {
           </Button>
           <NavbarToggler
             onClick={toggle}
-            style={{ maxWidth: "fit-content", marginTop: "0px" }}
+            style={{ maxWidth: "fit-content", marginTop: "0px", background: "transparent" }}
           >
             {isOpen ? (
               <span className="navbar-toggler-close">
-                <LiaTimesSolid size={30} color="#6002ea" />
+                <LiaTimesSolid size={30} color="#6002ea"/>
               </span>
             ) : (
               <span className="navbar-icon">
