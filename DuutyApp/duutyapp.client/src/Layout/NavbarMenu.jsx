@@ -3,7 +3,6 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 import { LiaTimesSolid } from "react-icons/lia";
 import { RxHamburgerMenu } from "react-icons/rx";
-
 import {
   Navbar,
   NavbarBrand,

@@ -6,6 +6,10 @@
     color: var(--title-color); /* Default text color */
     border-radius: 5px; /* Optional for rounded corners */
     transition: background-color 0.3s ease, color 0.3s ease;
+    &:hover {
+      background-color: var(--first-color) !important;
+      color: white;
+    }
   }
   
   /* When the button has the "primary" class */
@@ -29,27 +33,6 @@
   display: grid;
   row-gap: 0px; 
   grid-template-columns: repeat(4, 1fr); /* Default for mobile */
-}
-
-.language-btn {
-  padding: 0.8rem 1rem;
-  font-size: 0.9rem;
-  border: none;
-  background-color: var(--secondary-color); /* Default background */
-  color: var(--title-color); /* Default text color */
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.language-btn:hover {
-  background-color: var(--first-color);
-  color: white;
-}
-
-.language-btn.active {
-  background-color: var(--first-color);
-  color: white;
 }
 
 /* For screens larger than 768px (tablet layout) */

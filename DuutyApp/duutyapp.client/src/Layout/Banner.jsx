@@ -27,7 +27,6 @@ const Banner = () => {
             onClick={hideBanner} // Hide the banner when clicked
           />
         </h3>
-        {/* <p className="banner-slogan">{t("slogan")}</p> */}
       </div>
     )
   );
