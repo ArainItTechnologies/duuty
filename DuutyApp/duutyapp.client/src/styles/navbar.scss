@@ -10,7 +10,7 @@
     }
     &.active {
       font-weight: bold;
-      color: var(--title-color) !important;
+      color: var(--first-color) !important;
     }
   }
 
@@ -23,14 +23,13 @@
   }
 
   .custom-dropdown {
-    background-color: #343a40;
+    background-color: var(--title-color);
     border: none;
 
     .dropdown-item {
-      color: #ffffff !important;
-
       &:hover {
-        background-color: #495057;
+        background-color: var(--first-color);
+        color: var(--title-color) !important;
       }
     }
   }
