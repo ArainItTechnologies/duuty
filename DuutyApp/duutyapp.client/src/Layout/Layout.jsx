@@ -1,11 +1,23 @@
 import PropTypes from "prop-types";
+import { useLocation } from 'react-router-dom';
 import { Container } from "reactstrap";
 import NavbarMenu from "./NavbarMenu";
+import Banner from "./Banner";
 import Footer from "./Footer";
 
 const Layout = ({ children }) => {
+
+  const location = useLocation();
+
+  // Check if the current route is Home
+  const isHomePage = location.pathname === '/';
+
   return (
     <div className="duuty-app">
+    {/* Render the banner only on the HomeComponent */}
+    {isHomePage && (
+        <Banner/>
+      )}
       {/* Navbar */}
       <NavbarMenu />
 

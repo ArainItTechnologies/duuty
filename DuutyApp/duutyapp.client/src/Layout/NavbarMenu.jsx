@@ -1,6 +1,9 @@
 import { useState, useContext } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
+import { LiaTimesSolid } from "react-icons/lia";
+import { RxHamburgerMenu } from "react-icons/rx";
+
 import {
   Navbar,
   NavbarBrand,
@@ -15,7 +18,7 @@ import {
   Button,
 } from "reactstrap";
 import { AuthContext } from "../contexts/AuthContext";
-import Logo from "../assets/logo.png";
+import Logo from "../assets/Logo-2.0.png";
 
 const NavbarMenu = () => {
   const [isOpen, setIsOpen] = useState(false); // Main menu toggle
@@ -47,25 +50,48 @@ const NavbarMenu = () => {
 
   return (
     <div>
-      <Navbar className="custom-navbar fixed-top" dark expand="md">
+      <Navbar className="custom-navbar fixed-top" expand="md">
         <NavbarBrand>
-          <NavLink
+          <div
             to="/"
             className="d-flex align-items-center"
             onClick={() => handleMenuClose("/")}
           >
             <img src={Logo} alt="DUUTY" className="nav__logo-image" />
-          </NavLink>
+          </div>
         </NavbarBrand>
-        <div className="d-flex align-items-center">
+        <div
+          className="d-flex align-items-center"
+          style={{ marginTop: "-18px" }}
+        >
           <Button
             color="primary"
             className="get-demo-button"
             onClick={() => handleMenuClose("/get-demo")}
           >
-            Get Demo
+            Find Job
           </Button>
-          <NavbarToggler onClick={toggle} style={{ maxWidth: "fit-content" }} />
+          <Button
+            color="primary"
+            className="get-demo-button"
+            onClick={() => handleMenuClose("/get-demo")}
+          >
+            HireNow
+          </Button>
+          <NavbarToggler
+            onClick={toggle}
+            style={{ maxWidth: "fit-content", marginTop: "0px" }}
+          >
+            {isOpen ? (
+              <span className="navbar-toggler-close">
+                <LiaTimesSolid size={30} color="#6002ea" />
+              </span>
+            ) : (
+              <span className="navbar-icon">
+                <RxHamburgerMenu size={30} color="#6002ea" />
+              </span> 
+            )}
+          </NavbarToggler>
         </div>
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ms-auto align-items-center" navbar>
@@ -135,14 +161,6 @@ const NavbarMenu = () => {
                 Contact
               </NavLink>
             </NavItem>
-            <NavItem className="get-demo-btn pr-2">
-              <Button
-                color="primary"
-                onClick={() => handleMenuClose("/get-demo")}
-              >
-                Get Demo
-              </Button>
-            </NavItem>
             {isLoggedIn ? (
               <NavItem>
                 <Button color="danger" onClick={handleLogout}>
@@ -152,7 +170,6 @@ const NavbarMenu = () => {
             ) : (
               <NavItem>
                 <Button
-                  color="secondary"
                   className="auth-btn"
                   onClick={() => handleMenuClose("/auth")}
                 >

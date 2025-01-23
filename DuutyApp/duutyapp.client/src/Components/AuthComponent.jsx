@@ -5,12 +5,14 @@ import * as yup from "yup";
 import { userLogin, userRegister } from "../api/auth";
 import { getRoleFromToken } from "../utils/jwtUtils";
 import { AuthContext } from "../contexts/AuthContext";
-import { Button } from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, NavbarToggler } from "reactstrap";
 
 const AuthComponent = () => {
   const [isLogin, setIsLogin] = useState(true);
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [isOtpModalOpen, setIsOtpModalOpen] = useState(false);
+  const [otp, setOtp] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -117,16 +119,22 @@ const AuthComponent = () => {
     onSubmit: async (values) => {
       const response = await userRegister(values);
       if (response.success) {
-        navigate("/auth");
+        setIsOtpModalOpen(true);
       } else {
         alert(response.message);
       }
     },
   });
 
+  const handleOtpSubmit = () => {
+    // Handle OTP submission logic here
+    setIsOtpModalOpen(false);
+    navigate("/auth");
+  };
+
   const isFormValid = isLogin
     ? loginFormik.isValid && loginFormik.dirty
-    : registerFormik.isValid && registerFormik.dirty;
+    : registerFormik.isValid && registerFormik.dirty && registerFormik.values.password === registerFormik.values.confirmPassword;
 
   return (
     <div className="auth-container">
@@ -256,6 +264,29 @@ const AuthComponent = () => {
       <button onClick={switchForm} className="switch-form-link">
         {isLogin ? "Not a member? Register" : "Already a member? Sign In"}
       </button>
+      <Modal isOpen={isOtpModalOpen} toggle={() => setIsOtpModalOpen(!isOtpModalOpen)}>
+        <ModalHeader toggle={() => setIsOtpModalOpen(!isOtpModalOpen)}>Verify OTP</ModalHeader>
+        <ModalBody>
+          <div className="form-group">
+            <label htmlFor="otp">OTP<span className="required">*</span></label>
+            <Input
+              type="text"
+              id="otp"
+              name="otp"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+              maxLength="6"
+              className={otp.length === 6 ? "" : "error"}
+            />
+            {otp.length !== 6 && (
+              <div className="error-message">OTP must be 6 digits</div>
+            )}
+          </div>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={handleOtpSubmit} disabled={otp.length !== 6}>Submit</Button>
+        </ModalFooter>
+      </Modal>
     </div>
   );
 };

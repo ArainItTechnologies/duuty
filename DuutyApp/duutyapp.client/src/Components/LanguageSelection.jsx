@@ -10,7 +10,7 @@ const LanguageSelection = () => {
         <Button
           key={lang.code}
           outline
-          color={language === lang.code ? "primary" : "secondary"}
+          className={language === lang.code ? "primary" : "secondary"}
           onClick={() => setLanguage(lang.code)}
           active={language === lang.code}
         >

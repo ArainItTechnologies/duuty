@@ -1,8 +1,9 @@
 .custom-navbar {
-  background-color: var(--header-color);
+  background-color: var(--title-color);
+  position: relative; /* Ensure it's on the stacking context */
 
   .nav-link {
-    color: #ffffff !important;
+    color: #6200ea !important;
     margin-top: 13px;
     &:hover {
       color: var(--hover-text-color) !important;
@@ -14,7 +15,11 @@
   }
 
   .nav__logo-image {
-    height: 50px;
+    margin-top: 8px;
+    height: 60px;
+    transition: transform 0.3s ease; /* Smooth scaling transition */
+    transform: scale(1.1); /* Zoom in the logo (adjust scale factor as needed) */
+    transform-origin: center; /* Ensures the scaling is centered */
   }
 
   .custom-dropdown {
@@ -29,6 +34,9 @@
       }
     }
   }
+  .auth-btn{
+    background-color:  var(--first-color);
+  }
 
   .get-demo-button {
     display: none;
@@ -38,23 +46,8 @@
     .get-demo-button {
       display: inline-block;
       margin-right: 10px;
-      background-color: purple;
-    }
-    .get-demo-btn {
-      display: none;
-    }
-  }
-  
-
-  .get-demo-btn {
-    padding-right: 1rem;
-    button {
-      background-color: green;
-      border: none;
-
-      &:hover {
-        background-color: red;
-      }
+      margin-top: 0;
+      background-color: var(--first-color);
     }
   }
 }
