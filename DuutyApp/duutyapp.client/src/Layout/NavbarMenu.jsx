@@ -98,7 +98,6 @@ const NavbarMenu = () => {
               <NavLink
                 className="nav-link"
                 to="/about-us"
-                activeClassName="active"
                 onClick={() => handleMenuClose("/about-us")}
               >
                 About Us
@@ -144,7 +143,6 @@ const NavbarMenu = () => {
               <NavLink
                 className="nav-link"
                 to="/pricing"
-                activeClassName="active"
                 onClick={() => handleMenuClose("/pricing")}
               >
                 Pricing
@@ -154,7 +152,6 @@ const NavbarMenu = () => {
               <NavLink
                 className="nav-link"
                 to="/contact"
-                activeClassName="active"
                 onClick={() => handleMenuClose("/contact")}
               >
                 Contact
