@@ -14,12 +14,11 @@ const Banner = () => {
       <div className="banner-section">
         <h3 className="banner-heading">
           {t("banner")}
-          <PiChefHatThin size={30} style={{ paddingLeft: "5px", color: "yellow" }} />
+          <PiChefHatThin size={50} style={{ paddingLeft: "5px", color: "yellow" }} />
           <FaRegTimesCircle
             size={15}
             style={{
               position: "absolute",
-              top: "10px",
               right: "10px",
               cursor: "pointer",
               color: "white",

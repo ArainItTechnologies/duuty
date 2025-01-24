@@ -27,7 +27,13 @@ import { supportedLanguages } from "../translations/SupportedLanguages";
 import Logo from "../assets/Logo-2.0.png";
 
 const NavbarMenu = () => {
-  const { t, language, setLanguage, isLanguageSelected, setIsLanguageSelected } = useTranslation();
+  const {
+    t,
+    language,
+    setLanguage,
+    isLanguageSelected,
+    setIsLanguageSelected,
+  } = useTranslation();
   const [isOpen, setIsOpen] = useState(false); // Main menu toggle
   const { isLoggedIn, logout } = useContext(AuthContext);
   const [isModalOpen, setIsModalOpen] = useState(!isLanguageSelected);
@@ -83,6 +89,7 @@ const NavbarMenu = () => {
           style={{ marginTop: "-18px" }}
         >
           <BsTranslate
+            onClick={toggleModal}
             className="get-demo-button"
             size={25}
             color="#6002ea"
@@ -125,6 +132,7 @@ const NavbarMenu = () => {
           <Nav className="ms-auto align-items-center" navbar>
             <NavItem>
               <BsTranslate
+                onClick={toggleModal}
                 size={20}
                 color="#6002ea"
                 style={{ marginTop: "12px" }}
