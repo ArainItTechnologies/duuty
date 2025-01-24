@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 import { LiaTimesSolid } from "react-icons/lia";
+import { BsTranslate } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 import {
   Navbar,
@@ -15,13 +16,21 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
 } from "reactstrap";
+import { useTranslation } from "../translations/TranslationHook";
 import { AuthContext } from "../contexts/AuthContext";
+import LanguageSelectionCard from "../Components/LanguageSelectionCard";
+import { supportedLanguages } from "../translations/SupportedLanguages";
 import Logo from "../assets/Logo-2.0.png";
 
 const NavbarMenu = () => {
+  const { t, language, setLanguage, isLanguageSelected, setIsLanguageSelected } = useTranslation();
   const [isOpen, setIsOpen] = useState(false); // Main menu toggle
   const { isLoggedIn, logout } = useContext(AuthContext);
+  const [isModalOpen, setIsModalOpen] = useState(!isLanguageSelected);
   const navigate = useNavigate();
 
   const toggle = () => setIsOpen(!isOpen);
@@ -34,6 +43,16 @@ const NavbarMenu = () => {
   const handleMenuClose = (path) => {
     setIsOpen(false); // Close the menu
     navigate(path); // Navigate to the selected route
+  };
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const handleLanguageChange = (lang) => {
+    setLanguage(lang);
+    setIsLanguageSelected(true);
+    setIsModalOpen(false);
   };
 
   const employerSubMenuItems = [
@@ -63,46 +82,55 @@ const NavbarMenu = () => {
           className="d-flex align-items-center"
           style={{ marginTop: "-18px" }}
         >
+          <BsTranslate
+            className="get-demo-button"
+            size={25}
+            color="#6002ea"
+            style={{ marginRight: "10px", background: "transparent" }}
+          />
           <Button
             color="primary"
             className="get-demo-button"
             onClick={() => handleMenuClose("/get-demo")}
           >
-            Find Job
+            {t("joboptions.findjob")}
           </Button>
           <Button
             color="primary"
             className="get-demo-button"
             onClick={() => handleMenuClose("/get-demo")}
           >
-            HireNow
+            {t("joboptions.hirenow")}
           </Button>
           <NavbarToggler
             onClick={toggle}
-            style={{ maxWidth: "fit-content", marginTop: "0px", background: "transparent" }}
+            style={{
+              maxWidth: "fit-content",
+              marginTop: "0px",
+              background: "transparent",
+            }}
           >
             {isOpen ? (
               <span className="navbar-toggler-close">
-                <LiaTimesSolid size={30} color="#6002ea"/>
+                <LiaTimesSolid size={30} color="#6002ea" />
               </span>
             ) : (
               <span className="navbar-icon">
                 <RxHamburgerMenu size={30} color="#6002ea" />
-              </span> 
+              </span>
             )}
           </NavbarToggler>
         </div>
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ms-auto align-items-center" navbar>
             <NavItem>
-              <NavLink
-                className="nav-link"
-                to="/about-us"
-                onClick={() => handleMenuClose("/about-us")}
-              >
-                About Us
-              </NavLink>
+              <BsTranslate
+                size={20}
+                color="#6002ea"
+                style={{ marginTop: "12px" }}
+              />
             </NavItem>
+
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Employer
@@ -142,19 +170,19 @@ const NavbarMenu = () => {
             <NavItem>
               <NavLink
                 className="nav-link"
-                to="/pricing"
-                onClick={() => handleMenuClose("/pricing")}
+                to="/contact"
+                onClick={() => handleMenuClose("/contact")}
               >
-                Pricing
+                {t("navbar.contact")}
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
                 className="nav-link"
-                to="/contact"
-                onClick={() => handleMenuClose("/contact")}
+                to="/about-us"
+                onClick={() => handleMenuClose("/about-us")}
               >
-                Contact
+                {t("navbar.about")}
               </NavLink>
             </NavItem>
             {isLoggedIn ? (
@@ -176,6 +204,18 @@ const NavbarMenu = () => {
           </Nav>
         </Collapse>
       </Navbar>
+
+      {/* Modal for Language Selection */}
+      <Modal isOpen={isModalOpen} toggle={toggleModal}>
+        <ModalHeader toggle={toggleModal}>Select Language</ModalHeader>
+        <ModalBody>
+          <LanguageSelectionCard
+            languages={supportedLanguages}
+            selectedLanguage={language}
+            onLanguageChange={handleLanguageChange}
+          />
+        </ModalBody>
+      </Modal>
     </div>
   );
 };

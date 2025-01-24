@@ -2,15 +2,16 @@
   "banner": "కిచెన్ స్టాఫ్ రిక్రూట్‌మెంట్ కోసం భారతదేశపు మొదటి జాబ్ పోర్టల్",
   "slogan":"డ్యూటీ మీకు 2 రోజుల్లో సిబ్బందిని నియమించుకోవడంలో సహాయపడుతుంది.",
   "joboptions": {
-    "findajob": "Find A Job",
+    "findjob": "Find Job",
     "hirenow": "Hire Now"
   },
   "navbar": {
     "home": "Home",
     "about": "About Us",
+    "contact": "Contact",
     "employee": {
       "heading": "అభ్యర్థి",
-      "findJob": "Find A Job",
+      "findJob": "Find Job",
       "category": "Find Jobs by Category",
       "location": "Find Jobs by Location",
       "faqs": "FAQ's"

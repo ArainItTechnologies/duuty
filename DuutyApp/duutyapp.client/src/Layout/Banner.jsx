@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "../translations/TranslationHook";
-import { GoRocket } from "react-icons/go";
+import { PiChefHatThin } from "react-icons/pi";
 import { FaRegTimesCircle } from "react-icons/fa";
 
 const Banner = () => {
@@ -14,7 +14,7 @@ const Banner = () => {
       <div className="banner-section">
         <h3 className="banner-heading">
           {t("banner")}
-          <GoRocket size={30} style={{ paddingLeft: "5px", color: "yellow" }} />
+          <PiChefHatThin size={30} style={{ paddingLeft: "5px", color: "yellow" }} />
           <FaRegTimesCircle
             size={15}
             style={{
@@ -24,7 +24,7 @@ const Banner = () => {
               cursor: "pointer",
               color: "white",
             }}
-            onClick={hideBanner} // Hide the banner when clicked
+            onClick={hideBanner}
           />
         </h3>
       </div>

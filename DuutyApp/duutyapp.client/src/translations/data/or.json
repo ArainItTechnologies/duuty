@@ -2,15 +2,16 @@
   "banner": "ରୋଷେଇ କର୍ମଚାରୀ ନିଯୁକ୍ତି ପାଇଁ ଭାରତର ପ୍ରଥମ ଚାକିରି ପୋର୍ଟାଲ |",
   "slogan":"ଦୁଟି ଆପଣଙ୍କୁ 2 ଦିନରେ କର୍ମଚାରୀ ନିଯୁକ୍ତ କରିବାରେ ସାହାଯ୍ୟ କରେ।",
   "joboptions": {
-    "findajob": "Find A Job",
+    "findjob": "Find Job",
     "hirenow": "Hire Now"
   },
   "navbar": {
     "home": "Home",
     "about": "About Us",
+    "contact": "Contact",
     "employee": {
       "heading": "ପ୍ରାର୍ଥୀ",
-      "findJob": "Find A Job",
+      "findJob": "Find Job",
       "category": "Find Jobs by Category",
       "location": "Find Jobs by Location",
       "faqs": "FAQ's"

@@ -2,15 +2,16 @@
   "banner": "சமையலறை பணியாளர்கள் ஆட்சேர்ப்புக்கான இந்தியாவின் முதல் வேலை போர்ட்டல்",
   "slogan":"Duuty உங்களுக்கு 2 நாள்களில் பணியாளர்களை நியமிக்க உதவுகிறது.",
   "joboptions":{
-    "findajob": "Find A Job",
+    "findjob": "Find Job",
     "hirenow": "Hire Now"
   },
   "navbar": {
     "home": "Home",
     "about": "About Us",
+    "contact": "Contact",
     "employee": {
       "heading": "வேட்பாளர்",
-      "findJob": "Find A Job",
+      "findJob": "Find Job",
       "category": "Find Jobs by Category",
       "location": "Find Jobs by Location",
       "faqs": "FAQ's"

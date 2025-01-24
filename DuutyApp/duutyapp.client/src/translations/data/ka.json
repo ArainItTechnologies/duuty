@@ -2,15 +2,16 @@
   "banner": "ಅಡುಗೆ ಸಿಬ್ಬಂದಿ ನೇಮಕಾತಿಗಾಗಿ ಭಾರತದ ಮೊದಲ ಜಾಬ್ ಪೋರ್ಟಲ್",
   "slogan":"ದುಟೀ ನಿಮಗೆ 2 ದಿನಗಳಲ್ಲಿ ಸಿಬ್ಬಂದಿಯನ್ನು ನೇಮಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
   "joboptions": {
-    "findajob": "Find A Job",
+    "findjob": "Find Job",
     "hirenow": "Hire Now"
   },
   "navbar": {
     "home": "Home",
     "about": "About Us",
+    "contact": "Contact",
     "employee": {
       "heading": "প্রার্থী",
-      "findJob": "Find A Job",
+      "findJob": "Find Job",
       "category": "Find Jobs by Category",
       "location": "Find Jobs by Location",
       "faqs": "FAQ's"

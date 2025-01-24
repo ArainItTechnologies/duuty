@@ -7,6 +7,7 @@ export const TranslationProvider = ({ children }) => {
   const [language, setLanguage] = useState("en"); 
   const [translations, setTranslations] = useState({});
   const [languageLoading, setLanguageLoading] = useState(true);
+  const [isLanguageSelected, setIsLanguageSelected] = useState(false);
 
   useEffect(() => {
     const loadTranslations = async () => {
@@ -34,7 +35,7 @@ export const TranslationProvider = ({ children }) => {
   };
 
   return (
-    <TranslationContext.Provider value={{ t, language, setLanguage, languageLoading }}>
+    <TranslationContext.Provider value={{ t, language, setLanguage, languageLoading, isLanguageSelected, setIsLanguageSelected }}>
       {children}
     </TranslationContext.Provider>
   );

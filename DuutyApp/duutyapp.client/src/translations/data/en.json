@@ -2,15 +2,16 @@
   "banner": "India's First Job Portal for Kitchen Staff Recruitment",
   "slogan":"Duuty helps you hire staff in 2 days",
   "joboptions": {
-    "findajob": "Find A Job",
+    "findjob": "Find Job",
     "hirenow": "Hire Now"
   },
   "navbar": {
     "home": "Home Page",
     "about": "About Us",
+    "contact": "Contact",
     "employee": {
       "heading": "Employee",
-      "findJob": "Find A Job",
+      "findJob": "Find Job",
       "category": "Find Jobs by Category",
       "location": "Find Jobs by Location",
       "faqs": "FAQ's"

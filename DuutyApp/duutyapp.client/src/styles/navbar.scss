@@ -42,11 +42,16 @@
   }
   
   @media (max-width: 768px) {
+    .nav-item svg {
+      display: none;
+    }
+    
     .get-demo-button {
       display: inline-block;
       margin-right: 10px;
       margin-top: 0;
       background-color: var(--first-color);
+      max-width: fit-content;
     }
   }
 }
