@@ -39,7 +39,7 @@ const Footer = () => {
           </NavLink>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2024 Duuty</p>
+          <span>&copy; 2024 Duuty</span>
         </div>
       </div>
     </footer>
