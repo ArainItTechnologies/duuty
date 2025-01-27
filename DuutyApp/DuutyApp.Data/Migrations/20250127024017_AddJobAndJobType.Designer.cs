@@ -4,6 +4,7 @@ using DuutyApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuutyApp.Data.Migrations
 {
     [DbContext(typeof(DuutyAppDbContext))]
-    partial class DuutyAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250127024017_AddJobAndJobType")]
+    partial class AddJobAndJobType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
