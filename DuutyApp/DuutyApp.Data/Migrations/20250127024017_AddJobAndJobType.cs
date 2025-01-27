@@ -90,12 +90,12 @@ namespace DuutyApp.Data.Migrations
                 columns: new[] { "Id", "Created", "JobClassification", "LastModified" },
                 values: new object[,]
                 {
-                    { new Guid("0088aaed-0e72-4374-970e-671bd475aee8"), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), 1, new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) },
-                    { new Guid("04e430aa-ad9e-41ed-bda3-19901350fee7"), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), 2, new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) },
-                    { new Guid("3e8deb04-6d04-4539-a23f-8bf355374f5d"), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), 4, new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) },
-                    { new Guid("93d82f65-799c-4af4-99b2-2f68a2299236"), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), 6, new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) },
-                    { new Guid("a0819228-1f22-48aa-8bbd-fdbcbd201fb3"), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), 5, new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) },
-                    { new Guid("afa40082-a28e-4e0f-9d29-9f3ea8ac1263"), new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), 3, new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)) }
+                    { new Guid("0088aaed-0e72-4374-970e-671bd475aee8"), DateTimeOffset.UtcNow, 1, DateTimeOffset.UtcNow },
+                    { new Guid("04e430aa-ad9e-41ed-bda3-19901350fee7"), DateTimeOffset.UtcNow, 2, DateTimeOffset.UtcNow },
+                    { new Guid("3e8deb04-6d04-4539-a23f-8bf355374f5d"), DateTimeOffset.UtcNow, 4, DateTimeOffset.UtcNow },
+                    { new Guid("93d82f65-799c-4af4-99b2-2f68a2299236"), DateTimeOffset.UtcNow, 6, DateTimeOffset.UtcNow },
+                    { new Guid("a0819228-1f22-48aa-8bbd-fdbcbd201fb3"), DateTimeOffset.UtcNow, 5, DateTimeOffset.UtcNow },
+                    { new Guid("afa40082-a28e-4e0f-9d29-9f3ea8ac1263"), DateTimeOffset.UtcNow, 3, DateTimeOffset.UtcNow }
                 });
 
             migrationBuilder.CreateIndex(
