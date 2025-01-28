@@ -59,12 +59,12 @@ app.UseDefaultFiles();
 app.UseStaticFiles();
 
 // Seed users and roles
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var seedUserConfigs = configuration.GetSection("SeedUserConfigs").Get<List<SeedUserConfig>>();
-    await DuutyDbInitializer.SeedUsersAndRolesAsync(services, seedUserConfigs!);
-}
+// using (var scope = app.Services.CreateScope())
+// {
+//     var services = scope.ServiceProvider;
+//     var seedUserConfigs = configuration.GetSection("SeedUserConfigs").Get<List<SeedUserConfig>>();
+//     await DuutyDbInitializer.SeedUsersAndRolesAsync(services, seedUserConfigs!);
+// }
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
