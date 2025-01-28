@@ -1,6 +1,7 @@
 name: CI Build and Deploy To Azure
 
 env:
+  HAS_DB_MIGRATION: ${{ vars.HAS_DB_MIGRATION }}
   AZURE_WEBAPP_NAME: duuty-stg
   AZURE_WEBAPP_PACKAGE_PATH: '.'  
   DOTNET_VERSION: '8'             
@@ -53,6 +54,7 @@ jobs:
         run: dotnet tool install --global dotnet-ef
         
       - name: Run EF Core Migrations
+        if: env.HAS_DB_MIGRATION == 'true'
         run: |
           # Run EF Core migrations (using the Azure App Service connection string or other methods)
           dotnet-ef database update --project DuutyApp/DuutyApp.Data/DuutyApp.Data.csproj --startup-project DuutyApp/DuutyApp.Server/DuutyApp.Server.csproj --connection $DATABASE_URL
