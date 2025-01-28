@@ -1,0 +1,166 @@
+.nav-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  position: relative;
+  background-color: var(--title-color);
+  padding: 12px 20px;
+}
+.logo img {
+  width: 40px;
+  margin-top: 15px;
+}
+.menu {
+  display: flex;
+}
+.menu li {
+  padding-left: 30px;
+}
+.menu li a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--first-color);
+  text-align: center;
+  transition: 0.15s ease-in-out;
+  position: relative;
+  text-transform: uppercase;
+}
+.menu li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--first-color);
+  transition: 0.15s ease-in-out;
+}
+.menu li a:hover:after {
+  width: 100%;
+}
+.open-menu,
+.close-menu {
+  position: absolute;
+  color: var(--first-color);
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: none;
+}
+.open-menu {
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+.close-menu {
+  top: 20px;
+  right: 20px;
+}
+.hero-menu {
+  display: none;
+}
+#check {
+  display: none;
+}
+
+/* Submenu container */
+.has-submenu {
+  position: relative;
+}
+
+.has-submenu .submenu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Position submenu below the parent item */
+  left: 0;
+  background-color: var(--title-color);
+  padding: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease; /* Smooth transition for opacity */
+  z-index: 10;
+}
+
+/* Submenu items */
+.has-submenu .submenu li {
+  list-style: none;
+  padding: 10px 20px;
+}
+
+.has-submenu .submenu li a {
+  text-decoration: none;
+  color: var(--first-color);
+  text-transform: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.has-submenu .submenu li a:hover {
+  color: var(--accent-color);
+}
+
+/* Show submenu on hover */
+.has-submenu:hover .submenu {
+  display: block;
+}
+
+@media (max-width: 610px) {
+  .hero-menu {
+    display: flex;
+    gap: 20px; /* Add spacing between the items */
+    align-items: center;
+    margin-right: 40px;
+  }
+
+  .hero-menu li {
+    list-style: none;
+  }
+
+  .hero-menu li a {
+    display: inline-block;
+    padding: 5px 10px; /* Add padding to make the items look like buttons */
+    background-color: var(--first-color); /* Button background color */
+    color: #fff; /* White text color */
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px; /* Rounded corners */
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease; /* Smooth transition on hover */
+  }
+
+  .hero-menu li a:hover {
+    background-color: var(--accent-color); /* Change background on hover */
+    transform: translateY(-2px); /* Slight elevation effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a more button-like effect */
+  }
+
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 100;
+    background-color: var(--title-color);
+    transition: all 0.2s ease-in-out;
+  }
+  .menu li {
+    margin-top: 40px;
+  }
+  .menu li a {
+    padding: 10px;
+  }
+  .open-menu,
+  .close-menu {
+    display: block;
+  }
+  #check:checked ~ .menu {
+    right: 0;
+  }
+}
