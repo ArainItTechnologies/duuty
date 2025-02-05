@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useLocation } from 'react-router-dom';
 import { Container } from "reactstrap";
-import HeaderNav from "./HeaderNav";
+import Navbar from "./Navbar";
 import Banner from "./Banner";
 import Footer from "./Footer";
 
@@ -19,10 +19,10 @@ const Layout = ({ children }) => {
         <Banner/>
       )}
       {/* Navbar */}
-      <HeaderNav />
+      <Navbar />
 
       {/* Main Content */}
-      <Container className="content">{children}</Container>
+      <div className="container">{children}</div>
 
       {/* Footer */}
       <Footer />

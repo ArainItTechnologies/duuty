@@ -14,7 +14,7 @@ const Banner = () => {
       <div className="banner-section">
         <h3 className="banner-heading">
           {t("banner")}
-          <PiChefHatThin size={50} style={{ paddingLeft: "5px", color: "yellow" }} />
+          <PiChefHatThin className="icon" size={25} style={{ paddingLeft: "5px", color: "white", transform: "rotate(45deg)" }} />
           <FaRegTimesCircle
             size={15}
             style={{

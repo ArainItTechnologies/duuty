@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { TfiMenu } from "react-icons/tfi";
 import { TfiClose } from "react-icons/tfi";
 import { BsTranslate } from "react-icons/bs";
@@ -6,6 +7,8 @@ import Logo from "../assets/Logo-2.0.png";
 
 const HeaderNav = () => {
   const { t } = useTranslation();
+
+  const navigate = useNavigate();
 
   const employerSubMenuItems = [
     { to: "/Employer/hire-now", title: "Hire Now" },
@@ -23,49 +26,46 @@ const HeaderNav = () => {
       <nav>
         <ul className="nav-bar">
           <li className="logo">
-            <a href="#">
+            <a onClick={() => navigate("/")}>
               <img src={Logo} alt="Logo" />
             </a>
           </li>
           <span className="hero-menu">
             <BsTranslate className="translate" size={25} color="#6200ea" />
             <li>
-              <a href="">{t("joboptions.findjob")}</a>
+              <a onClick={() => navigate("/employee/find-jobs")}>{t("joboptions.findjob")}</a>
             </li>
             <li>
-              <a href="">{t("joboptions.hirenow")}</a>
+              <a onClick={() => navigate("/Employer/hire-now")}>{t("joboptions.hirenow")}</a>
             </li>
           </span>
           <input type="checkbox" id="check" />
           <span className="menu">
             <li>
-              <a href="">Home</a>
+              <a onClick={() => navigate("/")}>Home</a>
             </li>
             <li className="has-submenu">
-              <a href="#">{t("navbar.employer.heading")}</a>
+              <a>{t("navbar.employer.heading")}</a>
               <ul className="submenu">
                 {employerSubMenuItems.map((item, index) => (
                   <li key={index}>
-                    <a href={item.to}>{item.title}</a>
+                    <a onClick={() => navigate(item.to)}>{item.title}</a>
                   </li>
                 ))}
               </ul>
             </li>
             <li className="has-submenu">
-              <a href="#">{t("navbar.employee.heading")}</a>
+              <a>{t("navbar.employee.heading")}</a>
               <ul className="submenu">
                 {employeeSubMenuItems.map((item, index) => (
                   <li key={index}>
-                    <a href={item.to}>{item.title}</a>
+                    <a href="#" onClick={() => navigate(item.to)}>{item.title}</a>
                   </li>
                 ))}
               </ul>
             </li>
             <li>
-              <a href="">About</a>
-            </li>
-            <li>
-              <a href="">Contact</a>
+              <a href="#" onClick={() => navigate("/about-us")}>About</a>
             </li>
             <label htmlFor="check" className="close-menu">
               <TfiClose />

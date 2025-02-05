@@ -4,7 +4,11 @@ const LanguageSelectionCard = ({ languages, onLanguageChange, selectedLanguage }
   return (
     <div className="language-card">
       {languages.map((lang) => (
-        <div key={lang.code} className="language-box">
+        <div
+          key={lang.code}
+          className={`language-box ${selectedLanguage === lang.code ? "selected" : ""}`}
+          onClick={() => onLanguageChange(lang.code)}
+        >
           <div className="language-name">{lang.name}</div>
           <input
             type="radio"

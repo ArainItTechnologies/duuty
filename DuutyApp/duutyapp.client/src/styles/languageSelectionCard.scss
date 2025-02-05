@@ -21,20 +21,29 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100px; /* Adjust box width */
   box-sizing: border-box; /* Include padding and border in the element's total width */
+  cursor: pointer; /* Make it look clickable */
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
 }
 
-/* Ensure language box doesn't overflow */
+.language-box:hover {
+  background-color: #f0f0f0; /* Light hover effect */
+}
+
+.language-box input[type="radio"] {
+  display: none; /* Hide the actual radio button */
+}
+
+.language-box.selected {
+  background-color: #007bff; /* Selected state background color */
+  border-color: #007bff; /* Selected state border color */
+  color: #fff; /* Selected state text color */
+}
+
 .language-box .language-name {
   font-weight: bold;
   margin-bottom: 0.5rem;
   font-size: 1rem;
-  color: #333;
-}
-
-.language-box input[type="radio"] {
-  accent-color: #007bff; /* Customize radio button color */
-  cursor: pointer;
-  margin-top: 0.5rem;
+  color: inherit; /* Inherit color from parent */
 }
 
 /* Mobile view adjustments */
