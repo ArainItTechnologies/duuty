@@ -2,26 +2,26 @@
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
     border: none; /* Remove the border */
-    background-color: var(--secondary-color); /* Default background */
-    color: var(--title-color); /* Default text color */
+    background-color: var(--second); /* Default background */
+    color: var(--title); /* Default text color */
     border-radius: 5px; /* Optional for rounded corners */
     transition: background-color 0.3s ease, color 0.3s ease;
     &:hover {
-      background-color: var(--first-color) !important;
+      background-color: var(--first) !important;
       color: white;
     }
   }
   
   /* When the button has the "primary" class */
   .languages-list button.primary {
-    background-color: var(--first-color);
+    background-color: var(--first);
     color: white;
   }
   
   /* Default (non-primary buttons) */
   .languages-list button:not(.primary) {
-    background-color: var(--secondary-color);
-    color: var(--title-color);
+    background-color: var(--second);
+    color: var(--title);
   }
 
 .language-selection {

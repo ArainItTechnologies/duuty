@@ -3,10 +3,10 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--secondary);
   border-radius: 8px;
   background-color: #f9f9f9;
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  flex-wrap: wrap;
 }
 
 .language-box {
@@ -14,55 +14,51 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 1rem;
-  border: 1px solid #ccc;
+  padding-top: 10px;
+  border: 1px solid var(--secondary);
   border-radius: 8px;
-  background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100px; /* Adjust box width */
-  box-sizing: border-box; /* Include padding and border in the element's total width */
-  cursor: pointer; /* Make it look clickable */
-  transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+  width: 100px;
+  box-sizing: border-box; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease, border-color 0.3s ease; 
 }
 
 .language-box:hover {
-  background-color: #f0f0f0; /* Light hover effect */
-}
-
-.language-box input[type="radio"] {
-  display: none; /* Hide the actual radio button */
+  background-color: var(--second); 
+  color: var(--light-text);
 }
 
 .language-box.selected {
-  background-color: #007bff; /* Selected state background color */
-  border-color: #007bff; /* Selected state border color */
-  color: #fff; /* Selected state text color */
+  background-color: var(--first); 
+  border-color: var(--first); 
+  color: var(--light-text);
 }
 
 .language-box .language-name {
   font-weight: bold;
   margin-bottom: 0.5rem;
   font-size: 1rem;
-  color: inherit; /* Inherit color from parent */
+  color: inherit; 
 }
 
 /* Mobile view adjustments */
 @media (max-width: 768px) {
   .language-card {
-    flex-direction: column; /* Stack language boxes vertically */
-    align-items: center; /* Center the items */
-    gap: 1rem; /* Space between items */
+    flex-direction: column;
+    align-items: center; 
+    gap: 1rem; 
   }
 
   .language-box {
-    width: 80%; /* Adjust width to avoid overflow */
-    max-width: 200px; /* Limit the max width */
+    width: 80%; 
+    max-width: 200px; 
   }
 }
 
 @media (max-width: 480px) {
   .language-box {
-    width: 90%; /* Further reduce width on very small screens */
-    max-width: 180px; /* Further limit max width */
+    width: 90%; 
+    max-width: 180px;
   }
 }

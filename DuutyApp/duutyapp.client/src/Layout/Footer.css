@@ -3,8 +3,8 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: var(--title-color);
-    color: var(--first-color);
+    background-color: var(--title);
+    color: var(--first);
     padding: 10px 0;
     text-align: center;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
@@ -27,7 +27,7 @@
 }
 
 .social-link {
-    color: var(--first-color);
+    color: var(--first);
     text-decoration: none;
     font-size: 16px;
 }
@@ -38,7 +38,7 @@
 
 /* About Us link */
 .about-us-link {
-    color: var(--first-color);
+    color: var(--first);
     text-decoration: none;
     font-size: 16px;
 }
@@ -54,5 +54,5 @@
 
 .footer-bottom span {
     font-size: 14px;
-    color: var(--first-color);
+    color: var(--first);
 }

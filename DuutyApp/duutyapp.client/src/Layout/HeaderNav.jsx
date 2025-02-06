@@ -65,7 +65,7 @@ const HeaderNav = () => {
               </ul>
             </li>
             <li>
-              <a href="#" onClick={() => navigate("/about-us")}>About</a>
+              <a href="#" onClick={() => navigate("/about")}>About</a>
             </li>
             <label htmlFor="check" className="close-menu">
               <TfiClose />

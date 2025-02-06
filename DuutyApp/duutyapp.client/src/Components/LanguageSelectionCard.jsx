@@ -10,14 +10,6 @@ const LanguageSelectionCard = ({ languages, onLanguageChange, selectedLanguage }
           onClick={() => onLanguageChange(lang.code)}
         >
           <div className="language-name">{lang.name}</div>
-          <input
-            type="radio"
-            id={`radio-${lang.code}`}
-            name="language"
-            value={lang.code}
-            checked={selectedLanguage === lang.code}
-            onChange={(e) => onLanguageChange(e.target.value)}
-          />
         </div>
       ))}
     </div>

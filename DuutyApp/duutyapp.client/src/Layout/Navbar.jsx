@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown, ChevronUp, ChevronRight } from "lucide-react";
 import { useTranslation } from "../translations/TranslationHook";
 import LanguageSelectionCard from "../Components/LanguageSelectionCard";
@@ -8,6 +8,10 @@ import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import Logo from "../assets/Logo-2.0.png";
 
 const Navbar = () => {
+  const location = useLocation();
+
+  // Check if the current route is Home
+  const isHomePage = location.pathname === "/";
   const {
     t,
     language,
@@ -28,8 +32,8 @@ const Navbar = () => {
 
   const navigation = {
     home: { label: "Home", path: "/" },
-    aboutUs: { label: "About Us", path: "/about-us" },
-    contactUs: { label: "Contact Us", path: "/contact" },
+    aboutUs: { label: "About", path: "/about" },
+    contactUs: { label: "Contact", path: "/contact" },
     employer: {
       label: "Employer",
       submenu: [
@@ -40,7 +44,7 @@ const Navbar = () => {
     employee: {
       label: "Employee",
       submenu: [
-        { label: "Contact Us", path: "/employee/contact" },
+        { label: "Contact", path: "/employee/contact" },
         {
           label: t("joboptions.findjob"),
           path: "/Employee/find-jobs-by-category",
@@ -52,7 +56,7 @@ const Navbar = () => {
 
   const quickActions = [
     { label: t("joboptions.findjob"), path: "/Employee/find-jobs-by-category" },
-    // { label: t("joboptions.hirenow"), path: "/employer/hire-now" },
+    { label: t("joboptions.hirenow"), path: "/employer/hire-now" },
   ];
 
   const toggleDropdown = (key) => {
@@ -66,7 +70,7 @@ const Navbar = () => {
   return (
     <div className="nav-header">
       {/* Modal for Language Selection */}
-      <Modal isOpen={isModalOpen} toggle={toggleModal}>
+      {isHomePage && !isLanguageSelected &&<Modal isOpen={isModalOpen} toggle={toggleModal}>
         <ModalHeader toggle={toggleModal}>Select Language</ModalHeader>
         <ModalBody>
           <LanguageSelectionCard
@@ -75,14 +79,14 @@ const Navbar = () => {
             onLanguageChange={handleLanguageChange}
           />
         </ModalBody>
-      </Modal>
+      </Modal>}
       <nav>
         <div className="container">
           <div className="nav-content">
             {/* Logo */}
-            <div className="logo">
+            <Link to="/" className="logo">
               <img src={Logo} alt="Logo" className="logo-image" />
-            </div>
+            </Link>
 
             {/* Desktop Navigation */}
             <div className="desktop-nav">
@@ -95,17 +99,12 @@ const Navbar = () => {
                         className="submenu-toggle"
                         role="button"
                         tabIndex={0}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" || e.key === " ") {
-                            toggleDropdown(key);
-                          }
-                        }}
                       >
                         <span>{item.label}</span>
                         {activeDropdown === key ? (
-                          <ChevronUp size={16} />
+                          <ChevronUp className="chevron" size={20} />
                         ) : (
-                          <ChevronRight size={16} /> // Use ChevronRight for inline submenus
+                          <ChevronRight className="chevron" size={20} />
                         )}
                       </div>
                       {activeDropdown === key && (
@@ -140,13 +139,13 @@ const Navbar = () => {
             <div className="mobile-nav">
               {/* Quick Action Buttons */}
               {quickActions.map((action) => (
-                <a
+                <Link
                   key={action.path}
-                  href={action.path}
+                  to={action.path}
                   className="quick-action"
                 >
                   {action.label}
-                </a>
+                </Link>
               ))}
 
               {/* Mobile Menu Button */}
@@ -154,11 +153,6 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="menu-icon"
                 tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    setIsMenuOpen(!isMenuOpen);
-                  }
-                }}
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </div>
@@ -175,14 +169,15 @@ const Navbar = () => {
                   {item.submenu ? (
                     <div>
                       <button
+                        style={{ marginTop: "0px" }}
                         onClick={() => toggleDropdown(key)}
                         className="mobile-dropdown-button"
                       >
                         <span>{item.label}</span>
                         {activeDropdown === key ? (
-                          <ChevronUp size={16} />
+                          <ChevronUp className="chevron" size={16} />
                         ) : (
-                          <ChevronDown size={16} />
+                          <ChevronDown className="chevron" size={16} />
                         )}
                       </button>
                       {activeDropdown === key && (
