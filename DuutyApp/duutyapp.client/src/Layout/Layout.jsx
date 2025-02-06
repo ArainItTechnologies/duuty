@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
       <Navbar />
 
       {/* Main Content */}
-      <div className="container">{children}</div>
+      <Container className="content">{children}</Container>
 
       {/* Footer */}
       <Footer />

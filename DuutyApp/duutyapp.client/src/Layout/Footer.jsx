@@ -1,9 +1,6 @@
-import { NavLink } from "reactstrap";
-import {
-  IoLogoFacebook,
-  IoLogoTwitter,
-  IoLogoLinkedin
-} from "react-icons/io5";
+import { Link } from "react-router-dom";
+
+import { IoLogoFacebook, IoLogoTwitter, IoLogoLinkedin } from "react-icons/io5";
 import "./Footer.css";
 
 const Footer = () => {
@@ -11,35 +8,35 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="social-links">
-          <NavLink
+          <Link
             href="https://facebook.com"
             target="_blank"
             className="social-link"
           >
-            <IoLogoFacebook/>
-          </NavLink>
-          <NavLink
+            <IoLogoFacebook />
+          </Link>
+          <Link
             href="https://twitter.com"
             target="_blank"
             className="social-link"
           >
-            <IoLogoTwitter/>
-          </NavLink>
-          <NavLink
+            <IoLogoTwitter />
+          </Link>
+          <Link
             href="https://linkedin.com"
             target="_blank"
             className="social-link"
           >
-            <IoLogoLinkedin/>
-          </NavLink>
+            <IoLogoLinkedin />
+          </Link>
         </div>
         <div className="about-link">
-          <NavLink href="/about-us" className="about-us-link">
+          <Link href="/about" className="about-us-link">
             About Us
-          </NavLink>
+          </Link>
         </div>
         <div className="footer-bottom">
-          <span>&copy; 2024 Duuty</span>
+          <span>&copy; 2025 Duuty</span>
         </div>
       </div>
     </footer>

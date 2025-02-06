@@ -1,7 +1,7 @@
 /* General styles for the banner section */
 .banner-section {
-  background-color: var(--first-color);
-  color: var(--title-color);
+  background-color: var(--first);
+  color: var(--title);
   text-align: center;
   padding: 1rem;
   max-width: 100%;
@@ -55,10 +55,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid var(--first-color);
+  border: 2px solid var(--first);
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: var(--secondary-color);
+  background-color: var(--second);
   transition: transform 0.3s, background-color 0.3s;
   cursor: pointer;
   text-align: center;
@@ -66,7 +66,7 @@
 
 .find-a-job:hover,
 .hire-now:hover {
-  background-color: var(--title-color);
+  background-color: var(--title);
   color: var(--hover-text-color);
   transform: scale(1.05);
 }
@@ -75,7 +75,7 @@
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--title-color);
+  color: var(--title);
 }
 
 .find-a-job:hover .nav__link,

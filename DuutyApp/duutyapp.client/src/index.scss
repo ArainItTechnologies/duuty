@@ -23,13 +23,13 @@ body {
 }
 
 :root {
-  --first-color:#6200ea;
-  --secondary-color: #704ba3;
-  --title-color: hsl(0, 0%, 95%);
-  --text-color: black;
-  --hover-text-color: black;
-  --header-color: #0A66C2;
-  --body-color: #FFFFFF;
+  --first: #6200ea;
+  --second: #704ba3;
+  --title: hsl(0, 0%, 95%);
+  --light-text: #ffffff;
+  --dark-text: hsl(0, 0%, 95%);
+  --header: #0a66c2;
+  ---body: #ffffff;
   --body-font: "Montserrat", sans-serif;
   --second-font: "Dancing Script", cursive;
   --h2-font-size: 1.25rem;
@@ -40,8 +40,8 @@ body {
 }
 
 body {
-  background-color: var(--body-color);
-  color: var(--text-color);
+  background-color: var(---body);
+  color: black;
   font-family: var(--body-font);
 }
 

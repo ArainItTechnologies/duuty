@@ -41,7 +41,7 @@ const App = () => {
             }
           />
           <Route
-            path="/about-us"
+            path="/about"
             element={
               <PublicRoute isAuthenticated={isAuthenticated}>
                 <AboutUs />
