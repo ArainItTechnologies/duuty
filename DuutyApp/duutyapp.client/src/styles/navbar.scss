@@ -7,7 +7,7 @@
   }
 
   nav {
-    background-color: white;
+    background-color: var(--body);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
     .container {
@@ -45,7 +45,6 @@
                 .submenu-toggle {
                   display: flex;
                   align-items: center;
-                  // gap: 0.25rem;
                   color: var(--first);
                   transition: color 0.2s;
                   cursor: pointer;
@@ -64,7 +63,8 @@
                   width: 12rem;
                   border-radius: 0.375rem;
                   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-                  background-color: white;
+                  background-color: var(--body);
+
                   display: flex;
                   flex-direction: column;
 
@@ -89,7 +89,7 @@
                     }
 
                     &:hover {
-                      background-color: #f3f4f6;
+                      background-color: var(--body);
                       color: var(--second);
 
                       &::after {
