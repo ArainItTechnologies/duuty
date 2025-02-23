@@ -20,35 +20,31 @@ const HeaderNav = () => {
               </li>
 
               <li className="dropdown">
-                <NavLink to="#">
+                <div>
                   <span>Employer</span>{" "}
                   <i className="bi bi-chevron-down toggle-dropdown"></i>
-                </NavLink>
+                </div>
                 <ul>
                   <li>
-                    <NavLink to="#">Post A Job</NavLink>
+                    <NavLink to="post-job">Post A Job</NavLink>
                   </li>
 
                   <li>
-                    <NavLink to="#">Hire Now </NavLink>
+                    <NavLink to="hire-now">Hire Now </NavLink>
                   </li>
                 </ul>
               </li>
               <li className="dropdown">
-                <NavLink to="#">
+                <div>
                   <span>Employee</span>{" "}
                   <i className="bi bi-chevron-down toggle-dropdown"></i>
-                </NavLink>
+                </div>
                 <ul>
                   <li>
-                    <NavLink to="Contact.html">Contact</NavLink>
-                  </li>
-
-                  <li>
-                    <NavLink to="FindJobs.html">Find Job </NavLink>
+                    <NavLink to="find-a-job">Find Job </NavLink>
                   </li>
                   <li>
-                    <NavLink to="#">Apply Now </NavLink>
+                    <NavLink to="/apply-now">Apply Now </NavLink>
                   </li>
                 </ul>
               </li>

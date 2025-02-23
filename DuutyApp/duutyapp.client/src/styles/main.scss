@@ -293,6 +293,7 @@ h6 {
     }
 
     .navmenu a,
+    .navmenu div,
     .navmenu a:focus {
         color: var(--nav-color);
         padding: 18px 15px;
@@ -320,6 +321,7 @@ h6 {
     }
 
     .navmenu li:hover > a,
+    .navmenu li:hover > div,
     .navmenu .active,
     .navmenu .active:focus {
         color: var(--nav-hover-color);
@@ -345,18 +347,18 @@ h6 {
         min-width: 200px;
     }
 
-    .navmenu .dropdown ul a {
+    .navmenu .dropdown ul div {
         padding: 10px 20px;
         font-size: 15px;
         text-transform: none;
         color: var(--nav-dropdown-color);
     }
 
-    .navmenu .dropdown ul a i {
+    .navmenu .dropdown ul div i {
         font-size: 12px;
     }
 
-    .navmenu .dropdown ul a:hover,
+    .navmenu .dropdown ul div:hover,
     .navmenu .dropdown ul .active:hover,
     .navmenu .dropdown ul li:hover > a {
         color: var(--nav-dropdown-hover-color);
