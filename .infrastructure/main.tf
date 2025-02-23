@@ -35,3 +35,27 @@ resource "azurerm_storage_account" "storage_account" {
   account_tier              = "Standard"
   account_replication_type = var.storage_account_sku
 }
+
+resource "azurerm_storage_account" "terraform_state" {
+  name                     = var.storage_account_name
+  resource_group_name      = azurerm_resource_group.rg.name
+  location                 = azurerm_resource_group.rg.location
+  account_tier             = "Standard"
+  account_replication_type = var.storage_account_sku
+}
+
+resource "azurerm_storage_container" "terraform_state" {
+  name                  = "tfstate"
+  storage_account_name  = azurerm_storage_account.terraform_state.name
+  container_access_type = "private"
+}
+
+terraform {
+  backend "azurerm" {
+    resource_group_name   = ar.resource_group_name
+    storage_account_name  = var.storage_account_name
+    container_name        = "tfstate"
+    key                   = "terraform.tfstate"
+  }
+}
+
