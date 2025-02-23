@@ -14,15 +14,13 @@ resource "azurerm_service_plan" "app_plan" {
 }
 
 # Create App Service
-resource "azurerm_windows_web_app" "app_service" {
+resource "azurerm_linux_web_app" "app_service" {
   name                = var.app_service_name
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   service_plan_id     = azurerm_service_plan.app_plan.id
 
-  site_config {
-    dotnet_version = "v8.0"
-  }
+  site_config {}
 
   app_settings = {
     "WEBSITE_RUN_FROM_PACKAGE" = "1"
