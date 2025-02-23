@@ -52,8 +52,8 @@ resource "azurerm_storage_container" "terraform_state" {
 
 terraform {
   backend "azurerm" {
-    resource_group_name   = ar.resource_group_name
-    storage_account_name  = var.storage_account_name
+    resource_group_name   = "rg-duuty-dev"
+    storage_account_name  = "duutystodev"
     container_name        = "tfstate"
     key                   = "terraform.tfstate"
   }
