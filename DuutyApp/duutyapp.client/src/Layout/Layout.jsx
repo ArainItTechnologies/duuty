@@ -4,6 +4,7 @@ import { Container } from "reactstrap";
 import HeaderNav from "./HeaderNav";
 import Banner from "./Banner";
 import Footer from "./Footer";
+import ScrollToTopButton from "../CustomElements/ScrollToTopButton ";
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -22,12 +23,7 @@ const Layout = ({ children }) => {
       <Container className="content">{children}</Container>
 
       {/* Footer */}
-      <a
-        href="#"
-        id="scroll-top"
-        className="scroll-top d-flex align-items-center justify-content-center">
-        <i className="bi bi-arrow-up-short"></i>
-      </a>
+      <ScrollToTopButton/>
       <Footer />
     </div>
   );
