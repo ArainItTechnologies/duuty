@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   terraform:
@@ -20,7 +21,7 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        working-directory: ../.infrastructure
+        working-directory: .infrastructure
         env:
           ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
           ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
@@ -29,7 +30,7 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan
-        working-directory: ../.infrastructure
+        working-directory: .infrastructure
         env:
           ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
           ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
@@ -38,7 +39,7 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
-        working-directory: ../.infrastructure
+        working-directory: .infrastructure
         env:
           ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
           ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
