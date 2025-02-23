@@ -1,55 +1,10 @@
-@use "./styles/home.scss";
-@use "./styles/navbar.scss";
-@use "./styles/auth.scss";
-@use "./styles/languageSelection.scss";
-@use "./styles/languageSelectionCard.scss";
-@use "./styles/findJobs.scss";
-@use "./styles/aboutUs.scss";
-@use "./styles/carousel.scss";
+// @use "./styles/home.scss";
+// @use "./styles/navbar.scss";
+// @use "./styles/auth.scss";
+// @use "./styles/languageSelection.scss";
+// @use "./styles/languageSelectionCard.scss";
+// @use "./styles/findJobs.scss";
+// @use "./styles/aboutUs.scss";
+// @use "./styles/carousel.scss";
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  background-size: cover; /* Ensure the image covers the entire background */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif; /* Optional: Set a default font */
-}
-
-:root {
-  --first: #6200ea;
-  --second: #704ba3;
-  --title: hsl(0, 0%, 95%);
-  --light-text: #ffffff;
-  --dark-text: hsl(0, 0%, 95%);
-  --header: #0a66c2;
-  ---body: #ffffff;
-  --body-font: "Montserrat", sans-serif;
-  --second-font: "Dancing Script", cursive;
-  --h2-font-size: 1.25rem;
-  --small-font-size: 0.813rem;
-  --font-semi-bold: 600;
-  --z-tooltip: 10;
-  --z-fixed: 100;
-}
-
-body {
-  background-color: var(---body);
-  color: black;
-  font-family: var(--body-font);
-}
-
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  cursor: pointer;
-}
+@use "./styles/main.scss";

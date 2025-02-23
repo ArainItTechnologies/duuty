@@ -1,81 +1,68 @@
-import { useNavigate } from "react-router-dom";
-import { TfiMenu } from "react-icons/tfi";
-import { TfiClose } from "react-icons/tfi";
-import { BsTranslate } from "react-icons/bs";
-import { useTranslation } from "../translations/TranslationHook";
-import Logo from "../assets/Logo-2.0.png";
+import { NavLink } from "react-router-dom";
+import Logo from "../assets/img/logo4.png";
 
 const HeaderNav = () => {
-  const { t } = useTranslation();
-
-  const navigate = useNavigate();
-
-  const employerSubMenuItems = [
-    { to: "/Employer/hire-now", title: "Hire Now" },
-    { to: "/Employer/pricing", title: "Pricing" },
-    { to: "/employer/refundpolicy", title: "Refund Policy" },
-  ];
-
-  const employeeSubMenuItems = [
-    { to: "/employee/find-jobs", title: "Find Jobs" },
-    { to: "/employee/apply-now", title: "Apply Now" },
-  ];
-
   return (
-    <header>
-      <nav>
-        <ul className="nav-bar">
-          <li className="logo">
-            <a onClick={() => navigate("/")}>
-              <img src={Logo} alt="Logo" />
-            </a>
-          </li>
-          <span className="hero-menu">
-            <BsTranslate className="translate" size={25} color="#6200ea" />
-            <li>
-              <a onClick={() => navigate("/employee/find-jobs")}>{t("joboptions.findjob")}</a>
-            </li>
-            <li>
-              <a onClick={() => navigate("/Employer/hire-now")}>{t("joboptions.hirenow")}</a>
-            </li>
-          </span>
-          <input type="checkbox" id="check" />
-          <span className="menu">
-            <li>
-              <a onClick={() => navigate("/")}>Home</a>
-            </li>
-            <li className="has-submenu">
-              <a>{t("navbar.employer.heading")}</a>
-              <ul className="submenu">
-                {employerSubMenuItems.map((item, index) => (
-                  <li key={index}>
-                    <a onClick={() => navigate(item.to)}>{item.title}</a>
+    <header id="header" className="header sticky-top">
+      <div className="branding d-flex align-items-center">
+        <div className="container position-relative d-flex align-items-center justify-content-end">
+          <a href="/" className="logo d-flex align-items-center me-auto">
+            <img src={Logo} alt="" />
+          </a>
+
+          <nav id="navmenu" className="navmenu">
+            <ul>
+              <li>
+                <NavLink to="/">Home</NavLink>
+              </li>
+              <li>
+                <NavLink to="/about">About</NavLink>
+              </li>
+
+              <li className="dropdown">
+                <div>
+                  <span>Employer</span>{" "}
+                  <i className="bi bi-chevron-down toggle-dropdown"></i>
+                </div>
+                <ul>
+                  <li>
+                    <NavLink to="post-job">Post A Job</NavLink>
                   </li>
-                ))}
-              </ul>
-            </li>
-            <li className="has-submenu">
-              <a>{t("navbar.employee.heading")}</a>
-              <ul className="submenu">
-                {employeeSubMenuItems.map((item, index) => (
-                  <li key={index}>
-                    <a href="#" onClick={() => navigate(item.to)}>{item.title}</a>
+
+                  <li>
+                    <NavLink to="hire-now">Hire Now </NavLink>
                   </li>
-                ))}
-              </ul>
-            </li>
-            <li>
-              <a href="#" onClick={() => navigate("/about")}>About</a>
-            </li>
-            <label htmlFor="check" className="close-menu">
-              <TfiClose />
-            </label>
-          </span>
-          <label htmlFor="check" className="open-menu">
-            <TfiMenu />
-          </label>
-        </ul>
-      </nav>
+                </ul>
+              </li>
+              <li className="dropdown">
+                <div>
+                  <span>Employee</span>{" "}
+                  <i className="bi bi-chevron-down toggle-dropdown"></i>
+                </div>
+                <ul>
+                  <li>
+                    <NavLink to="find-a-job">Find Job </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/apply-now">Apply Now </NavLink>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <NavLink to="/contact">Contact</NavLink>
+              </li>
+            </ul>
+          </nav>
+
+          <a className="cta-btn" href="index.html#appointment">
+            Find Job
+          </a>
+          <a className="cta-btn" href="index.html#appointment">
+            Hire Now
+          </a>
+          <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </div>
+      </div>
     </header>
   );
 };
