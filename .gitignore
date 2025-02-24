@@ -24,3 +24,13 @@
 /DuutyApp/DuutyApp.Service/bin/Debug/net8.0
 /DuutyApp/DuutyApp.Service/obj
 /DuutyApp/DuutyApp.Service/obj/Debug/net8.0/ref/DuutyApp.Service.dll
+
+
+terraform.tfvars
+*.tfstate
+*.tfstate.backup
+.terraform/
+*.tfvars
+
+plan.out
+plan.json
