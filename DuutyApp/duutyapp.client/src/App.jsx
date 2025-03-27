@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./Components/Login";
-import Home from "./Components/Home";
-import Register from "./Components/Register";
-import Dashboard from "./Components/Dashboard";
+import Login from "./components/Login";
+import Home from "./components/Home";
+import Register from "./components/Register";
+import Dashboard from "./components/Dashboard";
 import Navbar from "./components/Navbar";
-import Edit from "./Components/Edit";
-import User from "./Components/User";
-import Notfound from "./Components/Notfound";
-import Users from "./Components/Users";
-import JobApplication from "./Components/JobApplication";
-import HireNow from "./Components/HireNow";
-import FindAJob from "./Components/FindAJobs";
-import Footer from "./Components/Footer";
+import Edit from "./components/Edit";
+import User from "./components/User";
+import Notfound from "./components/Notfound";
+import Users from "./components/Users";
+import JobApplication from "./components/JobApplication";
+import HireNow from "./components/HireNow";
+import FindAJob from "./components/FindAJobs";
+import Footer from "./components/Footer";
 
 function App() {
     return (
