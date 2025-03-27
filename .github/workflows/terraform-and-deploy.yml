@@ -1,5 +1,11 @@
 name: Terraform & Deploy to Azure
 
+env:
+  HAS_DB_MIGRATION: ${{ vars.HAS_DB_MIGRATION }}
+  AZURE_WEBAPP_NAME: duuty-dev
+  AZURE_WEBAPP_PACKAGE_PATH: '.'  
+  DOTNET_VERSION: '9'  
+
 on:
   push:
     branches:
@@ -58,31 +64,81 @@ jobs:
           SQL_ADMIN_USERNAME: ${{ secrets.SQL_ADMIN_USERNAME }}
           SQL_ADMIN_PASSWORD: ${{ secrets.SQL_ADMIN_PASSWORD }}
 
-  deploy:
-    name: 'Deploy .NET App to Azure'
+  build:
+    name: 'Build .NET App & Run EF Core Migrations'
     needs: terraform
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup .NET 8
-        uses: actions/setup-dotnet@v3
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      # - name: Restore dependencies
-      #   run: dotnet restore
+      - name: Set up dependency caching for faster builds
+        uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
 
-      # - name: Build application
-      #   run: dotnet build --configuration Release --no-restore
+      - name: Build with dotnet
+        run: dotnet build DuutyApp/DuutyApp.sln --configuration Release
 
-      # - name: Publish application
-      #   run: dotnet publish -c Release -o ./publish
+      - name: Replace variables in appsettings.json
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: 'DuutyApp/DuutyApp.Server/appsettings.json'
+        env:
+          ConnectionStrings.DuutyAppDbContext: ${{ secrets.DATABASE_CONNECTION_STRING }}
+          JwtSettings.SecretKey: ${{ secrets.JWT_SECRET_KEY }}
+          SeedUserConfigs: ${{ secrets.SEED_USER_CONFIGS }}
+          TwilioSettings: ${{secrets.TWILIO_SETTINGS}}
+          
+      - name: dotnet publish
+        run: dotnet publish DuutyApp/DuutyApp.Server/DuutyApp.Server.csproj -c Release -o ${{env.DOTNET_ROOT}}/duuty
+        
+      - name: Install EF Core Tools
+        run: dotnet tool install --global dotnet-ef
+        
+      - name: Run EF Core Migrations
+        if: env.HAS_DB_MIGRATION == 'true'
+        run: |
+          # Run EF Core migrations (using the Azure App Service connection string or other methods)
+          dotnet-ef database update --project DuutyApp/DuutyApp.Data/DuutyApp.Data.csproj --startup-project DuutyApp/DuutyApp.Server/DuutyApp.Server.csproj --connection $DATABASE_URL
+        env:
+          DATABASE_URL: ${{ secrets.MIGRATION_DB_CONNECTION }}
 
-      # - name: Deploy to Azure Web App
-      #   uses: azure/webapps-deploy@v3
-      #   with:
-      #     app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
-      #     publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-      #     package: ./publish
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: duutyApp
+          path: ${{env.DOTNET_ROOT}}/duuty
+          if-no-files-found: error
+  deploy:
+      permissions:
+        contents: none
+      runs-on: ubuntu-latest
+      needs: build
+      environment:
+        name: 'Development'
+        url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+  
+      steps:
+        - name: Download artifact from build job
+          uses: actions/download-artifact@v4
+          with:
+            name: duutyApp
+  
+        - name: Deploy to Azure Web App
+          id: deploy-to-webapp
+          uses: azure/webapps-deploy@v3
+          with:
+            app-name: ${{ env.AZURE_WEBAPP_NAME }}
+            publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+            package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+            restart: true
+
