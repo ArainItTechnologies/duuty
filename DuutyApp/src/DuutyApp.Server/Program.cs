@@ -17,6 +17,8 @@ builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructure(configuration);
 builder.Services.AddControllers();
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddOpenApi();
 builder.Services.AddAuthentication()
     .AddBearerToken(IdentityConstants.BearerScheme);
 
@@ -24,6 +26,8 @@ var app = builder.Build();
 
 app.UseDefaultFiles();
 app.MapStaticAssets();
+
+app.MapOpenApi();
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
