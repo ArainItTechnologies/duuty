@@ -25,8 +25,6 @@ var app = builder.Build();
 app.UseDefaultFiles();
 app.MapStaticAssets();
 
-app.UseSwagger();
-app.UseSwaggerUI();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 
