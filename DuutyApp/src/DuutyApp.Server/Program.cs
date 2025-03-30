@@ -29,14 +29,14 @@ builder.Services.AddAuthentication()
 
 var app = builder.Build();
 
-app.UseDefaultFiles();
-app.MapStaticAssets();
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Duuty API v1"));
 }
+
+app.UseDefaultFiles();
+app.MapStaticAssets();
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
