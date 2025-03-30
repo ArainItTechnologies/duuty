@@ -2,6 +2,7 @@ using Application;
 using DataAccess.Identity;
 using Infrastructure;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -17,9 +18,12 @@ builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructure(configuration);
 builder.Services.AddControllers();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Duuty API", Version = "v1" });
+});
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddOpenApi();
+
 builder.Services.AddAuthentication()
     .AddBearerToken(IdentityConstants.BearerScheme);
 
@@ -30,9 +34,8 @@ app.MapStaticAssets();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
     app.UseSwagger();
-    app.UseSwaggerUI(options => options.SwaggerEndpoint("/openapi/v1.json", "Duuty V1"));
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Duuty API v1"));
 }
 
 app.UseHttpsRedirection();
