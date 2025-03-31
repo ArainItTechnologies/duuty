@@ -16,24 +16,21 @@ if (configuration is null)
 builder.Services.AddApplicationServices();
 // Include Infrastructure Dependency
 builder.Services.AddInfrastructure(configuration);
-builder.Services.AddControllers();
 
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Duuty API", Version = "v1" });
-});
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddSingleton<Swashbuckle.AspNetCore.Swagger.ISwaggerProvider>(sp =>
+    sp.GetRequiredService<Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator>());
 
 builder.Services.AddAuthentication()
     .AddBearerToken(IdentityConstants.BearerScheme);
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Duuty API v1"));
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseDefaultFiles();
 app.MapStaticAssets();
