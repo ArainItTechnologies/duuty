@@ -1,5 +1,6 @@
 using Application;
 using DataAccess.Identity;
+using DuutyApp.Server;
 using Infrastructure;
 using Microsoft.AspNetCore.Identity;
 
@@ -16,8 +17,7 @@ builder.Services.AddApplicationServices();
 // Include Infrastructure Dependency
 builder.Services.AddInfrastructure(configuration);
 builder.Services.AddControllers();
-builder.Services.AddSingleton<Swashbuckle.AspNetCore.Swagger.ISwaggerProvider>(sp =>
-    sp.GetRequiredService<Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator>());
+builder.Services.AddSingleton<Swashbuckle.AspNetCore.Swagger.ISwaggerProvider, SwaggerProvider>();
 builder.Services.AddSwaggerGen();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
