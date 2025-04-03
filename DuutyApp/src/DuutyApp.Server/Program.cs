@@ -17,23 +17,21 @@ builder.Services.AddApplicationServices();
 // Include Infrastructure Dependency
 builder.Services.AddInfrastructure(configuration);
 builder.Services.AddControllers();
-builder.Services.AddSingleton<Swashbuckle.AspNetCore.Swagger.ISwaggerProvider, SwaggerProvider>();
-builder.Services.AddSwaggerGen();
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddOpenApi();
+builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication()
     .AddBearerToken(IdentityConstants.BearerScheme);
 
 var app = builder.Build();
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
-    app.UseSwaggerUI(options => options.SwaggerEndpoint("/openapi/v1.json", "Duuty V1"));
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
-
-app.UseDefaultFiles();
-app.MapStaticAssets();
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
