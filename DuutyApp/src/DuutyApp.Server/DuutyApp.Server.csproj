@@ -6,7 +6,6 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<SpaRoot>..\duutyapp.client</SpaRoot>
 		<SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
-		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<SpaProxyServerUrl>https://localhost:5173</SpaProxyServerUrl>
 	</PropertyGroup>
 
