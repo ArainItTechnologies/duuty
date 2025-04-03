@@ -11,6 +11,7 @@ if (configuration is null)
 {
     throw new ArgumentNullException($"{nameof(configuration)}, cannot be null");
 }
+builder.Services.AddHealthChecks();
 
 // Include Application Dependency
 builder.Services.AddApplicationServices();
@@ -32,6 +33,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.MapHealthChecks("/health");
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
