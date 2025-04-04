@@ -1,0 +1,84 @@
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  dotnetSdkVersion: '9.0.x'
+  nodejsVersion: '21.x'
+  solutionPath: '$(System.DefaultWorkingDirectory)'  
+  serverProject: '$(solutionPath)/**/DuutyApp.Server.csproj'
+  clientProject: '$(solutionPath)/**/duutyapp.client.esproj'
+  artifactName: 'webapp'
+
+stages:
+- stage: Build
+  displayName: 'Build .NET React App'
+  jobs:
+  - job: BuildJob
+    displayName: 'Build, Test and Publish'
+    steps:
+    - task: UseDotNet@2
+      displayName: 'Install .NET 9.0 SDK'
+      inputs:
+        packageType: 'sdk'
+        version: '$(dotnetSdkVersion)'
+        
+    - task: NodeTool@0
+      displayName: 'Install Node.js'
+      inputs:
+        versionSpec: '$(nodejsVersion)'
+        
+    # Restore solution including both projects
+    - task: DotNetCoreCLI@2
+      displayName: 'Restore Solution'
+      inputs:
+        command: 'restore'
+        projects: '$(solutionPath)/**/*.{csproj,esproj}'
+    
+    # Build client project
+    - task: DotNetCoreCLI@2
+      displayName: 'Build Client Project'
+      inputs:
+        command: 'build'
+        projects: '$(clientProject)'
+        arguments: '--configuration $(buildConfiguration) --no-restore'
+    
+    # Build server project
+    - task: DotNetCoreCLI@2
+      displayName: 'Build Server Project'
+      inputs:
+        command: 'build'
+        projects: '$(serverProject)'
+        arguments: '--configuration $(buildConfiguration) --no-restore'
+      
+    # Run tests if any
+    - task: DotNetCoreCLI@2
+      displayName: 'Run Tests'
+      inputs:
+        command: 'test'
+        projects: '$(solutionPath)/**/*Tests.csproj'
+        arguments: '--configuration $(buildConfiguration)'
+      continueOnError: true
+      
+    # Publish the server project with the client output included
+    - task: DotNetCoreCLI@2
+      displayName: 'Publish .NET App'
+      inputs:
+        command: 'publish'
+        projects: '$(serverProject)'
+        arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/publish'
+        publishWebProjects: false
+        zipAfterPublish: true
+      
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Build Artifacts'
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/publish'
+        ArtifactName: '$(artifactName)'
+        publishLocation: 'Container'
