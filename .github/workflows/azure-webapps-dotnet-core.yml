@@ -8,7 +8,7 @@ env:
 
 on:
   push:
-    branches: [ "main", "develop", "open-api" ]
+    branches: [ "main", "develop"]
   workflow_dispatch:
 
 permissions:
