@@ -1,10 +1,10 @@
-﻿################################################################################
+################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
 **/.vs/**
 **/.idea/**
-**/.vs/DuutyApp
+**/.vs/**
 **/Properties/launchSettings.json
 
 /**/*.csproj.user
@@ -26,3 +26,9 @@ plan.out
 plan.json
 **/.terraform.lock.hcl
 **/*-lock.json
+
+
+**/PublishProfiles
+**/ServiceDependencies
+**/*.user
+**/*.Development.json
