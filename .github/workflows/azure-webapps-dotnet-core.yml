@@ -35,12 +35,12 @@ jobs:
             ${{ runner.os }}-nuget-
 
       - name: Build with dotnet
-        run: dotnet build DuutyApp/DuutyApp.sln --configuration Release
+        run: dotnet build DuutyApp.sln --configuration Release
 
       - name: Replace variables in appsettings.json
         uses: microsoft/variable-substitution@v1
         with:
-          files: 'DuutyApp/src/DuutyApp.Server/appsettings.json'
+          files: 'src/Web.Server/appsettings.json'
         env:
           ConnectionStrings.DuutyAppDbContext: ${{ secrets.DATABASE_CONNECTION_STRING }}
           JwtSettings.SecretKey: ${{ secrets.JWT_SECRET_KEY }}
@@ -49,7 +49,7 @@ jobs:
           SmtpConfig: ${{secrets.SMTP_CONFIG}}
           
       - name: dotnet publish
-        run: dotnet publish DuutyApp/src/DuutyApp.Server/DuutyApp.Server.csproj -c Release -o ${{env.DOTNET_ROOT}}/duuty
+        run: dotnet publish src/Web.Server/Web.Server.csproj -c Release -o ${{env.DOTNET_ROOT}}/duuty
         
       - name: Install EF Core Tools
         run: dotnet tool install --global dotnet-ef
@@ -58,7 +58,7 @@ jobs:
         if: env.HAS_DB_MIGRATION == 'true'
         run: |
           # Run EF Core migrations (using the Azure App Service connection string or other methods)
-          dotnet-ef database update --project DuutyApp/src/Infrastructure/Infrastructure.csproj --startup-project DuutyApp/src/DuutyApp.Server/DuutyApp.Server.csproj --connection $DATABASE_URL
+          dotnet-ef database update --project src/Infrastructure/Infrastructure.csproj --startup-project src/Web.Server/Web.Server.csproj --connection $DATABASE_URL
         env:
           DATABASE_URL: ${{ secrets.MIGRATION_DB_CONNECTION }}
 
