@@ -1,6 +1,0 @@
-@DuutyApp.Server_HostAddress = http://localhost:5263
-
-GET {{DuutyApp.Server_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
