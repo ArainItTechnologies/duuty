@@ -2,7 +2,7 @@ name: CI Build and Deploy To Azure
 
 env:
   HAS_DB_MIGRATION: ${{ vars.HAS_DB_MIGRATION }}
-  AZURE_WEBAPP_NAME: duuty-stg
+  AZURE_WEBAPP_NAME: duuty
   AZURE_WEBAPP_PACKAGE_PATH: '.'  
   DOTNET_VERSION: '9'             
 
