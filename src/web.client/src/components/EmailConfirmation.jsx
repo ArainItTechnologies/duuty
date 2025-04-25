@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { confirmEmail } from "../services/auth";
-import LoadingModal from "./custom/Loading";
+import Loading from "./custom/Loading";
 import Toast from "./custom/Toast";
 
 const EmailConfirmation = () => {
@@ -25,7 +25,7 @@ const EmailConfirmation = () => {
 
   return (
     <div className="p-4">
-      {isLoading && <LoadingModal />}
+      {isLoading && <Loading />}
       {!isLoading && (
         <p className="text-center text-xl font-medium text-green-700">
           {confirmed ? (

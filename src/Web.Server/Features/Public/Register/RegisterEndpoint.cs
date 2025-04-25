@@ -1,7 +1,6 @@
 ﻿using Application;
 using DataAccess.Identity;
 using FastEndpoints;
-using Infrastructure.DTO.UserManagement;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -30,13 +29,6 @@ public class RegisterEndpoint : Endpoint<RegisterModel, RegistrationResponse>
     }
     public override async Task HandleAsync(RegisterModel model, CancellationToken ct)
     {
-        if (string.IsNullOrWhiteSpace(model.Email) && string.IsNullOrWhiteSpace(model.PhoneNumber))
-        {
-            AddError("emailOrPhone", "Either email or phone number is required.");
-            await SendErrorsAsync(cancellation: ct);
-            return;
-        }
-
         var userName = !string.IsNullOrWhiteSpace(model.Email)
             ? model.Email
             : model.PhoneNumber;
@@ -56,13 +48,11 @@ public class RegisterEndpoint : Endpoint<RegisterModel, RegistrationResponse>
             return;
         }
 
-        string encodedToken = string.Empty;
-
         if (!string.IsNullOrWhiteSpace(model.Email))
         {
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             
-            encodedToken = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
+            var encodedToken = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
 
             var confirmationLink = $"{_configuration["ClientAppBaseUrl"]}/confirm?userId={user.Id}&token={encodedToken}";
 

@@ -40,6 +40,8 @@ public class ApplicationDbContext : IdentityDbContext<DuutyUser, DuutyRole, stri
             .IsUnique()
             .HasFilter("[IsCurrentAddress] = 1");
 
+        modelBuilder.ApplyConfiguration(new OrganisationConfiguration());
+        modelBuilder.ApplyConfiguration(new AddressConfiguration());
         modelBuilder.ApplyConfiguration(new RoleConfiguration());
         modelBuilder.ApplyConfiguration(new UserConfiguration());
         modelBuilder.ApplyConfiguration(new UserRoleConfiguration());

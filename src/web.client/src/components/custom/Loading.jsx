@@ -1,4 +1,4 @@
-const LoadingModal = () => {
+const Loading = () => {
   return (
     <div className="fixed top-0 left-0 w-full h-[30vh] bg-white bg-opacity-90 z-50 flex items-center justify-center">
       <div className="flex flex-col items-center">
@@ -9,4 +9,4 @@ const LoadingModal = () => {
   );
 };
 
-export default LoadingModal;
+export default Loading;

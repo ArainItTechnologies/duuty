@@ -39,11 +39,6 @@ public static class DependencyInjection
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
 
-        services.Configure<DataProtectionTokenProviderOptions>(opt =>
-        {
-            opt.TokenLifespan = TimeSpan.FromMinutes(60);
-        });
-
         services.Configure<IdentityOptions>(options =>
         {
             // Password settings.

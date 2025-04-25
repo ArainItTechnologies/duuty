@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.DTO.UserManagement;
+﻿namespace Web.Server.Features.Public.Register;
 
 public class RegistrationResponse
 {
