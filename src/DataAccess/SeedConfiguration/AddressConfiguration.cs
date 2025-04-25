@@ -14,6 +14,7 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
                 AddressLine1 = "95 Manor Road",
                 AddressLine2 = null,
                 City = "Newent",
+                StateOrProvince = "Gloucestershire",
                 PostalCode = "GL18 1UJ",
                 Country = "United Kingdom",
                 OrganisationId = Guid.Parse(DuutySeedConstants.OrganisationId)
