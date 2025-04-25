@@ -52,7 +52,7 @@ jobs:
         run: dotnet publish src/Web.Server/Web.Server.csproj -c Release -o ${{env.DOTNET_ROOT}}/duuty
         
       - name: Install EF Core Tools
-        run: dotnet tool install --global dotnet-ef
+        run: dotnet tool install --global dotnet-ef --version 8.0.0
         
       - name: Run EF Core Migrations
         if: env.HAS_DB_MIGRATION == 'true'
