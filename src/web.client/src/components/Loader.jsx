@@ -1,7 +1,7 @@
 import React from "react";
 import { useAppState } from "../hooks/Hooks";
 
-function Loader() {
+const Loader = () => {
   const { isLoading } = useAppState();
 
     return isLoading && (

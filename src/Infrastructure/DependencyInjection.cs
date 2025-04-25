@@ -28,6 +28,7 @@ public static class DependencyInjection
         ));
 
         services.Configure<SmtpConfig>(configuration.GetSection("SmtpConfig"));
+        services.AddHttpContextAccessor();
         services.AddTransient<IEmailSender, EmailSender>();
         services.AddSingleton<ICurrentDateTimeProvider, CurrentDateTimeProvider>();
 
@@ -36,7 +37,12 @@ public static class DependencyInjection
             options.SignIn.RequireConfirmedEmail = true;
         })
         .AddEntityFrameworkStores<ApplicationDbContext>()
-        .AddApiEndpoints();
+        .AddDefaultTokenProviders();
+
+        services.Configure<DataProtectionTokenProviderOptions>(opt =>
+        {
+            opt.TokenLifespan = TimeSpan.FromMinutes(60);
+        });
 
         services.Configure<IdentityOptions>(options =>
         {
@@ -55,7 +61,7 @@ public static class DependencyInjection
 
             // User settings.
             options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-            options.User.RequireUniqueEmail = true;
+            options.User.RequireUniqueEmail = false;
         });
 
         services.AddAuthentication(options =>

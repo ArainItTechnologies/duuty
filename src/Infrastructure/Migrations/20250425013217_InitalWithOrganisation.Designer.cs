@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250414230137_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250425013217_InitalWithOrganisation")]
+    partial class InitalWithOrganisation
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,68 @@ namespace Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("DataAccess.Entities.Address", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AddressLine1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddressLine2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsCurrentAddress")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("OrganisationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StateOrProvince")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganisationId", "IsCurrentAddress")
+                        .IsUnique()
+                        .HasFilter("[IsCurrentAddress] = 1");
+
+                    b.ToTable("Addresses");
+                });
+
+            modelBuilder.Entity("DataAccess.Entities.Organisation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AddressId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Organisations");
+                });
 
             modelBuilder.Entity("DataAccess.Identity.DuutyRole", b =>
                 {
@@ -53,6 +115,36 @@ namespace Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "A1B2C3D4-E5F6-7890-1234-56789ABCDEF0",
+                            Description = "Administrator role with full access to the system.",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "B2C3D4E5-F678-9012-3456-789ABCDEFA1B",
+                            Description = "Standard user role with limited access to the system.",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "C3D4E5F6-7890-1234-5678-9ABCDEFA1B2C",
+                            Description = "Employer role with access to manage job postings and applications.",
+                            Name = "Employer",
+                            NormalizedName = "EMPLOYER"
+                        },
+                        new
+                        {
+                            Id = "D4E5F678-9012-3456-789A-BCDEFA1B2C3D",
+                            Description = "Manager role with access to oversee operations and manage teams.",
+                            Name = "Manager",
+                            NormalizedName = "MANAGER"
+                        });
                 });
 
             modelBuilder.Entity("DataAccess.Identity.DuutyUser", b =>
@@ -62,6 +154,9 @@ namespace Infrastructure.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<DateTimeOffset?>("Birthday")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -90,6 +185,9 @@ namespace Infrastructure.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<Guid?>("OrganisationId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -120,7 +218,43 @@ namespace Infrastructure.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
+                    b.HasIndex("OrganisationId");
+
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "10000000-0000-0000-0000-000000000001",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "bba20806-0be1-4ac7-bfaf-12f43609aa9c",
+                            Email = "admin@duuty.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@DUUTY.COM",
+                            NormalizedUserName = "ADMIN@DUUTY.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPCr01RgG82SuYhPnCEwGgzvvYqhQ3vmcN39uxioViMHdT3VBjnrBfh4ZojzSl3RTg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "171b7119-dc1c-456f-9659-4352b6803306",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@duuty.com"
+                        },
+                        new
+                        {
+                            Id = "10000000-0000-0000-0000-000000000002",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "e07b3534-a3a6-459d-94cb-2de05b92596b",
+                            Email = "employer@duuty.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "EMPLOYER@DUUTY.COM",
+                            NormalizedUserName = "EMPLOYER@DUUTY.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEE38uJ4YJPLZ4VA/r02Q66R/Ghhzqi7Eb/cAhMsPIfPnmXBJ9kZtR8swQNfc8CE//A==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "6c290c7e-083e-4911-933f-2390d03ba270",
+                            TwoFactorEnabled = false,
+                            UserName = "employer@duuty.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -208,6 +342,18 @@ namespace Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "10000000-0000-0000-0000-000000000001",
+                            RoleId = "A1B2C3D4-E5F6-7890-1234-56789ABCDEF0"
+                        },
+                        new
+                        {
+                            UserId = "10000000-0000-0000-0000-000000000002",
+                            RoleId = "C3D4E5F6-7890-1234-5678-9ABCDEFA1B2C"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -227,6 +373,27 @@ namespace Infrastructure.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("DataAccess.Entities.Address", b =>
+                {
+                    b.HasOne("DataAccess.Entities.Organisation", "Organisation")
+                        .WithMany("Addresses")
+                        .HasForeignKey("OrganisationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Organisation");
+                });
+
+            modelBuilder.Entity("DataAccess.Identity.DuutyUser", b =>
+                {
+                    b.HasOne("DataAccess.Entities.Organisation", "Organisation")
+                        .WithMany("Users")
+                        .HasForeignKey("OrganisationId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Organisation");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -278,6 +445,13 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DataAccess.Entities.Organisation", b =>
+                {
+                    b.Navigation("Addresses");
+
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }
