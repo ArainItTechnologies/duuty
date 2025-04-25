@@ -3,20 +3,11 @@ import React, { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { AlertContext } from "../context/AlertContext";
 
-export const useUser = () => {
-  const {
-    state: { user },
-    dispatchUser,
-  } = useContext(UserContext);
-
-  return { user, dispatchUser };
-};
+export const useUser = () => useContext(UserContext);
 
 export const useAppState = () => {
-  const {
-    state: { isLoading, isError },
-  } = useContext(UserContext);
-  return { isLoading, isError };
+
+  return { };
 };
 
 export const useAlert = () => {

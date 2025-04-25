@@ -1,33 +1,90 @@
-import React from "react";
-import { useAlert, useUser } from "../hooks/Hooks";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useUser } from "../hooks/Hooks";
 
-function Profile({ username, email, password }) {
-  const { dispatchAlert } = useAlert();
-  const { dispatchUser } = useUser();
+const Profile = () => {
+  const { user } = useUser();
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState({
+    email: user.email,
+    username: user.username,
+  });
 
-  const handleLogout = () => {
-    dispatchUser({ type: "LOG_OUT" });
-    dispatchAlert({
-      type: "SHOW",
-      payload: "Log out",
-      variant: "Danger",
-    });
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSave = () => {
+    // TODO: Add API call to save profile data
+    console.log("Saving:", formData);
+    setIsEditing(false);
   };
 
   return (
-    <div className="space-y-3 mt-5">
-      
+    <div className="space-y-6 mt-5 max-w-md mx-auto">
       <div className="h-20 w-20 rounded-full bg-gray-500 mx-auto"></div>
-      <div className="flex justify-center gap-2 items-center">
-        <p className="text-center font-semibold text-xl">{username}</p>{" "}
-        <Link to="/profile/edit" className="p-2 bg-gray-300 rounded-lg">Edit</Link>
+
+      <div className="flex justify-between items-center">
+        <h2 className="text-xl font-semibold">Profile</h2>
+        <button
+          className="px-4 py-1 bg-gray-300 rounded-lg"
+          onClick={() => setIsEditing(prev => !prev)}
+        >
+          {isEditing ? "Cancel" : "Edit"}
+        </button>
       </div>
-      <p>Email: {email}</p>
-      {password}
-      <p className="h-96"></p>
+
+      <div className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium">Email</label>
+          {isEditing ? (
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border rounded-md"
+            />
+          ) : (
+            <p>{user.email}</p>
+          )}
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium">Username</label>
+          {isEditing ? (
+            <input
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border rounded-md"
+            />
+          ) : (
+            <p>{user.name}</p>
+          )}
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium">Roles</label>
+          <ul className="list-disc list-inside">
+            {user.roles?.map((role, index) => (
+              <li key={index}>{role}</li>
+            ))}
+          </ul>
+        </div>
+
+        {isEditing && (
+          <button
+            onClick={handleSave}
+            className="mt-4 w-full bg-blue-600 text-white py-2 rounded-md"
+          >
+            Save Changes
+          </button>
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default Profile;

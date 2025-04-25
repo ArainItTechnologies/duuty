@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import {
   Dialog,
   DialogBackdrop,
@@ -11,131 +12,149 @@ import {
   Tab,
   TabGroup,
   TabList,
-} from '@headlessui/react'
-import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import LogoSrc from '../assets/logo.png'
+} from "@headlessui/react";
+import {
+  Bars3Icon,
+  MagnifyingGlassIcon,
+  UserCircleIcon,
+  ArrowRightStartOnRectangleIcon,
+  Cog6ToothIcon,
+  IdentificationIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
+import LogoSrc from "../assets/logo.png";
+
+import { useUser } from "../hooks/Hooks";
 
 const navigation = {
   categories: [
     {
-      id: 'employer',
-      name: 'Employer',
+      id: "employer",
+      name: "Employer",
       featured: [
         {
-          name: 'New Arrivals',
-          href: '#',
+          name: "New Arrivals",
+          href: "#",
           imageSrc:
-            'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
-          imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
+            "https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+          imageAlt:
+            "Drawstring top with elastic loop closure and textured interior padding.",
         },
         {
-          name: 'Artwork Tees',
-          href: '#',
-          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-02-image-card-06.jpg',
+          name: "Artwork Tees",
+          href: "#",
+          imageSrc:
+            "https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-02-image-card-06.jpg",
           imageAlt:
-            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
+            "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
         },
       ],
       sections: [
         {
-          id: 'clothing',
-          name: 'Clothing',
+          id: "clothing",
+          name: "Clothing",
           items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
+            { name: "Tops", href: "#" },
+            { name: "Pants", href: "#" },
+            { name: "Sweaters", href: "#" },
+            { name: "T-Shirts", href: "#" },
+            { name: "Jackets", href: "#" },
+            { name: "Activewear", href: "#" },
+            { name: "Browse All", href: "#" },
           ],
         },
         {
-          id: 'accessories',
-          name: 'Accessories',
+          id: "accessories",
+          name: "Accessories",
           items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
+            { name: "Watches", href: "#" },
+            { name: "Wallets", href: "#" },
+            { name: "Bags", href: "#" },
+            { name: "Sunglasses", href: "#" },
+            { name: "Hats", href: "#" },
+            { name: "Belts", href: "#" },
           ],
         },
         {
-          id: 'brands',
-          name: 'Brands',
+          id: "brands",
+          name: "Brands",
           items: [
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
+            { name: "Re-Arranged", href: "#" },
+            { name: "Counterfeit", href: "#" },
+            { name: "Full Nelson", href: "#" },
+            { name: "My Way", href: "#" },
           ],
         },
       ],
     },
     {
-      id: 'employee',
-      name: 'Employee',
+      id: "employee",
+      name: "Employee",
       featured: [
         {
-          name: 'New Arrivals',
-          href: '#',
+          name: "New Arrivals",
+          href: "#",
           imageSrc:
-            'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
-          imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
+            "https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+          imageAlt:
+            "Drawstring top with elastic loop closure and textured interior padding.",
         },
         {
-          name: 'Artwork Tees',
-          href: '#',
-          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-02-image-card-06.jpg',
+          name: "Artwork Tees",
+          href: "#",
+          imageSrc:
+            "https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-02-image-card-06.jpg",
           imageAlt:
-            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
+            "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
         },
       ],
       sections: [
         {
-          id: 'clothing',
-          name: 'Clothing',
+          id: "clothing",
+          name: "Clothing",
           items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
+            { name: "Tops", href: "#" },
+            { name: "Pants", href: "#" },
+            { name: "Sweaters", href: "#" },
+            { name: "T-Shirts", href: "#" },
+            { name: "Jackets", href: "#" },
+            { name: "Activewear", href: "#" },
+            { name: "Browse All", href: "#" },
           ],
         },
         {
-          id: 'accessories',
-          name: 'Accessories',
+          id: "accessories",
+          name: "Accessories",
           items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
+            { name: "Watches", href: "#" },
+            { name: "Wallets", href: "#" },
+            { name: "Bags", href: "#" },
+            { name: "Sunglasses", href: "#" },
+            { name: "Hats", href: "#" },
+            { name: "Belts", href: "#" },
           ],
         },
         {
-          id: 'brands',
-          name: 'Brands',
+          id: "brands",
+          name: "Brands",
           items: [
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
+            { name: "Re-Arranged", href: "#" },
+            { name: "Counterfeit", href: "#" },
+            { name: "Full Nelson", href: "#" },
+            { name: "My Way", href: "#" },
           ],
         },
       ],
     },
-  ]
-}
+  ],
+};
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
+  const { user, setUser } = useUser();
+  const [open, setOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   return (
     <div className="bg-white">
@@ -181,7 +200,10 @@ export default function Navbar() {
 
             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
               <div className="flow-root">
-                <Link to="/login" className="-m-2 block p-2 font-medium text-gray-900">
+                <Link
+                  to="/login"
+                  className="-m-2 block p-2 font-medium text-gray-900"
+                >
                   Sign in
                 </Link>
               </div>
@@ -195,27 +217,32 @@ export default function Navbar() {
           India's first job portal for kitchen staff recruitment
         </p>
 
-        <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <nav
+          aria-label="Top"
+          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+        >
           <div className="border-b border-gray-200">
             <div className="flex h-16 items-center justify-between">
               {/* Logo */}
               <div className="flex">
                 <Link to="/">
                   <span className="sr-only">Your Company</span>
-                  <img
-                    alt=""
-                    src={LogoSrc}
-                    className="h-8 w-auto"
-                  />
+                  <img alt="" src={LogoSrc} className="h-8 w-auto" />
                 </Link>
               </div>
 
               {/* Mobile nav buttons */}
               <div className="flex items-center space-x-2 lg:hidden">
-                <Link to="/find-job" className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary">
+                <Link
+                  to="/find-job"
+                  className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary"
+                >
                   Find a Job
                 </Link>
-                <Link to="/hire" className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary">
+                <Link
+                  to="/hire"
+                  className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary"
+                >
                   Hire Now
                 </Link>
                 <button
@@ -245,21 +272,33 @@ export default function Navbar() {
                         className="absolute inset-x-0 top-full text-sm text-gray-500 transition data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
                       >
                         {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
-                        <div aria-hidden="true" className="absolute inset-0 top-1/2 bg-white shadow-sm" />
+                        <div
+                          aria-hidden="true"
+                          className="absolute inset-0 top-1/2 bg-white shadow-sm"
+                        />
 
                         <div className="relative bg-white">
                           <div className="mx-auto max-w-7xl px-8">
                             <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
                               <div className="col-start-2 grid grid-cols-2 gap-x-8">
                                 {category.featured.map((item) => (
-                                  <div key={item.name} className="group relative text-base sm:text-sm">
+                                  <div
+                                    key={item.name}
+                                    className="group relative text-base sm:text-sm"
+                                  >
                                     <img
                                       alt={item.imageAlt}
                                       src={item.imageSrc}
                                       className="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75"
                                     />
-                                    <a href={item.href} className="mt-6 block font-medium text-gray-900">
-                                      <span aria-hidden="true" className="absolute inset-0 z-10" />
+                                    <a
+                                      href={item.href}
+                                      className="mt-6 block font-medium text-gray-900"
+                                    >
+                                      <span
+                                        aria-hidden="true"
+                                        className="absolute inset-0 z-10"
+                                      />
                                       {item.name}
                                     </a>
                                     <p aria-hidden="true" className="mt-1">
@@ -271,7 +310,10 @@ export default function Navbar() {
                               <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
                                 {category.sections.map((section) => (
                                   <div key={section.name}>
-                                    <p id={`${section.name}-heading`} className="font-medium text-gray-900">
+                                    <p
+                                      id={`${section.name}-heading`}
+                                      className="font-medium text-gray-900"
+                                    >
                                       {section.name}
                                     </p>
                                     <ul
@@ -281,7 +323,10 @@ export default function Navbar() {
                                     >
                                       {section.items.map((item) => (
                                         <li key={item.name} className="flex">
-                                          <a href={item.href} className="hover:text-gray-800">
+                                          <a
+                                            href={item.href}
+                                            className="hover:text-gray-800"
+                                          >
                                             {item.name}
                                           </a>
                                         </li>
@@ -306,20 +351,71 @@ export default function Navbar() {
                   <MagnifyingGlassIcon aria-hidden="true" className="size-6" />
                 </a>
                 <span aria-hidden="true" className="h-6 w-px bg-gray-200" />
-                <Link to="/find-job" className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary">
+                <Link
+                  to="/find-job"
+                  className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary"
+                >
                   Find a Job
                 </Link>
-                <Link to="/hire" className="bg-white text-primary border border-primary py-2 px-4 rounded hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary">
+                <Link
+                  to="/hire"
+                  className="bg-white text-primary border border-primary py-2 px-4 rounded hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary"
+                >
                   Hire Now
                 </Link>
-                <Link to="/login" className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary inline-block">
-                  Sign in/Sign up
-                </Link>
+                {/* Conditionally show based on user */}
+                {user == null ? (
+                  <Link
+                    to="/login"
+                    className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary inline-block"
+                  >
+                    Sign in / Sign up
+                  </Link>
+                ) : (
+                  <div className="relative">
+                    <button
+                      onClick={() => setDropdownOpen(!dropdownOpen)}
+                      className="p-2 text-gray-600 hover:text-gray-800 focus:outline-none"
+                    >
+                      <UserCircleIcon className="h-8 w-8 text-primary" />
+                    </button>
+
+                    {dropdownOpen && (
+                      <div className="absolute right-0 mt-2 w-56 bg-white rounded shadow-lg z-50">
+                        <Link
+                          to="/profile"
+                          className="flex items-center gap-2 px-4 py-2 text-primary hover:bg-gray-100"
+                        >
+                          <IdentificationIcon className="h-5 w-5" />
+                          Profile
+                        </Link>
+                        <Link
+                          to="/change-password"
+                          className="flex items-center gap-2 px-4 py-2 text-primary hover:bg-gray-100"
+                        >
+                          <Cog6ToothIcon className="h-5 w-5" />
+                          Change Password
+                        </Link>
+                        <hr className="my-1 border-gray-200" />
+                        <button
+                          onClick={() => {
+                            setUser(null);
+                            navigate("/login"); // or use navigate if inside react-router
+                          }}
+                          className="flex items-center gap-2 px-4 py-2 w-full text-left text-primary hover:bg-gray-100"
+                        >
+                          <ArrowRightStartOnRectangleIcon className="h-5 w-5" />
+                          Logout
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </nav>
       </header>
     </div>
-  )
+  );
 }

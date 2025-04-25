@@ -22,6 +22,89 @@ namespace Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("DataAccess.Entities.Address", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AddressLine1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddressLine2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsCurrentAddress")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("OrganisationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StateOrProvince")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganisationId", "IsCurrentAddress")
+                        .IsUnique()
+                        .HasFilter("[IsCurrentAddress] = 1");
+
+                    b.ToTable("Addresses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c8c40fb6-fa19-4d9f-9e27-09b91b905945"),
+                            AddressLine1 = "95 Manor Road",
+                            City = "Newent",
+                            Country = "United Kingdom",
+                            IsCurrentAddress = false,
+                            OrganisationId = new Guid("bf1bcda8-37ea-48aa-accc-db220d1be1f8"),
+                            PostalCode = "GL18 1UJ",
+                            StateOrProvince = "Gloucestershire"
+                        });
+                });
+
+            modelBuilder.Entity("DataAccess.Entities.Organisation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AddressId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Organisations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("bf1bcda8-37ea-48aa-accc-db220d1be1f8"),
+                            AddressId = new Guid("c8c40fb6-fa19-4d9f-9e27-09b91b905945"),
+                            Name = "Arain IT Technologies"
+                        });
+                });
+
             modelBuilder.Entity("DataAccess.Identity.DuutyRole", b =>
                 {
                     b.Property<string>("Id")
@@ -90,6 +173,9 @@ namespace Infrastructure.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<DateTimeOffset?>("Birthday")
+                        .HasColumnType("datetimeoffset");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -117,6 +203,9 @@ namespace Infrastructure.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<Guid?>("OrganisationId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -147,6 +236,8 @@ namespace Infrastructure.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
+                    b.HasIndex("OrganisationId");
+
                     b.ToTable("AspNetUsers", (string)null);
 
                     b.HasData(
@@ -154,15 +245,15 @@ namespace Infrastructure.Migrations
                         {
                             Id = "10000000-0000-0000-0000-000000000001",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "02489656-015a-46a1-b9cb-dd7adb942e75",
+                            ConcurrencyStamp = "ec17b3ad-325c-4358-a478-24c2fddf9f0b",
                             Email = "admin@duuty.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@DUUTY.COM",
                             NormalizedUserName = "ADMIN@DUUTY.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEENtPO0/yiKeA2/2k8ax0l/vqcEQW9vPIODgXgonrm763IpUaWK2rwbiyzr5cE6vgQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFscWxBWA791Bx6uLxdcSE1AYLP499wzDJovZyuC/pTDnCHvRaw46jiasdhMDUm+eA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "db34d3fa-888b-492e-ab80-55248b816feb",
+                            SecurityStamp = "9e48f822-851a-45df-88f7-9686c64934fc",
                             TwoFactorEnabled = false,
                             UserName = "admin@duuty.com"
                         },
@@ -170,15 +261,15 @@ namespace Infrastructure.Migrations
                         {
                             Id = "10000000-0000-0000-0000-000000000002",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "36dc0dae-d9b8-4947-9f15-495d4f61ab48",
+                            ConcurrencyStamp = "a854cf8e-034c-4c3c-9d1b-d320daaf30ad",
                             Email = "employer@duuty.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "EMPLOYER@DUUTY.COM",
                             NormalizedUserName = "EMPLOYER@DUUTY.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEP2LEvwyLpou3iIoNP+OsVzx2Kg3LZgleJ5EK+31gTcZvfKwOt1TQ91xIHxQJDBTEg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJNBfFMQqK9zNibmNHq4Wahf4RpVPfjm2ICw7h2E3ej7vH/T3ABVVQqrP+zJUE7Z4w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7a9214ac-5b5d-4d7c-ad5b-15a68d571fb1",
+                            SecurityStamp = "3fae05a5-7493-4a41-b377-7e25c7728403",
                             TwoFactorEnabled = false,
                             UserName = "employer@duuty.com"
                         });
@@ -302,6 +393,27 @@ namespace Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("DataAccess.Entities.Address", b =>
+                {
+                    b.HasOne("DataAccess.Entities.Organisation", "Organisation")
+                        .WithMany("Addresses")
+                        .HasForeignKey("OrganisationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Organisation");
+                });
+
+            modelBuilder.Entity("DataAccess.Identity.DuutyUser", b =>
+                {
+                    b.HasOne("DataAccess.Entities.Organisation", "Organisation")
+                        .WithMany("Users")
+                        .HasForeignKey("OrganisationId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Organisation");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("DataAccess.Identity.DuutyRole", null)
@@ -351,6 +463,13 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DataAccess.Entities.Organisation", b =>
+                {
+                    b.Navigation("Addresses");
+
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }
