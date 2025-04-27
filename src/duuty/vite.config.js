@@ -8,10 +8,7 @@ import path from 'path';
 import child_process from 'child_process';
 import { env } from 'process';
 
-const baseFolder =
-    env.APPDATA !== undefined && env.APPDATA !== ''
-        ? `${env.APPDATA}/ASP.NET/https`
-        : `${env.HOME}/.aspnet/https`;
+const baseFolder = `/.duuty/https`;
 
 const certificateName = "duuty";
 const certFilePath = path.join(baseFolder, `${certificateName}.pem`);
@@ -35,12 +32,10 @@ if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
     }
 }
 
-const target = 'https://localhost:7208';
-
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [plugin(),
-    tailwindcss()],
+        tailwindcss()],
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url))
@@ -49,9 +44,14 @@ export default defineConfig({
     server: {
         proxy: {
             '/api': {
-                target: `${target}`,
+                target: 'https://localhost:7208',
                 changeOrigin: true,
-                secure: false
+                secure: false,
+            },
+            '/api/duuty': {
+                target: "https://localhost:54304",
+                changeOrigin: true,
+                secure: false,
             }
         },
         port: 5173,
