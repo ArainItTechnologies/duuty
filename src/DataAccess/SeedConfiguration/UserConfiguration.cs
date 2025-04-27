@@ -4,13 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataAccess.SeedConfiguration;
-public class UserConfiguration : IEntityTypeConfiguration<DuutyUser>
-{
-    public void Configure(EntityTypeBuilder<DuutyUser> builder)
-    {
-        var hasher = new PasswordHasher<DuutyUser>();
 
-        var adminUser = new DuutyUser
+public class UserConfiguration : IEntityTypeConfiguration<ArainUser>
+{
+    public void Configure(EntityTypeBuilder<ArainUser> builder)
+    {
+        var hasher = new PasswordHasher<ArainUser>();
+
+        var adminUser = new ArainUser
         {
             Id = DuutySeedConstants.AdminUserId,
             UserName = "admin@duuty.com",
@@ -22,7 +23,7 @@ public class UserConfiguration : IEntityTypeConfiguration<DuutyUser>
         };
         adminUser.PasswordHash = hasher.HashPassword(adminUser, "Admin@123");
 
-        var employerUser = new DuutyUser
+        var employerUser = new ArainUser
         {
             Id = DuutySeedConstants.EmployerUserId,
             UserName = "employer@duuty.com",

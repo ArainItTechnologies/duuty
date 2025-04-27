@@ -11,20 +11,7 @@ if (configuration is null)
     throw new ArgumentNullException($"{nameof(configuration)}, cannot be null");
 }
 
-// Add services to the container.
 builder.Services.AddHealthChecks();
-builder.Services.AddFastEndpoints();
-
-// Include Application Dependency
-builder.Services.AddApplicationServices()
-                .AddInfrastructure(configuration);
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddAuthorization();
-builder.Services.AddAuthentication()
-    .AddBearerToken(IdentityConstants.BearerScheme);
 
 var app = builder.Build();
 
@@ -41,10 +28,5 @@ if (app.Environment.IsDevelopment())
 app.MapHealthChecks("/health");
 app.UseHttpsRedirection();
 
-app.UseAuthentication();
-
-app.UseAuthorization();
-
 app.MapFallbackToFile("/index.html");
-app.UseFastEndpoints();
 app.Run();

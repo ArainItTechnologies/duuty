@@ -8,6 +8,6 @@ public class Organisation
     public string Name { get; set; }
     public Guid AddressId { get; set; }
     public virtual ICollection<Address> Addresses { get; set; }
-    public virtual ICollection<DuutyUser> Users { get; set; }
+    public virtual ICollection<ArainUser> Users { get; set; }
 }
 

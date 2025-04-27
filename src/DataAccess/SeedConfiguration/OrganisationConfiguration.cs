@@ -3,7 +3,7 @@ using DataAccess.SeedConfiguration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.SeedConfiguration;
+namespace DataAccess.SeedConfiguration;
 
 public class OrganisationConfiguration : IEntityTypeConfiguration<Organisation>
 {

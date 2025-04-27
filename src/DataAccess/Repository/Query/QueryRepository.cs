@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Domain.Repository.Query;
-using Infrastructure.Data;
+using DataAccess;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repository.Query;

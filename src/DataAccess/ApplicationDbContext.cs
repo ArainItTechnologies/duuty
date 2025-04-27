@@ -1,13 +1,12 @@
 ﻿using DataAccess.Entities;
 using DataAccess.Identity;
 using DataAccess.SeedConfiguration;
-using Infrastructure.SeedConfiguration;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Data;
+namespace DataAccess;
 
-public class ApplicationDbContext : IdentityDbContext<DuutyUser, DuutyRole, string>
+public class ApplicationDbContext : IdentityDbContext<ArainUser, ArainRole, string>
 {
     public ApplicationDbContext(DbContextOptions options) : base(options)
     {
@@ -21,7 +20,7 @@ public class ApplicationDbContext : IdentityDbContext<DuutyUser, DuutyRole, stri
         base.OnModelCreating(modelBuilder);
 
         // Organisation → DuutyUser (1-to-many)
-        modelBuilder.Entity<DuutyUser>()
+        modelBuilder.Entity<ArainUser>()
             .HasOne(u => u.Organisation)
             .WithMany(x => x.Users)
             .HasForeignKey(u => u.OrganisationId)
