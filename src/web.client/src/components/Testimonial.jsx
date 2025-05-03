@@ -40,7 +40,7 @@ const TestimonialSection = () => {
   };
 
   return (
-    <section id="testimonials" class="testimonial-section dark:bg-gray-900 py-[50px] sm:py-[70px] md:py-[100px]">
+    <section id="testimonials" class="testimonial-section py-[50px] sm:py-[70px] md:py-[100px]">
         <div class="container-wrapper mx-auto">
             <div class="flex flex-col lg:flex-row items-center">
                 <div className="lg:w-1/2 w-full">

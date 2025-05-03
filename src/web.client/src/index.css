@@ -1,5 +1,7 @@
 @import "tailwindcss";
-@config "../tailwind.config.cjs";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @font-face {
     font-family: 'AvenirNext';
