@@ -228,7 +228,7 @@ export default function Navbar() {
 
               {/* Mobile nav buttons */}
               <div className="flex items-center space-x-2 lg:hidden">
-                <Link to="/find-job" className="text-[12px] text-white font-medium inline-block rounded-[11px] bg-linear-(--gradient-bg) py-2 px-4 border-1 border-transparent mr-[12px]">
+                <Link to="/find-job" className="text-[12px] text-white font-medium inline-block rounded-[11px] bg-linear-(--gradient-bg) py-2 px-4 mr-[12px]">
                   Find a Job
                 </Link>
                 <Link to="/hire" className="text-[12px] text-[#3B31FF] font-medium inline-block rounded-[11px] py-2 px-4 border-1 border-[#3B31FF]">
@@ -317,7 +317,7 @@ export default function Navbar() {
                   </div>
                 </div>
 
-                <Link to="/find-job" className="text-[15px] text-white font-medium inline-block rounded-[11px] bg-linear-(--gradient-bg) px-[25px] py-[10px] border-1 border-transparent mr-[12px]">
+                <Link to="/find-job" className="text-[15px] text-white font-medium inline-block rounded-[11px] bg-linear-(--gradient-bg) px-[25px] py-[10px] mr-[12px]">
                   Find a Job
                 </Link>
                 <Link to="/hire" className="hover:bg-[#ECEFFF] text-[15px] text-[#3B31FF] font-medium inline-block rounded-[11px] px-[25px] py-[10px] border-1 border-[#ECEFFF">

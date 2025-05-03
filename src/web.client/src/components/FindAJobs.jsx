@@ -250,16 +250,22 @@ const FindAJob = () => {
     // </div>
     <div className="bg-[#f5f3ff]">
       <div className="container-wrapper min-h-screen py-6">
-        <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-semibold">Find your Dream Job!</h1>
-        <div className="flex items-center gap-4 flex-wrap">
-          <input type="text" placeholder="Search Jobs..." className="focus:outline-2 focus:-outline-offset-2 focus:!outline-indigo-600 bg-white w-[250px] px-4 py-2 rounded-[10px] border border-gray-300" />
-          <select className="focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 bg-white w-[180px] h-[42px] px-4 py-2 rounded-[10px] border border-gray-300 cursor-pointer">
-            <option>All Job Types</option>
-            <option>All Job Types</option>
-          </select>
-        </div>
-        </div>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+  <h1 className="text-2xl font-semibold w-full sm:w-auto">Find your Dream Job!</h1>
+  <div className="flex items-center gap-4 w-full sm:w-auto">
+    <input
+      type="text"
+      placeholder="Search Jobs..."
+      className="focus:outline-2 focus:-outline-offset-2 focus:!outline-indigo-600 bg-white w-full sm:w-[250px] px-4 py-2 rounded-[10px] border border-gray-300"
+    />
+    <select
+      className="focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 bg-white w-full sm:w-[180px] h-[42px] px-4 py-2 rounded-[10px] border border-gray-300 cursor-pointer"
+    >
+      <option>All Job Types</option>
+      <option>All Job Types</option>
+    </select>
+  </div>
+</div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-white rounded-[20px] shadow-md p-4 hover:shadow-lg transition duration-300">
