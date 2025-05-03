@@ -42,11 +42,11 @@ export const Home = () => {
                         <img className="w-full h-auto" src={BannerImageMob} alt="Duuty banner image" />
                     </div>
                     <div className="hidden sm:block w-full lg:mt-0 lg:w-1/2 xl:w-3/5 max-w-[500px] lg:max-w-[700px] text-center lg:max-w-[600px] lg:text-left">
-                        <img className="w-full h-full lg:max-w-3xl" src={BannerImage} alt="Duuty banner image" />
-                        <span className="md:text-[27px] font-medium text-(--teritary-text-color)">Connecting great kitchens with great talent</span>
-                        <h1 className="text-[32px] lg:text-[40px] xl:text-[47px] font-[AvenirNextBold] pt-3 pb-3 font-bold">Where Culinary Passion Meets Opportunity for Effortless Hiring & Job Search.</h1>
-                        <p className="text-(--secondary-text-color) mb-[22px]" >
-                        Whether you're a restaurant owner seeking reliable kitchen staff or a talented individual looking for your next culinary adventure, Duuty has you covered.</p>
+                        <img className="w-full h-full lg:max-w-2xl" src={BannerImage} alt="Duuty banner image" />
+                        <h1 className="text-[32px] lg:text-[40px] mt-[-30px] xl:text-[47px] font-[AvenirNextBold] pt-3 pb-3 font-bold">Where Culinary Passion Meets Opportunity for Effortless Hiring & Job Search.</h1>
+                        <p className="md:text-[27px] mb-[22px] font-medium text-(--teritary-text-color)">Connecting great kitchens with great talent</p>
+                        {/* <p className="text-(--secondary-text-color) mb-[22px]" >
+                        Whether you're a restaurant owner seeking reliable kitchen staff or a talented individual looking for your next culinary adventure, Duuty has you covered.</p> */}
                         <Link
                           to="/find-job"
                           className="hidden text-[15px] text-white font-medium sm:inline-block rounded-[11px] bg-linear-(--gradient-bg) px-[25px] py-[15px] mr-[12px]"
@@ -176,7 +176,7 @@ export const Home = () => {
             </div>
 
             <Testiminal />
-            <div className="faq-wrapper flow-root pb-[0px] lg:pb-[100px]">
+            <div id="faq-section" className="faq-wrapper flow-root pb-[0px] lg:pb-[100px]">
                 <div className="container-wrapper flex justify-center flex-col-reverse px-[20px] lg:px-[0px] lg:flex-row lg:justify-between items-center lg:items-start relative gap-[80px]">
                     <div className="hidden lg:block w-full lg:w-1/2 lg:sticky lg:top-[90px] max-w-[90%] sm:max-w-[500px] lg:max-w-[100%]">
                         <div className="faq-img-container relative">

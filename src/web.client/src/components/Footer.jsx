@@ -130,7 +130,7 @@ const Footer = () => {
             Contact
             </h6>
             <p className="mb-4">
-              <a href="#!">Help/FAQ</a>
+              <a href="/#faq-section">Help/FAQ</a>
             </p>
             <p className="mb-4">
               <a href="#!">Contact Us</a>

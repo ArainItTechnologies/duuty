@@ -191,16 +191,48 @@ export default function Navbar() {
 
             <div className="space-y-6 border-t border-gray-200 px-3 py-3">
               <div className="flow-root">
-                <Link to="/login" className="mb-2 block p-2 px-3 font-medium bg-[#f5f5fc] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600 rounded-[6px]">
+                <Link
+                  to="/login"
+                  onClick={() => setOpen(false)} // Close menu on click
+                  className={`mb-2 block p-2 px-6 font-medium text-center rounded-[12px] ${
+                    window.location.pathname === '/login'
+                      ? 'bg-indigo-600 text-white' // Active state styles
+                      : 'bg-[#fafafa] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600'
+                  }`}
+                >
                   Sign in
                 </Link>
-                <Link to="/find-job" className="mb-2 block p-2 px-3 font-medium bg-[#f5f5fc] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600 rounded-[6px]">
-                Find a Job
+                <Link
+                  to="/find-job"
+                  onClick={() => setOpen(false)} // Close menu on click
+                  className={`mb-2 block p-2 px-6 font-medium text-center rounded-[12px] ${
+                    window.location.pathname === '/find-job'
+                      ? 'bg-indigo-600 text-white' // Active state styles
+                      : 'bg-[#fafafa] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600'
+                  }`}
+                >
+                  Find a Job
                 </Link>
-                <Link to="/hire" className="mb-2 block p-2 px-3 font-medium bg-[#f5f5fc] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600 rounded-[6px]">
+                <Link
+                  to="/hire"
+                  onClick={() => setOpen(false)} // Close menu on click
+                  className={`mb-2 block p-2 px-6 font-medium text-center rounded-[12px] ${
+                    window.location.pathname === '/hire'
+                      ? 'bg-indigo-600 text-white' // Active state styles
+                      : 'bg-[#fafafa] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600'
+                  }`}
+                >
                   Hire Now
                 </Link>
-                <Link to="/pricing" className="mb-2 block p-2 px-3 font-medium bg-[#f5f5fc] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600 rounded-[6px]">
+                <Link
+                  to="/pricing"
+                  onClick={() => setOpen(false)} // Close menu on click
+                  className={`mb-2 block p-2 px-6 font-medium text-center rounded-[12px] ${
+                    window.location.pathname === '/pricing'
+                      ? 'bg-indigo-600 text-white' // Active state styles
+                      : 'bg-[#fafafa] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600'
+                  }`}
+                >
                   Pricing
                 </Link>
               </div>

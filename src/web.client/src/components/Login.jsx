@@ -94,7 +94,7 @@ const Login = () =>  {
     </section> */}
 
       <div className="">
-          <form action="#" method="POST" className="space-y-6">
+          <form action="#" method="POST" className="space-y-6 max-w-3xl mx-auto p-4 sm:p-6 lg:p-8">
             <div>
               <label htmlFor="email" className="block text-sm/6 font-medium text-(--secondary-text-color)">
                 Mobile Number <span class="text-red-500">*</span>
