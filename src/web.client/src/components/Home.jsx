@@ -43,7 +43,7 @@ export const Home = () => {
                     <div className="hidden sm:block w-full lg:mt-0 lg:w-1/2 xl:w-3/5 max-w-[500px] lg:max-w-[700px] text-center lg:max-w-[600px] lg:text-left">
                         <img className="w-full h-full lg:max-w-3xl" src={BannerImage} alt="Duuty banner image" />
                         <span className="md:text-[27px] font-medium text-(--teritary-text-color)">Let’s start the Duuty”</span>
-                        <h1 className="text-[32px] lg:text-[40px] xl:text-[47px] font-[AvenirNextBold] pt-3 pb-3 font-bold">Employeed With Us</h1>
+                        <h1 className="text-[32px] lg:text-[40px] xl:text-[47px] font-[AvenirNextBold] pt-3 pb-3 font-bold">Employeed With us</h1>
                         <p className="text-(--secondary-text-color) mb-[22px]" >Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                         <Link
                           to="/find-job"
