@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import { CheckCircleIcon, XMarkIcon } from '@heroicons/react/24/outline';
-
 const HireNow = () => {
   const [formData, setFormData] = useState({
     title: '',

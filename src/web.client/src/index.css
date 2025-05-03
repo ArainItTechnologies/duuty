@@ -1,3 +1,140 @@
 @import "tailwindcss";
-
 @config "../tailwind.config.cjs";
+
+@font-face {
+    font-family: 'AvenirNext';
+    src: url('../src/assets/fonts/AvenirNext.eot');
+    src: url('../src/assets/fonts/AvenirNext.eot') format('embedded-opentype'),url('../src/assets/fonts/AvenirNext.woff2') format('woff2'),url('../src/assets/fonts/AvenirNext.ttf') format('ttf'),url('../src/assets/fonts/AvenirNext.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'AvenirNextMedium';
+    src: url('../src/assets/fonts/AvenirNext-Medium.eot');
+    src: url('../src/assets/fonts/AvenirNext-Medium.eot') format('embedded-opentype'),url('../src/assets/fonts/AvenirNext-Medium.woff2') format('woff2'),url('../src/assets/fonts/AvenirNext-Medium.ttf') format('ttf'),url('../src/assets/fonts/AvenirNext-Medium.woff') format('woff');
+    font-style: normal;
+}
+@font-face {
+    font-family: 'AvenirNextBold';
+    src: url('../src/assets/fonts/AvenirNext-Bold.eot');
+    src: url('../src/assets/fonts/AvenirNext-Bold.eot') format('embedded-opentype'),url('../src/assets/fonts/AvenirNext-Bold.woff2') format('woff2'),url('../src/assets/fonts/AvenirNext-Bold.ttf') format('ttf'),url('../src/assets/fonts/AvenirNext-Bold.woff') format('woff');
+    font-style: normal;
+}
+@theme{
+    --primary-text-color: #14183E;
+    --secondary-text-color: #5E6282; 
+    --teritary-text-color: #586377;
+    --gradient-bg:to right, #3B31FF, #9239FF;
+    --employee-bg: #15193F;
+    --employee-para-color: #C7C3FF;
+    --neutral-white: #fff;
+    --neutral-black: #000;
+    --benefit-bg: #F5F4FF;
+    --benefit-card-border: #E3E0FF;
+    --benefit-list-color: #5E6282;
+    --benefit-list-bg: #F5F4FF;
+    --benefit-list-border: #EFEDFF;
+    --employee-card-bg: #D2EAF4;
+    --employee-card-border: #333333;
+    --employee-card-child1: #EFC48F;
+    --employee-card-child2: #EECFCD;
+    --employee-card-child3: #CDEED5;
+    --faq-text-color: #3C3C43D9;
+    --interesting-offer-bg: #dfd7f933;
+    --interesring-offer-special: #4031FF;
+    --testimonial-border: #00000017;
+    --testimonial-text-color: #5E6282;
+}
+
+body{
+    font-family: 'AvenirNext';
+    color: var(--primary-text-color);
+}
+.font-bold{
+    font-family: 'AvenirNextBold';
+}
+/* .main-wrapper h2{
+    font-size: 40px;
+    font-family: 'AvenirNextBold';
+} */
+/* .main-wrapper h3{
+    font-size: 32px;
+    font-weight: 500;
+} */
+/* .main-wrapper h4{
+    font-size: 26px;
+    font-family: 'AvenirNextBold';
+} */
+.main-wrapper h5{
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'AvenirNextMedium';
+}
+.container-wrapper{
+    max-width: 1320px;
+    margin: 0 auto;
+    width: 95%;
+}
+.link-font-medium{
+    font-family: 'AvenirNextMedium';
+}
+.select-wrapper::before{
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-right-style: solid;
+    border-right-width: 1px;
+    content: "";
+    display: inline-block;
+    height: 8px;
+    right: 20px;
+    position: absolute;
+    top: -2px;
+    bottom: 0;
+    margin: auto;
+    width: 8px;
+    border-color: #4a4e5a;
+    transform: rotate(314deg);
+    pointer-events: none;
+}
+/* .benifits-wrapper::before{
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    background-color: var(--employee-bg);
+}
+.benifits-wrapper .container-wrapper{
+    max-width: 1300px;
+} */
+.faq-img-container::before{
+    content: "";
+    position: absolute;
+    width: 99%;
+    height: 100%;
+    background: linear-gradient(to bottom, #4132FF, #8E3AFF);
+    left: 20px;
+    bottom: 20px;
+    border-radius: 20px;
+    z-index: 0;
+}
+/* .faq-wrapper .container-wrapper{
+    max-width: 1330px;
+} */
+.interesting-offers-section .content-wrapper{
+    max-width: 700px;
+}
+/* .interesting-offers-section h2{
+    font-size: 33px;
+} */
+/* .testimonial-section .container-wrapper{
+    max-width: 1130px;
+} */
+/* .testimonial-section h2{
+    font-size: 50px;
+}  */
+.testimonial-details .customer-name{
+    font-family: 'AvenirNextMedium';
+}

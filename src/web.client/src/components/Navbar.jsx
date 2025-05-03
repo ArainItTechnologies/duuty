@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-
+import { useState } from 'react'
+import { Link } from 'react-router-dom';
 import {
   Dialog,
   DialogBackdrop,
@@ -12,152 +11,144 @@ import {
   Tab,
   TabGroup,
   TabList,
-} from "@headlessui/react";
-import {
-  Bars3Icon,
-  MagnifyingGlassIcon,
-  UserCircleIcon,
-  ArrowRightStartOnRectangleIcon,
-  Cog6ToothIcon,
-  IdentificationIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
-import LogoSrc from "../assets/logo.png";
-
-import { useUser } from "../hooks/Hooks";
+} from '@headlessui/react'
+import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import LogoSrc from '../assets/logo.svg';
 
 const navigation = {
   categories: [
     {
-      id: "employer",
-      name: "Employer",
+      id: 'employer',
+      name: 'Employer',
       featured: [
         {
-          name: "New Arrivals",
-          href: "#",
+          name: 'New Arrivals',
+          href: '#',
           imageSrc:
-            "https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
-          imageAlt:
-            "Drawstring top with elastic loop closure and textured interior padding.",
+            'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
+          imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
         },
         {
-          name: "Artwork Tees",
-          href: "#",
-          imageSrc:
-            "https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-02-image-card-06.jpg",
+          name: 'Artwork Tees',
+          href: '#',
+          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-02-image-card-06.jpg',
           imageAlt:
-            "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
+            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
         },
       ],
       sections: [
         {
-          id: "clothing",
-          name: "Clothing",
+          id: 'clothing',
+          name: 'Clothing',
           items: [
-            { name: "Tops", href: "#" },
-            { name: "Pants", href: "#" },
-            { name: "Sweaters", href: "#" },
-            { name: "T-Shirts", href: "#" },
-            { name: "Jackets", href: "#" },
-            { name: "Activewear", href: "#" },
-            { name: "Browse All", href: "#" },
+            { name: 'Tops', href: '#' },
+            { name: 'Pants', href: '#' },
+            { name: 'Sweaters', href: '#' },
+            { name: 'T-Shirts', href: '#' },
+            { name: 'Jackets', href: '#' },
+            { name: 'Activewear', href: '#' },
+            { name: 'Browse All', href: '#' },
           ],
         },
         {
-          id: "accessories",
-          name: "Accessories",
+          id: 'accessories',
+          name: 'Accessories',
           items: [
-            { name: "Watches", href: "#" },
-            { name: "Wallets", href: "#" },
-            { name: "Bags", href: "#" },
-            { name: "Sunglasses", href: "#" },
-            { name: "Hats", href: "#" },
-            { name: "Belts", href: "#" },
+            { name: 'Watches', href: '#' },
+            { name: 'Wallets', href: '#' },
+            { name: 'Bags', href: '#' },
+            { name: 'Sunglasses', href: '#' },
+            { name: 'Hats', href: '#' },
+            { name: 'Belts', href: '#' },
           ],
         },
         {
-          id: "brands",
-          name: "Brands",
+          id: 'brands',
+          name: 'Brands',
           items: [
-            { name: "Re-Arranged", href: "#" },
-            { name: "Counterfeit", href: "#" },
-            { name: "Full Nelson", href: "#" },
-            { name: "My Way", href: "#" },
+            { name: 'Re-Arranged', href: '#' },
+            { name: 'Counterfeit', href: '#' },
+            { name: 'Full Nelson', href: '#' },
+            { name: 'My Way', href: '#' },
           ],
         },
       ],
     },
     {
-      id: "employee",
-      name: "Employee",
+      id: 'employee',
+      name: 'Employee',
       featured: [
         {
-          name: "New Arrivals",
-          href: "#",
+          name: 'New Arrivals',
+          href: '#',
           imageSrc:
-            "https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
-          imageAlt:
-            "Drawstring top with elastic loop closure and textured interior padding.",
+            'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
+          imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
         },
         {
-          name: "Artwork Tees",
-          href: "#",
-          imageSrc:
-            "https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-02-image-card-06.jpg",
+          name: 'Artwork Tees',
+          href: '#',
+          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-02-image-card-06.jpg',
           imageAlt:
-            "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
+            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
         },
       ],
       sections: [
         {
-          id: "clothing",
-          name: "Clothing",
+          id: 'clothing',
+          name: 'Clothing',
           items: [
-            { name: "Tops", href: "#" },
-            { name: "Pants", href: "#" },
-            { name: "Sweaters", href: "#" },
-            { name: "T-Shirts", href: "#" },
-            { name: "Jackets", href: "#" },
-            { name: "Activewear", href: "#" },
-            { name: "Browse All", href: "#" },
+            { name: 'Tops', href: '#' },
+            { name: 'Pants', href: '#' },
+            { name: 'Sweaters', href: '#' },
+            { name: 'T-Shirts', href: '#' },
+            { name: 'Jackets', href: '#' },
+            { name: 'Activewear', href: '#' },
+            { name: 'Browse All', href: '#' },
           ],
         },
         {
-          id: "accessories",
-          name: "Accessories",
+          id: 'accessories',
+          name: 'Accessories',
           items: [
-            { name: "Watches", href: "#" },
-            { name: "Wallets", href: "#" },
-            { name: "Bags", href: "#" },
-            { name: "Sunglasses", href: "#" },
-            { name: "Hats", href: "#" },
-            { name: "Belts", href: "#" },
+            { name: 'Watches', href: '#' },
+            { name: 'Wallets', href: '#' },
+            { name: 'Bags', href: '#' },
+            { name: 'Sunglasses', href: '#' },
+            { name: 'Hats', href: '#' },
+            { name: 'Belts', href: '#' },
           ],
         },
         {
-          id: "brands",
-          name: "Brands",
+          id: 'brands',
+          name: 'Brands',
           items: [
-            { name: "Re-Arranged", href: "#" },
-            { name: "Counterfeit", href: "#" },
-            { name: "Full Nelson", href: "#" },
-            { name: "My Way", href: "#" },
+            { name: 'Re-Arranged', href: '#' },
+            { name: 'Counterfeit', href: '#' },
+            { name: 'Full Nelson', href: '#' },
+            { name: 'My Way', href: '#' },
           ],
         },
       ],
     },
-  ],
-};
+  ]
+}
 
 export default function Navbar() {
-  const { user, setUser } = useUser();
   const [open, setOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState(''); // State to track active tab
 
-  const navigate = useNavigate();
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName); // Set the active tab
+    const section = document.getElementById(tabName.toLowerCase().replace(' ', '-')); // Map tab name to section ID
+    if (section) {
+      const offsetTop = section.offsetTop - 60; // Calculate position with 20px offset
+      window.scrollTo({ top: offsetTop, behavior: 'smooth' }); // Smooth scroll to the section
+    }
+  };
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#F4F3FF] sticky top-0 z-5">
       {/* Mobile menu */}
       <Dialog open={open} onClose={setOpen} className="relative z-40 lg:hidden">
         <DialogBackdrop
@@ -183,7 +174,7 @@ export default function Navbar() {
             </div>
 
             {/* Links */}
-            <TabGroup className="mt-2">
+            {/* <TabGroup className="mt-2">
               <div className="border-b border-gray-200">
                 <TabList className="-mb-px flex space-x-8 px-4">
                   {navigation.categories.map((category) => (
@@ -196,15 +187,18 @@ export default function Navbar() {
                   ))}
                 </TabList>
               </div>
-            </TabGroup>
+            </TabGroup> */}
 
             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
               <div className="flow-root">
-                <Link
-                  to="/login"
-                  className="-m-2 block p-2 font-medium text-gray-900"
-                >
+                <Link to="/login" className="-m-2 block p-2 font-medium text-gray-900">
                   Sign in
+                </Link>
+                <Link to="/find-job" className="-m-2 block p-2 font-medium text-gray-900">
+                Find a Job
+                </Link>
+                <Link to="/hire" className="-m-2 block p-2 font-medium text-gray-900">
+                  Hire Now
                 </Link>
               </div>
             </div>
@@ -213,209 +207,131 @@ export default function Navbar() {
       </Dialog>
 
       <header className="relative bg-white">
-        <p className="flex h-10 items-center justify-center bg-primary px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
+        {/* <p className="flex h-10 items-center justify-center bg-primary px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
           India's first job portal for kitchen staff recruitment
-        </p>
+        </p> */}
 
-        <nav
-          aria-label="Top"
-          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
-        >
-          <div className="border-b border-gray-200">
+        <nav aria-label="Top" className="mx-auto px-0 bg-[#F4F3FF]">
+          <div className="container-wrapper">
             <div className="flex h-16 items-center justify-between">
               {/* Logo */}
               <div className="flex">
                 <Link to="/">
                   <span className="sr-only">Your Company</span>
-                  <img alt="" src={LogoSrc} className="h-8 w-auto" />
+                  <img
+                    alt="Duuty Logo"
+                    src={LogoSrc}
+                    className="h-8 w-[102px]"
+                  />
                 </Link>
               </div>
 
               {/* Mobile nav buttons */}
               <div className="flex items-center space-x-2 lg:hidden">
-                <Link
-                  to="/find-job"
-                  className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary"
-                >
+                <Link to="/find-job" className="text-[12px] text-white font-medium inline-block rounded-[11px] bg-linear-(--gradient-bg) py-2 px-4 border-1 border-transparent mr-[12px]">
                   Find a Job
                 </Link>
-                <Link
-                  to="/hire"
-                  className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary"
-                >
+                <Link to="/hire" className="text-[12px] text-[#3B31FF] font-medium inline-block rounded-[11px] py-2 px-4 border-1 border-[#3B31FF]">
                   Hire Now
                 </Link>
                 <button
                   type="button"
                   onClick={() => setOpen(true)}
-                  className="relative rounded-md bg-white p-2 text-gray-400"
+                  className="relative rounded-[11px] h-[36px] p-2 border-1 border-[#3B31FF] text-gray-400 flex items-center"
                 >
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open menu</span>
-                  <Bars3Icon aria-hidden="true" className="size-6" />
+                  <Bars3Icon aria-hidden="true" className="size-6 text-[#3B31FF]" />
                 </button>
               </div>
 
               {/* Flyout menus */}
-              <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch">
-                <div className="flex h-full space-x-8">
-                  {navigation.categories.map((category) => (
-                    <Popover key={category.name} className="flex">
-                      <div className="relative flex">
-                        <PopoverButton className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-open:border-indigo-600 data-open:text-indigo-600">
-                          {category.name}
-                        </PopoverButton>
-                      </div>
-
-                      <PopoverPanel
-                        transition
-                        className="absolute inset-x-0 top-full text-sm text-gray-500 transition data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
-                      >
-                        {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
-                        <div
-                          aria-hidden="true"
-                          className="absolute inset-0 top-1/2 bg-white shadow-sm"
-                        />
-
-                        <div className="relative bg-white">
-                          <div className="mx-auto max-w-7xl px-8">
-                            <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
-                              <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                                {category.featured.map((item) => (
-                                  <div
-                                    key={item.name}
-                                    className="group relative text-base sm:text-sm"
-                                  >
-                                    <img
-                                      alt={item.imageAlt}
-                                      src={item.imageSrc}
-                                      className="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75"
-                                    />
-                                    <a
-                                      href={item.href}
-                                      className="mt-6 block font-medium text-gray-900"
-                                    >
-                                      <span
-                                        aria-hidden="true"
-                                        className="absolute inset-0 z-10"
-                                      />
-                                      {item.name}
-                                    </a>
-                                    <p aria-hidden="true" className="mt-1">
-                                      Shop now
-                                    </p>
-                                  </div>
-                                ))}
-                              </div>
-                              <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                                {category.sections.map((section) => (
-                                  <div key={section.name}>
-                                    <p
-                                      id={`${section.name}-heading`}
-                                      className="font-medium text-gray-900"
-                                    >
-                                      {section.name}
-                                    </p>
-                                    <ul
-                                      role="list"
-                                      aria-labelledby={`${section.name}-heading`}
-                                      className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                                    >
-                                      {section.items.map((item) => (
-                                        <li key={item.name} className="flex">
-                                          <a
-                                            href={item.href}
-                                            className="hover:text-gray-800"
-                                          >
-                                            {item.name}
-                                          </a>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </PopoverPanel>
-                    </Popover>
-                  ))}
-                </div>
-              </PopoverGroup>
 
               <div className="ml-auto hidden lg:flex lg:items-center lg:justify-end lg:space-x-4">
                 {/* Desktop navigation buttons */}
-                <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
+                {/* <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
                   <span className="sr-only">Search</span>
                   <MagnifyingGlassIcon aria-hidden="true" className="size-6" />
                 </a>
-                <span aria-hidden="true" className="h-6 w-px bg-gray-200" />
-                <Link
-                  to="/find-job"
-                  className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary"
-                >
+                <span aria-hidden="true" className="h-6 w-px bg-gray-200" /> */}
+                <div className="flex h-full space-x-8 mr-[40px]">
+                  <div className="flex">
+                    <div className="relative flex">
+                      <button
+                        className={`cursor-pointer text-[16px] relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out ${
+                          activeTab === 'Overview'
+                            ? 'border-indigo-600 text-indigo-600'
+                            : 'border-transparent text-gray-700 hover:text-gray-800'
+                        }`}
+                        type="button"
+                        onClick={() => handleTabClick('Overview')}
+                      >
+                        Overview
+                      </button>
+                    </div>
+                  </div>
+                  <div className="flex">
+                    <div className="relative flex">
+                      <button
+                        className={`cursor-pointer text-[16px] relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out ${
+                          activeTab === 'Benefits'
+                            ? 'border-indigo-600 text-indigo-600'
+                            : 'border-transparent text-gray-700 hover:text-gray-800'
+                        }`}
+                        type="button"
+                        onClick={() => handleTabClick('Benefits')}
+                      >
+                        Benefits
+                      </button>
+                    </div>
+                  </div>
+                  <div className="flex">
+                    <div className="relative flex">
+                      <button
+                        className={`cursor-pointer text-[16px] relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out ${
+                          activeTab === 'Trusted Companies'
+                            ? 'border-indigo-600 text-indigo-600'
+                            : 'border-transparent text-gray-700 hover:text-gray-800'
+                        }`}
+                        type="button"
+                        onClick={() => handleTabClick('Trusted Companies')}
+                      >
+                        Trusted Companies
+                      </button>
+                    </div>
+                  </div>
+                  <div className="flex">
+                    <div className="relative flex">
+                      <button
+                        className={`cursor-pointer text-[16px] relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out ${
+                          activeTab === 'Testimonials'
+                            ? 'border-indigo-600 text-indigo-600'
+                            : 'border-transparent text-gray-700 hover:text-gray-800'
+                        }`}
+                        type="button"
+                        onClick={() => handleTabClick('Testimonials')}
+                      >
+                        Testimonials
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <Link to="/find-job" className="text-[15px] text-white font-medium inline-block rounded-[11px] bg-linear-(--gradient-bg) px-[25px] py-[10px] border-1 border-transparent mr-[12px]">
                   Find a Job
                 </Link>
-                <Link
-                  to="/hire"
-                  className="bg-white text-primary border border-primary py-2 px-4 rounded hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary"
-                >
+                <Link to="/hire" className="hover:bg-[#ECEFFF] text-[15px] text-[#3B31FF] font-medium inline-block rounded-[11px] px-[25px] py-[10px] border-1 border-[#ECEFFF">
                   Hire Now
                 </Link>
-                {/* Conditionally show based on user */}
-                {user == null ? (
-                  <Link
-                    to="/login"
-                    className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary inline-block"
-                  >
-                    Sign in / Sign up
-                  </Link>
-                ) : (
-                  <div className="relative">
-                    <button
-                      onClick={() => setDropdownOpen(!dropdownOpen)}
-                      className="p-2 text-gray-600 hover:text-gray-800 focus:outline-none"
-                    >
-                      <UserCircleIcon className="h-8 w-8 text-primary" />
-                    </button>
-
-                    {dropdownOpen && (
-                      <div className="absolute right-0 mt-2 w-56 bg-white rounded shadow-lg z-50">
-                        <Link
-                          to="/profile"
-                          className="flex items-center gap-2 px-4 py-2 text-primary hover:bg-gray-100"
-                        >
-                          <IdentificationIcon className="h-5 w-5" />
-                          Profile
-                        </Link>
-                        <Link
-                          to="/change-password"
-                          className="flex items-center gap-2 px-4 py-2 text-primary hover:bg-gray-100"
-                        >
-                          <Cog6ToothIcon className="h-5 w-5" />
-                          Change Password
-                        </Link>
-                        <hr className="my-1 border-gray-200" />
-                        <button
-                          onClick={() => {
-                            setUser(null);
-                            navigate("/login"); // or use navigate if inside react-router
-                          }}
-                          className="flex items-center gap-2 px-4 py-2 w-full text-left text-primary hover:bg-gray-100"
-                        >
-                          <ArrowRightStartOnRectangleIcon className="h-5 w-5" />
-                          Logout
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                )}
+                {/* <Link to="/login" className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary inline-block">
+                  Sign in/Sign up
+                </Link> */}
               </div>
             </div>
           </div>
         </nav>
+        
       </header>
     </div>
-  );
+  )
 }

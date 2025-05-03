@@ -4,8 +4,12 @@ import {
   ClockIcon, 
   CurrencyRupeeIcon 
 } from '@heroicons/react/24/outline';
-import JobDetails from './JobDetails';
-
+import Biryani from "../assets/Briyani.png";
+import Chinese from "../assets/Chinese.png";
+import American from "../assets/American.png";
+import Indian from "../assets/Indian-food-master.png";
+import Sounthindian from "../assets/South-indian.png";
+import Thaichef from "../assets/Thai-chef.png";
 // Mocked job data
 const jobsData = [
   {
@@ -160,90 +164,180 @@ const FindAJob = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">Find Your Dream Job</h1>
+    // <div className="container mx-auto px-4 py-8">
+    //   <h1 className="text-3xl font-bold text-gray-900 mb-6">Find Your Dream Job</h1>
       
-      {/* Search and Filter Section */}
-      <div className="mb-6 flex flex-col sm:flex-row gap-4">
-        <input 
-          type="text" 
-          placeholder="Search jobs..." 
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-        />
+    //   {/* Search and Filter Section */}
+    //   <div className="mb-6 flex flex-col sm:flex-row gap-4">
+    //     <input 
+    //       type="text" 
+    //       placeholder="Search jobs..." 
+    //       value={searchTerm}
+    //       onChange={(e) => setSearchTerm(e.target.value)}
+    //       className="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+    //     />
         
-        <select 
-          value={filterJobType}
-          onChange={(e) => setFilterJobType(e.target.value)}
-          className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-        >
-          <option value="">All Job Types</option>
-          <option value="full-time">Full-time</option>
-          <option value="part-time">Part-time</option>
-          <option value="contract">Contract</option>
-        </select>
-      </div>
+    //     <select 
+    //       value={filterJobType}
+    //       onChange={(e) => setFilterJobType(e.target.value)}
+    //       className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+    //     >
+    //       <option value="">All Job Types</option>
+    //       <option value="full-time">Full-time</option>
+    //       <option value="part-time">Part-time</option>
+    //       <option value="contract">Contract</option>
+    //     </select>
+    //   </div>
 
-      {/* Job Listings */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredJobs.map((job) => (
-          <div 
-            key={job.id} 
-            className="bg-white border border-gray-200 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
-          >
-            <div className="flex justify-between items-start mb-4">
-              <h2 className="text-xl font-semibold text-gray-900">{job.title}</h2>
-            </div>
+    //   {/* Job Listings */}
+    //   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    //     {filteredJobs.map((job) => (
+    //       <div 
+    //         key={job.id} 
+    //         className="bg-white border border-gray-200 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
+    //       >
+    //         <div className="flex justify-between items-start mb-4">
+    //           <h2 className="text-xl font-semibold text-gray-900">{job.title}</h2>
+    //         </div>
             
-            <div className="space-y-2 mb-4">
-              <div className="flex items-center text-gray-600">
-                <MapPinIcon className="h-5 w-5 mr-2 text-primary" />
-                <span>{job.location}, {job.state}</span>
-              </div>
+    //         <div className="space-y-2 mb-4">
+    //           <div className="flex items-center text-gray-600">
+    //             <MapPinIcon className="h-5 w-5 mr-2 text-primary" />
+    //             <span>{job.location}, {job.state}</span>
+    //           </div>
               
-              <div className="flex items-center text-gray-600">
-                <ClockIcon className="h-5 w-5 mr-2 text-primary" />
-                <span className="capitalize">{job.jobType}</span>
-              </div>
+    //           <div className="flex items-center text-gray-600">
+    //             <ClockIcon className="h-5 w-5 mr-2 text-primary" />
+    //             <span className="capitalize">{job.jobType}</span>
+    //           </div>
               
-              <div className="flex items-center text-gray-600">
-                <CurrencyRupeeIcon className="h-5 w-5 mr-2 text-primary" />
-                <span>{job.salary}</span>
-              </div>
-            </div>
+    //           <div className="flex items-center text-gray-600">
+    //             <CurrencyRupeeIcon className="h-5 w-5 mr-2 text-primary" />
+    //             <span>{job.salary}</span>
+    //           </div>
+    //         </div>
             
-            <div className="mb-4">
-              <p className="text-sm text-gray-700 line-clamp-3">{job.description}</p>
-            </div>
+    //         <div className="mb-4">
+    //           <p className="text-sm text-gray-700 line-clamp-3">{job.description}</p>
+    //         </div>
             
-            <div className="flex justify-end items-center">
-              <button 
-                onClick={() => handleViewDetails(job)}
-                className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors"
-              >
-                View Details
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+    //         <div className="flex justify-end items-center">
+    //           <button 
+    //             onClick={() => handleViewDetails(job)}
+    //             className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors"
+    //           >
+    //             View Details
+    //           </button>
+    //         </div>
+    //       </div>
+    //     ))}
+    //   </div>
 
-      {/* No Results Message */}
-      {filteredJobs.length === 0 && (
-        <div className="text-center py-12 text-gray-500">
-          No jobs found matching your search criteria.
+    //   {/* No Results Message */}
+    //   {filteredJobs.length === 0 && (
+    //     <div className="text-center py-12 text-gray-500">
+    //       No jobs found matching your search criteria.
+    //     </div>
+    //   )}
+
+    //   {/* Job Details Modal */}
+    //   {selectedJob && (
+    //     <JobDetails 
+    //       job={selectedJob} 
+    //       onClose={handleCloseJobDetails} 
+    //     />
+    //   )}
+    // </div>
+    <div className="bg-[#f5f3ff]">
+      <div className="container-wrapper min-h-screen py-6">
+        <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-semibold">Find your Dream Job!</h1>
+        <div className="flex items-center gap-4 flex-wrap">
+          <input type="text" placeholder="Search Jobs..." className="focus:outline-2 focus:-outline-offset-2 focus:!outline-indigo-600 bg-white w-[250px] px-4 py-2 rounded-[10px] border border-gray-300" />
+          <select className="focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 bg-white w-[180px] h-[42px] px-4 py-2 rounded-[10px] border border-gray-300 cursor-pointer">
+            <option>All Job Types</option>
+            <option>All Job Types</option>
+          </select>
         </div>
-      )}
+        </div>
 
-      {/* Job Details Modal */}
-      {selectedJob && (
-        <JobDetails 
-          job={selectedJob} 
-          onClose={handleCloseJobDetails} 
-        />
-      )}
-    </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-white rounded-[20px] shadow-md p-4 hover:shadow-lg transition duration-300">
+              <img src={Chinese} alt="Chinese Food Master" className="rounded-[20px] mb-4 w-full h-48 object-cover"/>
+              <h2 className="text-lg font-medium mb-2">Chinese Food Master 
+                <span className="ml-2 bg-green-100 text-green-700 text-xs font-semibold px-2 py-1 rounded">Full Time</span>
+              </h2>
+              <p className="text-xl font-bold">$1,20,000 to $1,50,000</p>
+              <p className="flex items-center text-sm text-gray-500 mt-1">
+                <MapPinIcon className="h-5 w-5 mr-1 text-gray-500" />
+                Bangalore
+              </p>
+              <button className="hover:bg-[linear-gradient(var(--gradient-bg))] hover:text-white mt-4 w-full text-purple-600 border border-purple-400 hover:bg-purple-100 font-medium py-2 rounded-[10px] transition cursor-pointer">Apply Job</button>
+            </div>
+            <div className="bg-white rounded-[20px] shadow-md p-4 hover:shadow-lg transition duration-300">
+              <img src={Thaichef} alt="Chinese Food Master" className="rounded-[20px] mb-4 w-full h-48 object-cover"/>
+              <h2 className="text-lg font-medium mb-2">Chinese Food Master 
+                <span className="ml-2 bg-green-100 text-green-700 text-xs font-semibold px-2 py-1 rounded">Full Time</span>
+              </h2>
+              <p className="text-xl font-bold">$1,20,000 to $1,50,000</p>
+              <p className="flex items-center text-sm text-gray-500 mt-1">
+                <MapPinIcon className="h-5 w-5 mr-1 text-gray-500" />
+                Bangalore
+              </p>
+              <button className="hover:bg-[linear-gradient(var(--gradient-bg))] hover:text-white cursor-pointer mt-4 w-full text-purple-600 border border-purple-400 hover:bg-purple-100 font-medium py-2 rounded-[10px] transition">Apply Job</button>
+            </div>
+            <div className="bg-white rounded-[20px] shadow-md p-4 hover:shadow-lg transition duration-300">
+              <img src={Indian} alt="Chinese Food Master" className="rounded-[20px] mb-4 w-full h-48 object-cover"/>
+              <h2 className="text-lg font-medium mb-2">Chinese Food Master 
+                <span className="ml-2 bg-green-100 text-green-700 text-xs font-semibold px-2 py-1 rounded">Full Time</span>
+              </h2>
+              <p className="text-xl font-bold">$1,20,000 to $1,50,000</p>
+              <p className="flex items-center text-sm text-gray-500 mt-1">
+                <MapPinIcon className="h-5 w-5 mr-1 text-gray-500" />
+                Bangalore
+              </p>
+              <button className="hover:bg-[linear-gradient(var(--gradient-bg))] hover:text-white cursor-pointer mt-4 w-full text-purple-600 border border-purple-400 hover:bg-purple-100 font-medium py-2 rounded-[10px] transition">Apply Job</button>
+            </div>
+            <div className="bg-white rounded-[20px] shadow-md p-4 hover:shadow-lg transition duration-300">
+              <img src={American} alt="Chinese Food Master" className="rounded-[20px] mb-4 w-full h-48 object-cover"/>
+              <h2 className="text-lg font-medium mb-2">Chinese Food Master 
+                <span className="ml-2 bg-green-100 text-green-700 text-xs font-semibold px-2 py-1 rounded">Full Time</span>
+              </h2>
+              <p className="text-xl font-bold">$1,20,000 to $1,50,000</p>
+              <p className="flex items-center text-sm text-gray-500 mt-1">
+                <MapPinIcon className="h-5 w-5 mr-1 text-gray-500" />
+                Bangalore
+              </p>
+              <button className="hover:bg-[linear-gradient(var(--gradient-bg))] hover:text-white cursor-pointer mt-4 w-full text-purple-600 border border-purple-400 hover:bg-purple-100 font-medium py-2 rounded-[10px] transition">Apply Job</button>
+            </div>
+            <div className="bg-white rounded-[20px] shadow-md p-4 hover:shadow-lg transition duration-300">
+              <img src={Biryani} alt="Chinese Food Master" className="rounded-[20px] mb-4 w-full h-48 object-cover"/>
+              <h2 className="text-lg font-medium mb-2">Chinese Food Master 
+                <span className="ml-2 bg-green-100 text-green-700 text-xs font-semibold px-2 py-1 rounded">Full Time</span>
+              </h2>
+              <p className="text-xl font-bold">$1,20,000 to $1,50,000</p>
+              <p className="flex items-center text-sm text-gray-500 mt-1">
+                <MapPinIcon className="h-5 w-5 mr-1 text-gray-500" />
+                Bangalore
+              </p>
+              <button className="hover:bg-[linear-gradient(var(--gradient-bg))] hover:text-white cursor-pointer mt-4 w-full text-purple-600 border border-purple-400 hover:bg-purple-100 font-medium py-2 rounded-[10px] transition">Apply Job</button>
+            </div>
+            <div className="bg-white rounded-[20px] shadow-md p-4 hover:shadow-lg transition duration-300">
+              <img src={Sounthindian} alt="Chinese Food Master" className="rounded-[20px] mb-4 w-full h-48 object-cover"/>
+              <h2 className="text-lg font-medium mb-2">Chinese Food Master 
+                <span className="ml-2 bg-green-100 text-green-700 text-xs font-semibold px-2 py-1 rounded">Full Time</span>
+              </h2>
+              <p className="text-xl font-bold">$1,20,000 to $1,50,000</p>
+              <p className="flex items-center text-sm text-gray-500 mt-1">
+                <MapPinIcon className="h-5 w-5 mr-1 text-gray-500" />
+                Bangalore
+              </p>
+              <button className="hover:bg-[linear-gradient(var(--gradient-bg))] hover:text-white cursor-pointer mt-4 w-full text-purple-600 border border-purple-400 hover:bg-purple-100 font-medium py-2 rounded-[10px] transition">Apply Job</button>
+            </div>
+            
+        </div>
+      </div>
+</div>
   );
 };
 

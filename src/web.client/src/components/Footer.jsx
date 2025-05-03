@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import LogoSrc from '../assets/logo.svg'
 
 const Footer = () => {
   return (
-    <footer className="bg-zinc-50 text-center text-surface/75 dark:bg-neutral-700 dark:text-white/75 lg:text-left">
-      <div className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-white/10 lg:justify-between">
+    <footer className="container-wrapper text-center text-surface/75 dark:bg-neutral-700 dark:text-white/75 lg:text-left">
+      {/* <div className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-white/10 lg:justify-between">
         <div className="me-12 hidden lg:block">
           <span>Get connected with us on social networks:</span>
         </div>
@@ -63,57 +64,81 @@ const Footer = () => {
             </svg>
           </a>
         </div>
-      </div>
+      </div> */}
 
-      <div className="mx-6 py-6 text-center md:text-left">
-        <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <div className="py-6 text-center md:text-left">
+        <div className="grid-1 grid gap-8 lg:gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           <div className="">
             <h6 className="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
-              <span className="me-3 [&>svg]:h-4 [&>svg]:w-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M12.378 1.602a.75.75 0 00-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03zM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 00.372-.648V7.93zM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 00.372.648l8.628 5.033z" />
-                </svg>
+              <span className="">
+              <img
+                    alt="Duuty Logo"
+                    src={LogoSrc}
+                    className="w-[130px]"
+                  />
               </span>
-              TW Elements
             </h6>
             <p>
-              Here you can use rows and columns to organize your footer content.
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Lorem Ipsum has been the industry's took a galley of type
             </p>
           </div>
           <div>
-            <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-              Products
+            <h6 className="mb-4 flex justify-center font-bold md:justify-start">
+            Company
             </h6>
             <p className="mb-4">
-              <a href="#!">Angular</a>
+              <a href="#!">About</a>
             </p>
             <p className="mb-4">
-              <a href="#!">React</a>
+              <a href="#!">Careers</a>
             </p>
             <p className="mb-4">
-              <a href="#!">Vue</a>
+              <a href="#!">Mobile</a>
             </p>
           </div>
           <div>
-            <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-              Useful links
+            <h6 className="mb-4 flex justify-center font-bold md:justify-start">
+            Contact
             </h6>
             <p className="mb-4">
-              <a href="#!">Pricing</a>
+              <a href="#!">Help/FAQ</a>
             </p>
             <p className="mb-4">
-              <a href="#!">Settings</a>
+              <a href="#!">Press</a>
             </p>
             <p className="mb-4">
-              <a href="#!">Orders</a>
+              <a href="#!">Affilates</a>
             </p>
           </div>
           <div>
+            <h6 className="mb-4 flex justify-center font-bold md:justify-start">
+              More
+            </h6>
+            <p className="mb-4">
+              <a href="#!">Airlinefees</a>
+            </p>
+            <p className="mb-4">
+              <a href="#!">Airline</a>
+            </p>
+            <p className="mb-4">
+              <a href="#!">Low fare tips</a>
+            </p>
+          </div>
+          <div>
+            <h6 className="mb-4 flex justify-center font-bold md:justify-start">
+              More
+            </h6>
+            <p className="mb-4">
+              <a href="#!">Airlinefees</a>
+            </p>
+            <p className="mb-4">
+              <a href="#!">Airline</a>
+            </p>
+            <p className="mb-4">
+              <a href="#!">Low fare tips</a>
+            </p>
+          </div>
+          {/* <div>
             <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
               Contact
             </h6>
@@ -159,16 +184,16 @@ const Footer = () => {
               </span>
               +91 8939785306
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
 
-      <div className="bg-black/5 p-6 text-center">
+      {/* <div className="bg-black/5 p-6 text-center">
         <span>© 2023 Copyright:</span>
         <Link className="font-semibold" to="https://duuty.in/">
           Duuty
         </Link>
-      </div>
+      </div> */}
     </footer>
   );
 };

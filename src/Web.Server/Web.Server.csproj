@@ -6,12 +6,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <SpaRoot>..\web.client</SpaRoot>
         <SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
-		<!--<TreatWarningsAsErrors>true</TreatWarningsAsErrors>-->
-        <SpaProxyServerUrl>https://localhost:5173</SpaProxyServerUrl>
+        <SpaProxyServerUrl>https://localhost:50952</SpaProxyServerUrl>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FastEndpoints" Version="6.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
             <Version>8.*-*</Version>
         </PackageReference>
@@ -28,10 +26,6 @@
         <ProjectReference Include="..\web.client\web.client.esproj">
             <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
         </ProjectReference>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Features\Employeee\" />
     </ItemGroup>
 
 </Project>
