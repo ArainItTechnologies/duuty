@@ -13,7 +13,7 @@ import HireNow from "./components/HireNow";
 import FindAJob from "./components/FindAJobs";
 import Footer from "./components/Footer";
 import SelectRole from "./components/SelectRole";
-
+import Pricing from "./components/pricing"
 function App() {
     return (
         <Router>
@@ -23,6 +23,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/job" element={<JobApplication />} />
                 <Route path="/find-job" element={<FindAJob />} />
+                <Route path="/pricing" element={<Pricing />} />
                 <Route path="/hire" element={<HireNow />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/profile" element={<Dashboard />} />

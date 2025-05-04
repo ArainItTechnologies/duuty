@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom";
-import BannerImage from "../assets/banner-image.png";
+// import BannerImage from "../assets/banner-image.png";
+import BannerImage from "../assets/image-banner.png";
 import BannerImageMob from "../assets/banner-image-mob.png";
 import RegisterImg from "../assets/register-img.png";
 import HotelImg from "../assets/hotel-img.png";

@@ -161,11 +161,11 @@ export default function Navbar() {
             transition
             className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl transition duration-300 ease-in-out data-closed:translate-x-full"
           >
-            <div className="flex px-4 pt-5 pb-2">
+            <div className="flex px-4 pt-3 pb-3">
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+                className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 ml-auto cursor-pointer"
               >
                 <span className="absolute -inset-0.5" />
                 <span className="sr-only">Close menu</span>
@@ -189,16 +189,19 @@ export default function Navbar() {
               </div>
             </TabGroup> */}
 
-            <div className="space-y-6 border-t border-gray-200 px-4 py-6">
+            <div className="space-y-6 border-t border-gray-200 px-3 py-3">
               <div className="flow-root">
-                <Link to="/login" className="-m-2 block p-2 font-medium text-gray-900">
+                <Link to="/login" className="mb-2 block p-2 px-3 font-medium bg-[#f5f5fc] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600 rounded-[6px]">
                   Sign in
                 </Link>
-                <Link to="/find-job" className="-m-2 block p-2 font-medium text-gray-900">
+                <Link to="/find-job" className="mb-2 block p-2 px-3 font-medium bg-[#f5f5fc] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600 rounded-[6px]">
                 Find a Job
                 </Link>
-                <Link to="/hire" className="-m-2 block p-2 font-medium text-gray-900">
+                <Link to="/hire" className="mb-2 block p-2 px-3 font-medium bg-[#f5f5fc] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600 rounded-[6px]">
                   Hire Now
+                </Link>
+                <Link to="/pricing" className="mb-2 block p-2 px-3 font-medium bg-[#f5f5fc] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600 rounded-[6px]">
+                  Pricing
                 </Link>
               </div>
             </div>
@@ -255,7 +258,7 @@ export default function Navbar() {
                 </a>
                 <span aria-hidden="true" className="h-6 w-px bg-gray-200" /> */}
                 <div className="flex h-full space-x-8 mr-[40px]">
-                  <div className="flex">
+                  {/* <div className="flex">
                     <div className="relative flex">
                       <button
                         className={`cursor-pointer text-[16px] relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out ${
@@ -314,7 +317,19 @@ export default function Navbar() {
                         Testimonials
                       </button>
                     </div>
-                  </div>
+                  </div> */}
+                  {/* <div className="flex">
+                    <div className="relative flex">
+                      <Link to="/pricing" className="cursor-pointer text-[16px] relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out border-transparent text-gray-700 hover:text-gray-800">
+                        Pricing
+                      </Link>
+                    </div>
+                  </div> */}
+                    <div className="relative flex">
+                      <Link to="/pricing" className="cursor-pointer text-[16px] relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out border-transparent text-gray-700 hover:text-indigo-600">
+                        Pricing
+                      </Link>
+                    </div>
                 </div>
 
                 <Link to="/find-job" className="text-[15px] text-white font-medium inline-block rounded-[11px] bg-linear-(--gradient-bg) px-[25px] py-[10px] mr-[12px]">
