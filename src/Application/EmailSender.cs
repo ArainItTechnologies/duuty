@@ -24,12 +24,12 @@ public class EmailSender : IEmailSender
         {
             EmailType.Confirm => $@"
                         <h2>Confirm Your Email</h2>
-                        <p>Thanks for registering! Please confirm your email by <a href='{message}' class='link-text'>clicking here</a>.</p>
+                        <p>Thanks for registering! Please confirm your email by <a href='{message}' className='link-text'>clicking here</a>.</p>
                         <p>If you didn’t register, just ignore this email.</p>",
 
             EmailType.Reset => $@"
                         <h2>Password Reset Request</h2>
-                        <p>We received a request to reset your password. Reset it by <a href='{message}' class='link-text'>clicking here</a>.</p>
+                        <p>We received a request to reset your password. Reset it by <a href='{message}' className='link-text'>clicking here</a>.</p>
                         <p>If you didn’t request this, you can safely ignore this email.</p>",
 
             EmailType.PasswordUpdated => $@"
@@ -58,14 +58,14 @@ public class EmailSender : IEmailSender
                             </style>
                         </head>
                         <body>
-                            <div class='container'>
-                                <div class='header'>
+                            <div className='container'>
+                                <div className='header'>
                                     <h1>DUUTY</h1>
                                 </div>
-                                <div class='content'>
+                                <div className='content'>
                                     {htmlContent}
                                 </div>
-                                <div class='footer'>
+                                <div className='footer'>
                                     <p>&copy; 2025 DUUTY. All Rights Reserved.</p>
                                 </div>
                             </div>

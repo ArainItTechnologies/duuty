@@ -1,5 +1,5 @@
 import { useState } from "react";
-import LogoSrc from "../../assets/logo.png";
+import LogoSrc from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
 import { registerUser } from "../../services/auth";
 
