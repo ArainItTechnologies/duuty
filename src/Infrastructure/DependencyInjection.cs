@@ -5,7 +5,7 @@ using DataAccess.Repository.Command;
 using DataAccess.Repository.Query;
 using Domain.Repository.Command;
 using Domain.Repository.Query;
-using Infrastructure.Data;
+using DataAccess;
 using Infrastructure.JwtFeatures;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -32,7 +32,7 @@ public static class DependencyInjection
         services.AddTransient<IEmailSender, EmailSender>();
         services.AddSingleton<ICurrentDateTimeProvider, CurrentDateTimeProvider>();
 
-        services.AddIdentity<DuutyUser, DuutyRole>(options =>
+        services.AddIdentity<ArainUser, ArainRole>(options =>
         {
             options.SignIn.RequireConfirmedEmail = true;
         })

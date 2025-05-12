@@ -22,7 +22,7 @@ public class JwtHandler
         _jwtSettings = _configuration.GetSection("JwtSettings");
     }
 
-    public string CreateToken(DuutyUser user, IList<string> roles)
+    public string CreateToken(ArainUser user, IList<string> roles)
     {
         var signingCredentials = GetSigningCredentials();
         var claims = GetClaims(user, roles);
@@ -39,17 +39,17 @@ public class JwtHandler
         return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
     }
 
-    private IEnumerable<Claim> GetClaims(DuutyUser user, IList<string> roles)
+    private IEnumerable<Claim> GetClaims(ArainUser user, IList<string> roles)
     {
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.UserName!),
-            new Claim(ClaimTypes.Email, user.Email!)
+            new Claim(nameof(ClaimTypes.Name), user.UserName!),
+            new Claim(nameof(ClaimTypes.Email), user.Email!)
         };
 
         foreach (var role in roles)
         {
-            claims.Add(new Claim(ClaimTypes.Role, role));
+            claims.Add(new Claim(nameof(ClaimTypes.Role), role));
         }
 
         return claims;

@@ -14,12 +14,12 @@ namespace Web.Server.Features.Public.Register;
 [AllowAnonymous]
 public class RegisterEndpoint : Endpoint<RegisterModel, RegistrationResponse>
 {
-    private readonly UserManager<DuutyUser> _userManager;
+    private readonly UserManager<ArainUser> _userManager;
     private readonly IEmailSender _emailSender;
     private readonly IConfiguration _configuration;
 
     public RegisterEndpoint(
-        UserManager<DuutyUser> userManager,
+        UserManager<ArainUser> userManager,
         IEmailSender emailSender,
         IConfiguration configuration)
     {
@@ -33,7 +33,7 @@ public class RegisterEndpoint : Endpoint<RegisterModel, RegistrationResponse>
             ? model.Email
             : model.PhoneNumber;
 
-        var user = new DuutyUser
+        var user = new ArainUser
         {
             UserName = userName,
             Email = model.Email,

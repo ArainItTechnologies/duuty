@@ -33,3 +33,17 @@ export const loginUser = async (loginData) => {
 };
 
 
+export const changePassword = async (data, token) => {
+  try {
+    const response = await axios.post("/api/change-password", data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || { message: "Change password failed" };
+  }
+};

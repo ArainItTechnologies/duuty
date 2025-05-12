@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Identity;
 
 namespace DataAccess.Identity;
 
-public class DuutyUser : IdentityUser<string>
+public class ArainUser : IdentityUser<string>
 {
-    public DuutyUser()
+    public ArainUser()
     {
         Id = Guid.NewGuid().ToString();
     }

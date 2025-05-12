@@ -14,11 +14,11 @@ namespace Web.Server.Features.Public.ForgotPassword;
 [AllowAnonymous]
 public class ForgotPasswordEndpoint : Endpoint<ForgotPasswordRequest, ForgotPasswordResponse>
 {
-    private readonly UserManager<DuutyUser> _userManager;
+    private readonly UserManager<ArainUser> _userManager;
     private readonly IEmailSender _emailSender;
     private readonly IConfiguration _configuration;
 
-    public ForgotPasswordEndpoint(UserManager<DuutyUser> userManager, IEmailSender emailSender, IConfiguration configuration)
+    public ForgotPasswordEndpoint(UserManager<ArainUser> userManager, IEmailSender emailSender, IConfiguration configuration)
     {
         _userManager = userManager;
         _emailSender = emailSender;

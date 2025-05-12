@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import EmailConfirmation from "./components/EmailConfirmation";
 import ForgotPassword from "./components/user/ForgotPassword";
 import Profile from "./components/Profile";
+import ChangePassword from "./components/user/ChangePassword";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit" element={<Edit />} />
         <Route path="/confirm" element={<EmailConfirmation />} />
+        <Route path="/change-password" element={<ChangePassword />} />
         {/* <Route path="/404" element={<Notfound />} /> */}
         <Route path="*" element={<Notfound />} />
       </Routes>

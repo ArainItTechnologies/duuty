@@ -4,6 +4,7 @@ using Infrastructure;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+
 var configuration = builder.Configuration;
 
 if (configuration is null)
@@ -17,8 +18,7 @@ builder.Services.AddFastEndpoints();
 
 // Include Application Dependency
 builder.Services.AddApplicationServices()
-                .AddInfrastructure(configuration);
-
+    .AddInfrastructure(configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -27,9 +27,6 @@ builder.Services.AddAuthentication()
     .AddBearerToken(IdentityConstants.BearerScheme);
 
 var app = builder.Build();
-
-app.UseDefaultFiles();
-app.UseStaticFiles();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

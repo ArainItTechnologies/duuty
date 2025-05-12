@@ -8,7 +8,7 @@ namespace Web.Server.Features.Public.Login;
 
 [HttpPost("/api/login")]
 [AllowAnonymous]
-public class LoginEndpoint(UserManager<DuutyUser> userManager, JwtHandler jwtHandler) : Endpoint<LoginRequest, LoginResponse>
+public class LoginEndpoint(UserManager<ArainUser> userManager, JwtHandler jwtHandler) : Endpoint<LoginRequest, LoginResponse>
 {
     public override async Task HandleAsync(LoginRequest request, CancellationToken ct)
     {

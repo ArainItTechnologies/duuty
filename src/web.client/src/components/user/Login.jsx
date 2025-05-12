@@ -14,14 +14,9 @@ const Login = () => {
 
   const getUserDetailsFromToken = (token) => {
     const decoded = jwtDecode(token);
-    const name =
-      decoded?.["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
-    const email =
-      decoded?.[
-        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
-      ];
-    const role =
-      decoded?.["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    const name = decoded?.["name"];
+    const email = decoded?.["email"];
+    const role = decoded?.["role"];
 
     return { name, email, role };
   };
@@ -31,8 +26,8 @@ const Login = () => {
 
     const result = await loginUser({ email, password });
     const userInfo = getUserDetailsFromToken(result.token);
+    userInfo.token = result.token;
 
-    localStorage.setItem("authToken", result.token);
     setUser(userInfo);
     navigate("/dashboard"); 
   };

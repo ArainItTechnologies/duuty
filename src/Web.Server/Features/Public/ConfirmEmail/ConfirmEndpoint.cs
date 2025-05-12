@@ -12,7 +12,7 @@ namespace Web.Server.Features.Public.ConfirmEmail
 {
     [HttpPost("/api/confirm")]
     [AllowAnonymous]
-    public class ConfirmEndpoint(UserManager<DuutyUser> userManager, IEmailSender emailSender) : EndpointWithoutRequest<ConfirmResponse>
+    public class ConfirmEndpoint(UserManager<ArainUser> userManager, IEmailSender emailSender) : EndpointWithoutRequest<ConfirmResponse>
     {
         public override async Task HandleAsync(CancellationToken ct)
         {

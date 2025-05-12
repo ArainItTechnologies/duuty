@@ -14,11 +14,11 @@ namespace Web.Server.Features.Public.Resend
     [AllowAnonymous]
     public class ResendConfirmEndpoint : Endpoint<ResendRequest, AuthResponse>
     {
-        private readonly UserManager<DuutyUser> _userManager;
+        private readonly UserManager<ArainUser> _userManager;
         private readonly IEmailSender _emailSender;
         private readonly IConfiguration _configuration;
         public ResendConfirmEndpoint(
-            UserManager<DuutyUser> userManager,
+            UserManager<ArainUser> userManager,
             IEmailSender emailSender,
             IConfiguration configuration)
         {

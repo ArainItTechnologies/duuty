@@ -1,5 +1,5 @@
 ﻿using Domain.Repository.Command;
-using Infrastructure.Data;
+using DataAccess;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repository.Command;
