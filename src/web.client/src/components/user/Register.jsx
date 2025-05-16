@@ -1,9 +1,15 @@
 import { useState } from "react";
+import { Link,useLocation, useNavigate } from "react-router-dom";
 import LogoSrc from "../../assets/logo.svg";
-import { Link } from "react-router-dom";
 import { registerUser } from "../../services/auth";
 
 const Register = () => {
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from || '/';
+
   const [formData, setFormData] = useState({
     phone: "",
     email: "",
@@ -39,6 +45,7 @@ const Register = () => {
         "Registration successful! Please check your email for confirmation."
       );
       setError("");
+      navigate(from); // Redirect to the previous page
       setIsRegistered(true); // Set registration status to true
     } catch (err) {
       setError(err.message || "Something went wrong");

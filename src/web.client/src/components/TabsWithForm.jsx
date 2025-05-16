@@ -2,7 +2,7 @@ import { useState } from "react";
 import EmployeeForm from "../components/Employee-form";
 import EmployerForm from "../components/Employer-form";
 
-const TabbedForms = ({ setIsEmployer }) => {
+const TabbedForms = () => {
   const [activeTab, setActiveTab] = useState("employeeForm"); // Default active tab
 
   return (
@@ -27,7 +27,6 @@ const TabbedForms = ({ setIsEmployer }) => {
           }`}
           onClick={() => {
             setActiveTab("employerForm");
-            setIsEmployer(true);
           }}
         >
           Employer

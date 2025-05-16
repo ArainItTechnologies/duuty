@@ -15,6 +15,7 @@ import ForgotPassword from "./components/user/ForgotPassword";
 import Profile from "./components/Profile";
 import Pricing from "./components/Pricing";
 import ChangePassword from "./components/user/ChangePassword";
+import JobListing from "./components/JobListings";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/job" element={<JobApplication />} />
         <Route path="/find-job" element={<FindAJob />} />
         <Route path="/hire" element={<HireNow />} />
+        <Route path="/job-listing" element={<JobListing />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot" element={<ForgotPassword />} />
         <Route path="/profile" element={<Profile />} />

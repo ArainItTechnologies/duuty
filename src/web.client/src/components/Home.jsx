@@ -19,7 +19,6 @@ import WavePatten2 from "../assets/wave-patten2.svg";
 
 import TabsWithForm from '../components/TabsWithForm';
 import Testiminal from "../components/Testimonial";
-import AddRestaurantModal from "../components/AddRestaurantModal";
 
 export const Home = () => {
     return (
@@ -41,7 +40,10 @@ export const Home = () => {
                         >
                           Find a Job
                         </Link>
-                        <Link className="hidden hover:bg-[#ECEFFF] text-[15px] text-[#3B31FF] font-medium sm:inline-block rounded-[11px] px-[25px] py-[15px] border-1 border-[#ECEFFF">
+                        <Link
+                            to="/job-listing" 
+                            className="hidden hover:bg-[#ECEFFF] text-[15px] text-[#3B31FF] font-medium sm:inline-block rounded-[11px] px-[25px] py-[15px] border-1 border-[#ECEFFF"
+                        >
                           Hire us
                         </Link>
 

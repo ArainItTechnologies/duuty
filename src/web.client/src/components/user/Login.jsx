@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link,useLocation, useNavigate } from "react-router-dom";
 import LogoSrc from "../../assets/logo.svg";
 import { loginUser } from "../../services/auth";
 import { useUser } from "../../hooks/Hooks";
@@ -8,7 +8,10 @@ import { jwtDecode } from "jwt-decode";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const location = useLocation();
   const navigate = useNavigate();
+
+  const from = location.state?.from || '/'; // fallback to home
 
   const { setUser } = useUser();
 
@@ -29,7 +32,12 @@ const Login = () => {
     userInfo.token = result.token;
 
     setUser(userInfo);
-    navigate("/dashboard"); 
+    
+    if(from === "/hire") {
+      navigate("/job-listing", { replace: true }); 
+    } else{
+      navigate(from, { replace: true }); 
+    }
   };
 
   return (

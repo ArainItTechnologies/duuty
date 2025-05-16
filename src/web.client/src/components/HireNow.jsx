@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 import { useUser } from "../hooks/Hooks";
 
 const HireNow = () => {
@@ -19,15 +19,19 @@ const HireNow = () => {
     benefits: "",
   });
 
+  const location = useLocation();
+
+  const [jobRole, setJobRole] = useState(location.state?.title);
+
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
 
   useEffect(() => {
     if (!user) {
-      navigate("/login");
+      navigate("/login", { state: { from: location.pathname } });
     }
-  }, [navigate, user]);
+  }, [navigate, user, location]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,6 +64,7 @@ const HireNow = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -91,6 +96,7 @@ const HireNow = () => {
       alert("Failed to post job. Please try again.");
     } finally {
       setIsSubmitting(false);
+      setJobRole("");
     }
   };
 
@@ -115,8 +121,8 @@ const HireNow = () => {
               type="text"
               name="title"
               id="title"
-              value={formData.title}
-              onChange={handleChange}
+              readOnly
+              defaultValue={jobRole}
               className={`mt-1 block w-full rounded-md border border-gray-300 shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm ${
                 errors.title ? "border-red-500" : "border-gray-300"
               }`}

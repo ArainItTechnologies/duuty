@@ -5,13 +5,6 @@ import {
   Dialog,
   DialogBackdrop,
   DialogPanel,
-  Popover,
-  PopoverButton,
-  PopoverGroup,
-  PopoverPanel,
-  Tab,
-  TabGroup,
-  TabList,
 } from '@headlessui/react'
 import {
   Bars3Icon,
@@ -25,142 +18,12 @@ import {
 import LogoSrc from '../assets/logo.svg';
 import { useUser } from "../hooks/Hooks";
 
-const navigation = {
-  categories: [
-    {
-      id: 'employer',
-      name: 'Employer',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc:
-            'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
-          imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
-        },
-        {
-          name: 'Artwork Tees',
-          href: '#',
-          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-02-image-card-06.jpg',
-          imageAlt:
-            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
-        },
-      ],
-      sections: [
-        {
-          id: 'clothing',
-          name: 'Clothing',
-          items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
-          ],
-        },
-        {
-          id: 'accessories',
-          name: 'Accessories',
-          items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
-          ],
-        },
-        {
-          id: 'brands',
-          name: 'Brands',
-          items: [
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-          ],
-        },
-      ],
-    },
-    {
-      id: 'employee',
-      name: 'Employee',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc:
-            'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
-          imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
-        },
-        {
-          name: 'Artwork Tees',
-          href: '#',
-          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-02-image-card-06.jpg',
-          imageAlt:
-            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
-        },
-      ],
-      sections: [
-        {
-          id: 'clothing',
-          name: 'Clothing',
-          items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
-          ],
-        },
-        {
-          id: 'accessories',
-          name: 'Accessories',
-          items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
-          ],
-        },
-        {
-          id: 'brands',
-          name: 'Brands',
-          items: [
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-          ],
-        },
-      ],
-    },
-  ]
-}
-
 export default function Navbar() {
   const { user, setUser } = useUser();
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const navigate = useNavigate();
-
-  const [activeTab, setActiveTab] = useState(''); // State to track active tab
-
-  const handleTabClick = (tabName) => {
-    setActiveTab(tabName); // Set the active tab
-    const section = document.getElementById(tabName.toLowerCase().replace(' ', '-')); // Map tab name to section ID
-    if (section) {
-      const offsetTop = section.offsetTop - 60; // Calculate position with 20px offset
-      window.scrollTo({ top: offsetTop, behavior: 'smooth' }); // Smooth scroll to the section
-    }
-  };
 
   return (
     <div className="bg-[#F4F3FF] sticky top-0 z-5">
@@ -188,22 +51,6 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* Links */}
-            {/* <TabGroup className="mt-2">
-              <div className="border-b border-gray-200">
-                <TabList className="-mb-px flex space-x-8 px-4">
-                  {navigation.categories.map((category) => (
-                    <Tab
-                      key={category.name}
-                      className="flex-1 border-b-2 border-transparent px-1 py-4 text-base font-medium whitespace-nowrap text-gray-900 data-selected:border-indigo-600 data-selected:text-indigo-600"
-                    >
-                      {category.name}
-                    </Tab>
-                  ))}
-                </TabList>
-              </div>
-            </TabGroup> */}
-
             <div className="space-y-6 border-t border-gray-200 px-3 py-3">
               <div className="flow-root">
                 <Link to="/login" className="mb-2 block p-2 px-3 font-medium bg-[#f5f5fc] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600 rounded-[6px]">
@@ -212,7 +59,7 @@ export default function Navbar() {
                 <Link to="/find-job" className="mb-2 block p-2 px-3 font-medium bg-[#f5f5fc] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600 rounded-[6px]">
                 Find a Job
                 </Link>
-                <Link to="/hire" className="mb-2 block p-2 px-3 font-medium bg-[#f5f5fc] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600 rounded-[6px]">
+                <Link to="/job-listing" className="mb-2 block p-2 px-3 font-medium bg-[#f5f5fc] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600 rounded-[6px]">
                   Hire Now
                 </Link>
                 <Link to="/pricing" className="mb-2 block p-2 px-3 font-medium bg-[#f5f5fc] text-gray-900 hover:bg-[#EDEBFF] hover:text-indigo-600 rounded-[6px]">
@@ -276,7 +123,7 @@ export default function Navbar() {
                 <Link to="/find-job" className="text-[15px] text-white font-medium inline-block rounded-[11px] bg-linear-(--gradient-bg) px-[25px] py-[10px] mr-[12px]">
                   Find a Job
                 </Link>
-                <Link to="/hire" className="hover:bg-[#ECEFFF] text-[15px] text-[#3B31FF] font-medium inline-block rounded-[11px] px-[25px] py-[10px] border-1 border-[#ECEFFF">
+                <Link to="/job-listing" className="hover:bg-[#ECEFFF] text-[15px] text-[#3B31FF] font-medium inline-block rounded-[11px] px-[25px] py-[10px] border-1 border-[#ECEFFF">
                   Hire Now
                 </Link>
                {/* Conditionally show based on user */}
