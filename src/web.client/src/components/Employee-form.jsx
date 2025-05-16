@@ -7,18 +7,35 @@ import SelectRole from "./SelectRole";
 const Login = () =>  {
   const [rememberMe, setRememberMe] = useState(false);
   const [showSelectRole, setShowSelectRole] = useState(false);
+  const [selectedRole, setSelectedRole] = useState(null);
+  const [roleOptions, setRoleOptions] = useState([
+    { value: "chef", label: "Chef" },
+    { value: "hotelOwner", label: "Hotel owner" },
+    { value: "applyForJob", label: "Apply for job" },
+    { value: "user", label: "User" },
+  ]);
   const navigate = useNavigate();
 
   const handleCheckboxChange = () => {
     setRememberMe(!rememberMe);
   };
 
-  const handleDropdownClick = () => {
+  const handleDropdownClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     setShowSelectRole(true);
   };
 
   const handleCloseSelectRole = () => {
     setShowSelectRole(false);
+  };
+
+  const handleRoleSelect = (role) => {
+    console.log("Selected Role:", role);
+    setSelectedRole(role);
+    if (!roleOptions.some((option) => option.value === role)) {
+      setRoleOptions([...roleOptions, { value: role, label: role }]);
+    }
   };
 
   return (
@@ -77,34 +94,47 @@ const Login = () =>  {
               <label htmlFor="role" className="block text-sm/6 font-medium text-(--secondary-text-color)">
                 Select Role <span class="text-red-500">*</span>
               </label>
-              <div className="mt-2 select-wrapper relative" onClick={handleDropdownClick}>
+              <div className="mt-2 select-wrapper relative">
                 <select
                   className="appearance-none cursor-pointer block w-full rounded-xl sm:h-[50px] h-[40px] bg-white sm:p-3 px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-[16px] text-[14px]"
-                  onClick={(e) => e.preventDefault()} // Prevent default dropdown behavior
+                  value={selectedRole || ""}
+                  onMouseDown={handleDropdownClick} 
+                  onChange={(e) => setSelectedRole(e.target.value)} 
                 >
-                  <option value="">Chef</option>
-                  <option value="">Hotel owner</option>
-                  <option value="">Apply for job</option>
-                  <option value="">User</option>
+                  <option value="" disabled>
+                    Select a role
+                  </option>
+                  {roleOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
 
-            <div>
-              <label htmlFor="role" className="block text-sm/6 font-medium text-(--secondary-text-color)">
-                Select Sub Role <span class="text-red-500">*</span>
-              </label>
-              <div className="mt-2 select-wrapper relative">
-                <select
-                  className="appearance-none cursor-pointer block w-full rounded-xl sm:h-[50px] h-[40px] bg-white sm:p-3 px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-[16px] text-[14px]"
-                  >
-                  <option value="">Chef</option>
-                  <option value="">Hotel owner</option>
-                  <option value="">Apply for job</option>
-                  <option value="">User</option>
-                </select>
+            {selectedRole === "chef" && (
+              <div>
+                <label htmlFor="subRole" className="block text-sm/6 font-medium text-(--secondary-text-color)">
+                  Select Sub Role <span className="text-red-500">*</span>
+                </label>
+                <div className="mt-2 select-wrapper relative">
+                  <select
+                    className="appearance-none cursor-pointer block w-full rounded-xl sm:h-[50px] h-[40px] bg-white sm:p-3 px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-[16px] text-[14px]"Chef    >
+                    <option value="">Biriyani Master</option>
+                    <option value="">Chef de partie</option>
+                    <option value="">Commis Chef</option>
+                    <option value="">Sous Chef</option>
+                    <option value="">Station Chef</option>
+                    <option value="">Butcher Chef</option>
+                    <option value="">Executive Chef</option>
+                    <option value="">Head Chef</option>
+                    <option value="">Sauce Chef</option>
+                    <option value="">Pantry chef</option>
+                  </select>
+                </div>
               </div>
-            </div>
+            )}
 
             <div>
               <div className="flex items-center justify-between">
@@ -167,7 +197,13 @@ const Login = () =>  {
           </form>
         </div>
 
-        {showSelectRole && <SelectRole onClose={handleCloseSelectRole} />}
+        {showSelectRole && (
+          <SelectRole
+            onClose={handleCloseSelectRole}
+            onRoleSelect={handleRoleSelect}
+            selectedRole={selectedRole}
+          />
+        )}
     </>
   )
 }

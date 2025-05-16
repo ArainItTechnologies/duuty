@@ -38,14 +38,15 @@ export const Home = () => {
             <div id="overview" className="banner-section px-3 sm:px-6 py-6 pb-[50px] sm:pb-[70px] md:pb-[100px] mx-auto bg-linear-[180deg,#F4F3FF,#FFFFFF]">
                 <div className="container-wrapper items-center lg:items-start flex flex-col lg:flex-row justify-center sm:gap-[50px] xl:gap-[100px] ">
                     <div className="block sm:hidden text-center relative w-full">
-                        <h1 className="text-[30px] lg:text-[40px] xl:text-[47px] font-[AvenirNextBold] pt-0 pb-6 font-bold">Employeed With Us</h1>
+                        <h1 className="text-[30px] lg:text-[40px] xl:text-[47px] font-[AvenirNextBold] pt-0 pb-6 font-bold">Where Culinary Passion Meets Opportunity for Effortless Hiring & Job Search.</h1>
                         <img className="w-full h-auto" src={BannerImageMob} alt="Duuty banner image" />
                     </div>
                     <div className="hidden sm:block w-full lg:mt-0 lg:w-1/2 xl:w-3/5 max-w-[500px] lg:max-w-[700px] text-center lg:max-w-[600px] lg:text-left">
                         <img className="w-full h-full lg:max-w-3xl" src={BannerImage} alt="Duuty banner image" />
-                        <span className="md:text-[27px] font-medium text-(--teritary-text-color)">Let’s start the Duuty”</span>
-                        <h1 className="text-[32px] lg:text-[40px] xl:text-[47px] font-[AvenirNextBold] pt-3 pb-3 font-bold">Employeed With us</h1>
-                        <p className="text-(--secondary-text-color) mb-[22px]" >Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                        <span className="md:text-[27px] font-medium text-(--teritary-text-color)">Connecting great kitchens with great talent</span>
+                        <h1 className="text-[32px] lg:text-[40px] xl:text-[47px] font-[AvenirNextBold] pt-3 pb-3 font-bold">Where Culinary Passion Meets Opportunity for Effortless Hiring & Job Search.</h1>
+                        <p className="text-(--secondary-text-color) mb-[22px]" >
+                        Whether you're a restaurant owner seeking reliable kitchen staff or a talented individual looking for your next culinary adventure, Duuty has you covered.</p>
                         <Link
                           to="/find-job"
                           className="hidden text-[15px] text-white font-medium sm:inline-block rounded-[11px] bg-linear-(--gradient-bg) px-[25px] py-[15px] mr-[12px]"
@@ -70,8 +71,8 @@ export const Home = () => {
                     <circle cx="104" cy="94" r="78" stroke="#232962" stroke-width="10"/>
                 </svg>
                 <div className="top-employee-benifits text-center sm:py-[50px] px-[20px] py-[25px] bg-[var(--employee-bg)]">
-                    <h3 className="text-white text-[28px] sm:text-[32px] font-[AvenirNextMedium]">Employee Benefits</h3>
-                    <p className="mt-[10px] max-w-[calc(100%-100px)] m-auto text-[var(--employee-para-color)]">Benefits that employees receive as a result of their employment are referred to as employee benefits</p>
+                    <h3 className="text-white text-[28px] sm:text-[32px] font-[AvenirNextMedium]">Your path to the perfect kitchen role</h3>
+                    <p className="mt-[10px] max-w-[calc(100%-100px)] m-auto text-[var(--employee-para-color)]">Discover the Culinary Career You Deserve. Your Dream Kitchen Job Awaits.</p>
                 </div>
                 <div className="benifits-wrapper sm:pr-[30px] pr-[20px] sm:pb-[90px] sm:pl-[80px] pl-[20px] relative before:content-[''] before:absolute before:left-0 before:top-[-40px] sm:before:top-0  before:w-full before:h-[150px] sm:before:h-[100px] before:bg-(--employee-bg) bg-[var(--benefit-bg)]">
                     <div className="container-wrapper">
@@ -80,22 +81,22 @@ export const Home = () => {
                             <div className="benifits-content flex flex-col sm:flex-row items-center gap-[25px]">
                                 <img className="sm:size-[124px] size-100 max-w-[160px] max-h-[160px] sm:max-w-[100%] sm:max-w-[100%]" src={RegisterImg} alt="Register your role" />
                                 <div className="max-w-[100%] text-center sm:text-left sm:max-w-[340px]">
-                                    <h4 className="text-[20px] sm:text-[22px] lg:text-[26px] font-[AvenirNextBold] mb-2.5">Register your role</h4>
-                                    <p>Lorem Ipsum has been the industry's standard dummy text ever when an unknown printer</p>
+                                    <h4 className="text-[20px] sm:text-[22px] lg:text-[26px] font-[AvenirNextBold] mb-2.5">Create your profile</h4>
+                                    <p>Easy profile creation with minimal information.</p>
                                 </div>
 
                             </div>
                         </div>
                         <div className="benifits-list flex relative sm:pt-[40px] pt-[60px] sm:pr-[40px] pr-[20px] sm:pb-[40px] pb-[25px] md:pl-[110px] sm:pl-[85px] pl-[20px] w-[750px] max-w-full rounded-[35px] bg-white sm:mt-[40px] sm:mb-[40px] mt-[60px] mb-[60px] ml-auto before:content-[''] before:absolute lg:before:left-0 before:top-0 before:z-1 before:rounded-[35px] before:w-[70px] before:h-full before:bg-white md:before:left-[50px] before:hidden md:before:block border-[1px] border-[var(--benefit-card-border)]">
-                            <svg className="hidden md:block absolute top-[-43px] lg:left-[-24px] md:left-[50px] z-0" width="52" height="290" viewBox="0 0 52 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg className="hidden md:block absolute top-[-43px] lg:left-[-24px] md:left-[50px] z-0" width="60" height="300" viewBox="0 0 52 290" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1 1C10.5 12.3333 31.3 40 38.5 60C47.5 85 70 217 14.5 289.5" stroke="#B7B0FF" stroke-dasharray="4 4"/>
                             </svg>
                             <div className="list-count shadow-[inset_0px_0px_0px_12px_var(--neutral-white)] text-[28px] sm:text-[46px] font-medium rounded-full w-[80px] h-[80px] sm:w-[123px] sm:h-[123px] flex items-center justify-center absolute sm:left-[-55px] sm:right-[unset] left-0 right-0 m-auto top-[-40px] sm:top-[unset] z-1 text-[var(--benefit-list-color)] bg-[var(--benefit-list-bg)] border-[1px] border-[var(--benefit-list-border)]">02</div>
                             <div className="benifits-content flex flex-col sm:flex-row items-center gap-[25px] relative z-1">
                                 <img className="sm:size-[124px] size-100 max-w-[160px] max-h-[160px] sm:max-w-[100%] sm:max-w-[100%]" src={HotelImg} alt="Find your dream hotel" />
                                 <div className="max-w-[100%] text-center sm:text-left sm:max-w-[340px]">
-                                    <h4 className="text-[20px] sm:text-[22px] lg:text-[26px] font-[AvenirNextBold] mb-2.5">Find your dream hotel</h4>
-                                    <p>Lorem Ipsum has been the industry's standard dummy text ever when an unknown printer</p>
+                                    <h4 className="text-[20px] sm:text-[22px] lg:text-[26px] font-[AvenirNextBold] mb-2.5">Explore a World of Opportunities</h4>
+                                    <p>Access thousands of kitchen jobs and connect directly with top employers.</p>
                                 </div>
 
                             </div>
@@ -105,8 +106,8 @@ export const Home = () => {
                             <div className="benifits-content flex flex-col sm:flex-row items-center gap-[25px] gap-[25px]">
                                 <img className="sm:size-[124px] size-100 max-w-[160px] max-h-[160px] sm:max-w-[100%] sm:max-w-[100%]" src={PayImg} alt="Get Good Pay" />
                                 <div className="max-w-[100%] text-center sm:text-left sm:max-w-[340px]">
-                                    <h4 className="text-[20px] sm:text-[22px] lg:text-[26px] font-[AvenirNextBold] mb-2.5">Get Good Pay</h4>
-                                    <p>Lorem Ipsum has been the industry's standard dummy text ever when an unknown printer</p>
+                                    <h4 className="text-[20px] sm:text-[22px] lg:text-[26px] font-[AvenirNextBold] mb-2.5">Land Your Dream Job</h4>
+                                    <p>Receive real-time alerts tailored to your profile and apply with confidence.</p>
                                 </div>
 
                             </div>
@@ -121,58 +122,57 @@ export const Home = () => {
                         <img className="max-w-[300px] sm:max-w-[90%] xl:w-[380px] 2xl:w-[410px]" src={FindEmp} width="410" height="563" alt="Find your Employer" />
                         <div className="border-[1px] border-[var(--neutral-black)] emp-img emp-img1 bg-white absolute rounded-[16px] flex items-center p-4 sm:p-6 gap-4 right-0 top-[-20px]">
                             <img className="size-[48px]" src={Emp2} alt="Find your Employer" />
-                            <p className="max-w-[180px] text-left sm:text-[16px] text-[14px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                            <p className="max-w-[180px] text-left sm:text-[16px] text-[14px]">Employers find qualified candidates within 48 hours.</p>
                         </div>
                         <div className="border-[1px] border-[var(--neutral-black)] emp-img emp-img2 bg-white absolute rounded-[16px] flex items-center p-4 sm:p-6 gap-4 left-0 bottom-[60px]">
                             <img className="size-[48px]" src={Emp1} alt="Find your Employer" />
-                            <p className="max-w-[180px] text-left sm:text-[16px] text-[14px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                            <p className="max-w-[180px] text-left sm:text-[16px] text-[14px]">Candidate match accuracy based on employer preferences.</p>
                         </div>
                         
                     </div>
                     <div className="find-employer-right w-full lg:w-3/5 xl:w-1/2 max-w-[580px]">
-                        <h2 className="text-[28px] lg:text-[34px] xl:text-[40px] font-[AvenirNextBold]">Find your Employer</h2>
-                        <p className="text-[var(--secondary-text-color)] mt-[18px] mb-[35px]">Lorem Ipsum has been the industry's standard dummy text ever since the
-                        1500s, when an unknown printer took a galley of type and scrambled it
-                        to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially.</p>
+                        <h2 className="text-[28px] lg:text-[34px] xl:text-[40px] font-[AvenirNextBold]">Build Your Kitchen Dream Team</h2>
+                        <p className="text-[var(--secondary-text-color)] mt-[18px] mb-[35px]">At Duuty, we make kitchen hiring effortless. Access a pool of pre-vetted culinary professionals, from line cooks to head chefs. Post jobs in minutes, connect with top talent, and fill your kitchen roles faster—with less hassle and better results.</p>
                         <div className="employer-card-wrapper flex flex-wrap gap-x-[30px] sm:gap-y-[50px] gap-y-[30px] justify-center lg:justify-start">
                             <div className="employer-card w-[255px] xl:w-[275px] flex items-center justify-center gap-[15px] rounded-[16px] py-[12px] px-[26px] border-[1px] border-[var(--neutral-black)] bg-[var(--employee-card-bg)] shadow-[8px_8px_0_var(--employee-card-border)]">
                                 <span className="text-[22px] font-semibold">351K</span>
-                                <p className="text-[14px] text-left text-[var(--secondary-text-color)]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p className="text-[14px] text-left text-[var(--secondary-text-color)]">Culinary professionals actively using Duuty to find jobs.</p>
                             </div>
                             <div className="employer-card w-[255px] xl:w-[275px] flex items-center justify-center gap-[15px] rounded-[16px] py-[12px] px-[26px] border-[1px] border-[var(--neutral-black)] bg-[var(--employee-card-child1)] shadow-[8px_8px_0_var(--employee-card-border)]">
                                 <span className="text-[22px] font-semibold">99%</span>
-                                <p className="text-[14px] text-left text-[var(--secondary-text-color)]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p className="text-[14px] text-left text-[var(--secondary-text-color)]">Employers find qualified candidates within 48 hours.</p>
                             </div>
                             <div className="employer-card w-[255px] xl:w-[275px] flex items-center justify-center gap-[15px] rounded-[16px] py-[12px] px-[26px] border-[1px] border-[var(--neutral-black)] bg-[var(--employee-card-child2)] shadow-[8px_8px_0_var(--employee-card-border)]">
                                 <span className="text-[22px] font-semibold">4.89</span>
-                                <p className="text-[14px] text-left text-[var(--secondary-text-color)]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p className="text-[14px] text-left text-[var(--secondary-text-color)]">Average rating from employers on hiring experience.</p>
                             </div>
                             <div className="employer-card w-[255px] xl:w-[275px] flex items-center justify-center gap-[15px] rounded-[16px] py-[12px] px-[26px] border-[1px] border-[var(--neutral-black)] bg-[var(--employee-card-child3)] shadow-[8px_8px_0_var(--employee-card-border)]">
                                 <span className="text-[22px] font-semibold">4.89</span>
-                                <p className="text-[14px] text-left text-[var(--secondary-text-color)]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p className="text-[14px] text-left text-[var(--secondary-text-color)]">Candidate match accuracy based on employer preferences.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="trusted-companies" className="trusted-brands-wrapper lg:pt-[70px] lg:pb-[70px]">
-                <div className="container-wrapper">
-                    <h2 className="text-[28px] lg:text-[34px] xl:text-[40px] font-[AvenirNextBold] text-center">Trusted by 25+ Popular Companies</h2>
-                    <div className="trusted-brands-list flex flex-wrap justify-center items-center mt-[50px] mx-auto gap-y-[40px] lg:gap-y-[50px] xl:gap-y-[70px] gap-x-[50px] lg:gap-x-[60px] xl:gap-x-[75px] 2xl:gap-x-[100px]">
-                        <img className="h-[30px] lg:h-[38px]" src={Notion} alt="Notion Logo" />
-                        <img className="h-[30px] lg:h-[38px]" src={Unsplash} alt="Unsplash Logo" />
-                        <img className="h-[30px] lg:h-[38px]" src={Grammarly} alt="Grammarly Logo" />
-                        <img className="h-[30px] lg:h-[38px]" src={Descript} alt="Descript Logo" />
-                        <img className="h-[30px] lg:h-[38px]" src={Intercom} alt="Intercom Logo" />
-                        <img className="h-[30px] lg:h-[38px]" src={Notion} alt="Notion Logo" />
-                        <img className="h-[30px] lg:h-[38px]" src={Unsplash} alt="Unsplash Logo" />
-                        <img className="h-[30px] lg:h-[38px]" src={Grammarly} alt="Grammarly Logo" />
-                        <img className="h-[30px] lg:h-[38px]" src={Descript} alt="Descript Logo" />
-                        <img className="h-[30px] lg:h-[38px]" src={Intercom} alt="Intercom Logo" />
+            <div id="trusted-companies" className="trusted-brands-wrapper lg:pt-[70px] lg:pb-[70px] overflow-hidden">
+            <div className="container-wrapper">
+                <h2 className="text-[28px] lg:text-[34px] xl:text-[40px] font-[AvenirNextBold] text-center">
+                Trusted by 25+ Popular Companies
+                </h2>
+                <div className="mt-[50px] relative overflow-hidden">
+                    <div className="flex items-center gap-x-[50px] lg:gap-x-[60px] xl:gap-x-[75px] 2xl:gap-x-[100px] animate-scroll whitespace-nowrap w-max">
+                        {/* Original content */}
+                        {[Notion, Unsplash, Grammarly, Descript, Intercom,Notion, Unsplash, Grammarly, Descript, Intercom].map((logo, index) => (
+                        <img key={`original-${index}`} className="h-[30px] lg:h-[38px]" src={logo} alt={`Company Logo ${index + 1}`} />
+                        ))}
+                        {/* Duplicate content */}
+                        {[Notion, Unsplash, Grammarly, Descript, Intercom].map((logo, index) => (
+                        <img key={`duplicate-${index}`} className="h-[30px] lg:h-[38px]" src={logo} alt={`Company Logo Duplicate ${index + 1}`} />
+                        ))}
                     </div>
                 </div>
+            </div>
             </div>
 
             <Testiminal />
@@ -207,89 +207,91 @@ export const Home = () => {
                         <h2 className="text-[28px] lg:text-[34px] xl:text-[40px] font-[AvenirNextBold] pb-8">Frequently Asked Questions</h2>
                         <details className="group py-4 lg:py-8 [&_summary::-webkit-details-marker]:hidden" open>
                         <summary className="flex items-center justify-between gap-1.5 text-black cursor-pointer">
-                            <h5 className="text-[18px] font-semibold font-[AvenirNextMedium]">Where can I watch?</h5>
+                            <h5 className="text-[18px] font-semibold font-[AvenirNextMedium]">How do I post a job on Duuty?</h5>
                             <svg className="shrink-0 transition-transform duration-300 group-open:-rotate-43" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.54534 12.5674H11.1408V17.1628C11.1408 17.6299 11.525 18.0216 11.9996 18.0216C12.4742 18.0216 12.8584 17.6299 12.8584 17.1628V12.5674H17.4538C17.9209 12.5674 18.3126 12.1832 18.3126 11.7086C18.3126 11.234 17.9209 10.8497 17.4538 10.8497H12.8584V6.25432C12.8584 5.78725 12.4742 5.39551 11.9996 5.39551C11.525 5.39551 11.1408 5.78725 11.1408 6.25432V10.8497H6.54534C6.07826 10.8497 5.68652 11.234 5.68652 11.7086C5.68652 12.1832 6.07826 12.5674 6.54534 12.5674Z" fill="#3E2E4D"/>
                             </svg>
                         </summary>
 
                         <p className="pt-4 font-normal text-[var(--faq-text-color)] sm:text-[18px] text-[16px]">
-                        Nibh quisque suscipit fermentum netus nulla cras porttitor euismod nulla. Orci, dictumst nec aliquet id ullamcorper venenatis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab hic veritatis molestias culpa in, recusandae laboriosam neque aliquid libero nesciunt voluptate dicta quo officiis explicabo consequuntur distinctio corporis earum similique!
+                        Creating a job listing takes just a few minutes. Sign in, add your role details, and start receiving applications instantly.
                         </p>
                         </details>
 
                         <details className="group py-4 lg:py-8 [&_summary::-webkit-details-marker]:hidden">
                         <summary className="flex items-center justify-between gap-1.5 text-black cursor-pointer">
-                            <h5 className="text-[18px] font-semibold font-[AvenirNextMedium]">Lorem ipsum dolor sit amet consectetur adipisicing?</h5>
+                            <h5 className="text-[18px] font-semibold font-[AvenirNextMedium]">What kind of kitchen roles can I hire for?</h5>
                             <svg className="shrink-0 transition-transform duration-300 group-open:-rotate-43" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.54534 12.5674H11.1408V17.1628C11.1408 17.6299 11.525 18.0216 11.9996 18.0216C12.4742 18.0216 12.8584 17.6299 12.8584 17.1628V12.5674H17.4538C17.9209 12.5674 18.3126 12.1832 18.3126 11.7086C18.3126 11.234 17.9209 10.8497 17.4538 10.8497H12.8584V6.25432C12.8584 5.78725 12.4742 5.39551 11.9996 5.39551C11.525 5.39551 11.1408 5.78725 11.1408 6.25432V10.8497H6.54534C6.07826 10.8497 5.68652 11.234 5.68652 11.7086C5.68652 12.1832 6.07826 12.5674 6.54534 12.5674Z" fill="#3E2E4D"/>
                             </svg>
                         </summary>
 
                         <p className="pt-4 font-normal sm:text-[18px] text-[16px] text-[var(--faq-text-color)]">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab hic veritatis molestias culpa
-                            in, recusandae laboriosam neque aliquid libero nesciunt voluptate dicta quo officiis
-                            explicabo consequuntur distinctio corporis earum similique!
+                        Duuty supports all culinary roles—chefs, line cooks, kitchen porters, sous chefs, and more.
                         </p>
                         </details>
 
                         <details className="group py-4 lg:py-8 [&_summary::-webkit-details-marker]:hidden">
                         <summary className="flex items-center justify-between gap-1.5 text-black cursor-pointer">
-                            <h5 className="text-[18px] font-semibold font-[AvenirNextMedium]">Lorem ipsum dolor sit amet consectetur adipisicing?</h5>
+                            <h5 className="text-[18px] font-semibold font-[AvenirNextMedium]">How quickly can I expect candidates?</h5>
                             <svg className="shrink-0 transition-transform duration-300 group-open:-rotate-43" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.54534 12.5674H11.1408V17.1628C11.1408 17.6299 11.525 18.0216 11.9996 18.0216C12.4742 18.0216 12.8584 17.6299 12.8584 17.1628V12.5674H17.4538C17.9209 12.5674 18.3126 12.1832 18.3126 11.7086C18.3126 11.234 17.9209 10.8497 17.4538 10.8497H12.8584V6.25432C12.8584 5.78725 12.4742 5.39551 11.9996 5.39551C11.525 5.39551 11.1408 5.78725 11.1408 6.25432V10.8497H6.54534C6.07826 10.8497 5.68652 11.234 5.68652 11.7086C5.68652 12.1832 6.07826 12.5674 6.54534 12.5674Z" fill="#3E2E4D"/>
                             </svg>
                         </summary>
 
                         <p className="pt-4 font-normal sm:text-[18px] text-[16px] text-[var(--faq-text-color)]">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab hic veritatis molestias culpa
-                            in, recusandae laboriosam neque aliquid libero nesciunt voluptate dicta quo officiis
-                            explicabo consequuntur distinctio corporis earum similique!
+                        Most employers start receiving matches within 24–48 hours of posting.
                         </p>
                         </details>
                         <details className="group py-4 lg:py-8 [&_summary::-webkit-details-marker]:hidden">
                         <summary className="flex items-center justify-between gap-1.5 text-black cursor-pointer">
-                            <h5 className="text-[18px] font-semibold font-[AvenirNextMedium]">Lorem ipsum dolor sit amet consectetur adipisicing?</h5>
+                            <h5 className="text-[18px] font-semibold font-[AvenirNextMedium]">Are candidates pre-vetted?</h5>
                             <svg className="shrink-0 transition-transform duration-300 group-open:-rotate-43" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.54534 12.5674H11.1408V17.1628C11.1408 17.6299 11.525 18.0216 11.9996 18.0216C12.4742 18.0216 12.8584 17.6299 12.8584 17.1628V12.5674H17.4538C17.9209 12.5674 18.3126 12.1832 18.3126 11.7086C18.3126 11.234 17.9209 10.8497 17.4538 10.8497H12.8584V6.25432C12.8584 5.78725 12.4742 5.39551 11.9996 5.39551C11.525 5.39551 11.1408 5.78725 11.1408 6.25432V10.8497H6.54534C6.07826 10.8497 5.68652 11.234 5.68652 11.7086C5.68652 12.1832 6.07826 12.5674 6.54534 12.5674Z" fill="#3E2E4D"/>
                             </svg>
                         </summary>
 
                         <p className="pt-4 font-normal sm:text-[18px] text-[16px] text-[var(--faq-text-color)]">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab hic veritatis molestias culpa
-                            in, recusandae laboriosam neque aliquid libero nesciunt voluptate dicta quo officiis
-                            explicabo consequuntur distinctio corporis earum similique!
+                        Yes, we verify every candidate’s experience and availability to ensure quality matches.
                         </p>
                         </details>
                         <details className="group py-4 lg:py-8 [&_summary::-webkit-details-marker]:hidden">
                         <summary className="flex items-center justify-between gap-1.5 text-black cursor-pointer">
-                            <h5 className="text-[18px] font-semibold font-[AvenirNextMedium]">Lorem ipsum dolor sit amet consectetur adipisicing?</h5>
+                            <h5 className="text-[18px] font-semibold font-[AvenirNextMedium]">How much does it cost to hire through Duuty?</h5>
                             <svg className="shrink-0 transition-transform duration-300 group-open:-rotate-43" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.54534 12.5674H11.1408V17.1628C11.1408 17.6299 11.525 18.0216 11.9996 18.0216C12.4742 18.0216 12.8584 17.6299 12.8584 17.1628V12.5674H17.4538C17.9209 12.5674 18.3126 12.1832 18.3126 11.7086C18.3126 11.234 17.9209 10.8497 17.4538 10.8497H12.8584V6.25432C12.8584 5.78725 12.4742 5.39551 11.9996 5.39551C11.525 5.39551 11.1408 5.78725 11.1408 6.25432V10.8497H6.54534C6.07826 10.8497 5.68652 11.234 5.68652 11.7086C5.68652 12.1832 6.07826 12.5674 6.54534 12.5674Z" fill="#3E2E4D"/>
                             </svg>
                         </summary>
 
                         <p className="pt-4 font-normal sm:text-[18px] text-[16px] text-[var(--faq-text-color)]">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab hic veritatis molestias culpa
-                            in, recusandae laboriosam neque aliquid libero nesciunt voluptate dicta quo officiis
-                            explicabo consequuntur distinctio corporis earum similique!
+                        We offer flexible pricing plans. Contact us for details tailored to your hiring needs.
+
                         </p>
                         </details>
                         <details className="group py-4 lg:py-8 [&_summary::-webkit-details-marker]:hidden">
                         <summary className="flex items-center justify-between gap-1.5 text-black cursor-pointer">
-                            <h5 className="text-[18px] font-semibold font-[AvenirNextMedium]">Lorem ipsum dolor sit amet consectetur adipisicing?</h5>
+                            <h5 className="text-[18px] font-semibold font-[AvenirNextMedium]">How do I apply for a kitchen job?</h5>
                             <svg className="shrink-0 transition-transform duration-300 group-open:-rotate-43" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.54534 12.5674H11.1408V17.1628C11.1408 17.6299 11.525 18.0216 11.9996 18.0216C12.4742 18.0216 12.8584 17.6299 12.8584 17.1628V12.5674H17.4538C17.9209 12.5674 18.3126 12.1832 18.3126 11.7086C18.3126 11.234 17.9209 10.8497 17.4538 10.8497H12.8584V6.25432C12.8584 5.78725 12.4742 5.39551 11.9996 5.39551C11.525 5.39551 11.1408 5.78725 11.1408 6.25432V10.8497H6.54534C6.07826 10.8497 5.68652 11.234 5.68652 11.7086C5.68652 12.1832 6.07826 12.5674 6.54534 12.5674Z" fill="#3E2E4D"/>
                             </svg>
                         </summary>
 
                         <p className="pt-4 font-normal sm:text-[18px] text-[16px] text-[var(--faq-text-color)]">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab hic veritatis molestias culpa
-                            in, recusandae laboriosam neque aliquid libero nesciunt voluptate dicta quo officiis
-                            explicabo consequuntur distinctio corporis earum similique!
+                        Simply create a profile, browse jobs, and apply with one click.
                         </p>
                         </details>
-                        
+                        <details className="group py-4 lg:py-8 [&_summary::-webkit-details-marker]:hidden">
+                        <summary className="flex items-center justify-between gap-1.5 text-black cursor-pointer">
+                            <h5 className="text-[18px] font-semibold font-[AvenirNextMedium]">Can I get alerts for new jobs?</h5>
+                            <svg className="shrink-0 transition-transform duration-300 group-open:-rotate-43" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.54534 12.5674H11.1408V17.1628C11.1408 17.6299 11.525 18.0216 11.9996 18.0216C12.4742 18.0216 12.8584 17.6299 12.8584 17.1628V12.5674H17.4538C17.9209 12.5674 18.3126 12.1832 18.3126 11.7086C18.3126 11.234 17.9209 10.8497 17.4538 10.8497H12.8584V6.25432C12.8584 5.78725 12.4742 5.39551 11.9996 5.39551C11.525 5.39551 11.1408 5.78725 11.1408 6.25432V10.8497H6.54534C6.07826 10.8497 5.68652 11.234 5.68652 11.7086C5.68652 12.1832 6.07826 12.5674 6.54534 12.5674Z" fill="#3E2E4D"/>
+                            </svg>
+                        </summary>
+
+                        <p className="pt-4 font-normal sm:text-[18px] text-[16px] text-[var(--faq-text-color)]">
+                        Yes, we’ll notify you when new jobs match your skills and preferences.
+                        </p>
+                        </details>
                     </div>
 
                 </div>

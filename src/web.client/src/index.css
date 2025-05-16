@@ -140,3 +140,19 @@ body{
 .testimonial-details .customer-name{
     font-family: 'AvenirNextMedium';
 }
+
+.animate-scroll {
+    display: flex;
+    animation: scroll 30s linear infinite;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(50px);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
