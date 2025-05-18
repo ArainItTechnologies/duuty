@@ -17,6 +17,7 @@ import Pricing from "./components/Pricing";
 import ChangePassword from "./components/user/ChangePassword";
 import JobListing from "./components/JobListings";
 import BecomeEmployer from "./components/BecomeEmployer";
+import FrequentlyAskedQuestions from "./components/FrequentlyAskedQuestions";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/confirm" element={<EmailConfirmation />} />
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/pricing" element={<Pricing />} />
+        <Route path="faq" element={<FrequentlyAskedQuestions />} />
         {/* <Route path="/404" element={<Notfound />} /> */}
         <Route path="*" element={<Notfound />} />
       </Routes>
