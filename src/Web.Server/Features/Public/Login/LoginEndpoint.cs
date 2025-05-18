@@ -30,7 +30,8 @@ public class LoginEndpoint(UserManager<ArainUser> userManager, JwtHandler jwtHan
         await SendAsync(new LoginResponse
         {
             IsAuthSuccessful = true,
-            Token = token
+            Token = token,
+            ErrorMessage = roles.Count == 0 ? "User has no roles." : null
         }, 200, ct);
         return;
     }

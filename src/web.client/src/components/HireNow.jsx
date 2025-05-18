@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useNavigate, useLocation  } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useUser } from "../hooks/Hooks";
 
 const HireNow = () => {
@@ -30,6 +30,8 @@ const HireNow = () => {
   useEffect(() => {
     if (!user) {
       navigate("/login", { state: { from: location.pathname } });
+    } else if (user.role !== "employer") {
+      navigate("/become-employer", { state: { from: location.pathname } });
     }
   }, [navigate, user, location]);
 
@@ -63,7 +65,6 @@ const HireNow = () => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -1,8 +1,8 @@
-﻿using SharedKernel;
+﻿using SharedKernel.Service;
 
 namespace Application;
 
-public class CurrentDateTimeProvider : ICurrentDateTimeProvider
+public class CurrentDateTimeProvider : ITimeProvider
 {
     public DateTimeOffset Now => DateTimeOffset.Now;
 

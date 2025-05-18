@@ -17,9 +17,10 @@ const Login = () => {
 
   const getUserDetailsFromToken = (token) => {
     const decoded = jwtDecode(token);
-    const name = decoded?.["name"];
-    const email = decoded?.["email"];
-    const role = decoded?.["role"];
+
+    const name = decoded?.["Name"];
+    const email = decoded?.["Email"];
+    const role = decoded?.["Role"];
 
     return { name, email, role };
   };

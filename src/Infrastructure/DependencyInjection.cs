@@ -1,11 +1,10 @@
-﻿using System.Text;
-using Application;
+﻿using Application;
+using DataAccess;
 using DataAccess.Identity;
 using DataAccess.Repository.Command;
 using DataAccess.Repository.Query;
 using Domain.Repository.Command;
 using Domain.Repository.Query;
-using DataAccess;
 using Infrastructure.JwtFeatures;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -15,6 +14,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using SharedKernel;
+using SharedKernel.Service;
+using System.Text;
 
 namespace Infrastructure;
 
@@ -30,7 +31,7 @@ public static class DependencyInjection
         services.Configure<SmtpConfig>(configuration.GetSection("SmtpConfig"));
         services.AddHttpContextAccessor();
         services.AddTransient<IEmailSender, EmailSender>();
-        services.AddSingleton<ICurrentDateTimeProvider, CurrentDateTimeProvider>();
+        services.AddSingleton<ITimeProvider, CurrentDateTimeProvider>();
 
         services.AddIdentity<ArainUser, ArainRole>(options =>
         {

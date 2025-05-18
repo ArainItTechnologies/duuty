@@ -1,5 +1,4 @@
-using DataAccess.Entities;
-using DataAccess.SeedConfiguration;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,14 +8,14 @@ public class OrganisationConfiguration : IEntityTypeConfiguration<Organisation>
 {
     public void Configure(EntityTypeBuilder<Organisation> builder)
     {
-        var organisationId = Guid.Parse(DuutySeedConstants.OrganisationId);
-        var addressId = Guid.Parse(DuutySeedConstants.AddressId);
+        var organisationId = DuutySeedConstants.OrganisationId;
+        var addressId = DuutySeedConstants.AddressId;
 
         builder.HasData(
             new Organisation
             {
                 Id = organisationId,
-                Name = "Arain IT Technologies",
+                OranisationName = "Arain IT Technologies",
                 AddressId = addressId
             }
         );

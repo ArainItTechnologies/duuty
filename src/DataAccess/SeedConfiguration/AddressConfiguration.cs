@@ -1,5 +1,4 @@
-using DataAccess.Entities;
-using DataAccess.SeedConfiguration;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -12,14 +11,13 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
         builder.HasData(
             new Address
             {
-                Id = Guid.Parse(DuutySeedConstants.AddressId),
+                Id = DuutySeedConstants.AddressId,
                 AddressLine1 = "95 Manor Road",
-                AddressLine2 = null,
+                AddressLine2 = string.Empty,
                 City = "Newent",
-                StateOrProvince = "Gloucestershire",
+                State = "Gloucestershire",
                 PostalCode = "GL18 1UJ",
-                Country = "United Kingdom",
-                OrganisationId = Guid.Parse(DuutySeedConstants.OrganisationId)
+                Country = "United Kingdom"
             }
         );
     }

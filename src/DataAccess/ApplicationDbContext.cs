@@ -1,6 +1,7 @@
-﻿using DataAccess.Entities;
-using DataAccess.Identity;
+﻿using DataAccess.Identity;
 using DataAccess.SeedConfiguration;
+using Domain.Entities;
+using Domain.Enums;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,30 +15,27 @@ public class ApplicationDbContext : IdentityDbContext<ArainUser, ArainRole, stri
 
     public DbSet<Organisation> Organisations { get; set; }
     public DbSet<Address> Addresses { get; set; }
+    public DbSet<EmployerSubscription> Subscriptions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        // Organisation → DuutyUser (1-to-many)
-        modelBuilder.Entity<ArainUser>()
-            .HasOne(u => u.Organisation)
-            .WithMany(x => x.Users)
-            .HasForeignKey(u => u.OrganisationId)
-            .OnDelete(DeleteBehavior.SetNull);
+        modelBuilder.Entity<EmployerSubscription>(entity =>
+        {
+            entity.Property(e => e.Plan)
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (SubscriptionPlan)Enum.Parse(typeof(SubscriptionPlan), v));
 
-        // Organisation → Address (1-to-many)
-        modelBuilder.Entity<Address>()
-            .HasOne(a => a.Organisation)
-            .WithMany(o => o.Addresses)
-            .HasForeignKey(a => a.OrganisationId)
-            .OnDelete(DeleteBehavior.Cascade);
+            entity.Property(e => e.Status)
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (SubscriptionStatus)Enum.Parse(typeof(SubscriptionStatus), v));
 
-        // Ensure only one current address per Organisation (Index on IsCurrentAddress)
-        modelBuilder.Entity<Address>()
-            .HasIndex(a => new { a.OrganisationId, a.IsCurrentAddress })
-            .IsUnique()
-            .HasFilter("[IsCurrentAddress] = 1");
+            entity.Property(e => e.StartDate).IsRequired();
+            entity.Property(e => e.ExpiryDate).IsRequired();
+        });
 
         modelBuilder.ApplyConfiguration(new OrganisationConfiguration());
         modelBuilder.ApplyConfiguration(new AddressConfiguration());

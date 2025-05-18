@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250425125903_OrganisationSeed")]
-    partial class OrganisationSeed
+    [Migration("20250516142826_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,90 +25,7 @@ namespace Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("DataAccess.Entities.Address", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("AddressLine1")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AddressLine2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsCurrentAddress")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid>("OrganisationId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("PostalCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StateOrProvince")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrganisationId", "IsCurrentAddress")
-                        .IsUnique()
-                        .HasFilter("[IsCurrentAddress] = 1");
-
-                    b.ToTable("Addresses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("c8c40fb6-fa19-4d9f-9e27-09b91b905945"),
-                            AddressLine1 = "95 Manor Road",
-                            City = "Newent",
-                            Country = "United Kingdom",
-                            IsCurrentAddress = false,
-                            OrganisationId = new Guid("bf1bcda8-37ea-48aa-accc-db220d1be1f8"),
-                            PostalCode = "GL18 1UJ",
-                            StateOrProvince = "Gloucestershire"
-                        });
-                });
-
-            modelBuilder.Entity("DataAccess.Entities.Organisation", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("AddressId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Organisations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("bf1bcda8-37ea-48aa-accc-db220d1be1f8"),
-                            AddressId = new Guid("c8c40fb6-fa19-4d9f-9e27-09b91b905945"),
-                            Name = "Arain IT Technologies"
-                        });
-                });
-
-            modelBuilder.Entity("DataAccess.Identity.DuutyRole", b =>
+            modelBuilder.Entity("DataAccess.Identity.ArainRole", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -168,7 +85,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("DataAccess.Identity.DuutyUser", b =>
+            modelBuilder.Entity("DataAccess.Identity.ArainUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -207,8 +124,8 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<Guid?>("OrganisationId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<long?>("OrganisationId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -248,15 +165,15 @@ namespace Infrastructure.Migrations
                         {
                             Id = "10000000-0000-0000-0000-000000000001",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ec17b3ad-325c-4358-a478-24c2fddf9f0b",
+                            ConcurrencyStamp = "aed17061-e9e5-4e6a-bcd9-5f88f9fba205",
                             Email = "admin@duuty.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@DUUTY.COM",
                             NormalizedUserName = "ADMIN@DUUTY.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFscWxBWA791Bx6uLxdcSE1AYLP499wzDJovZyuC/pTDnCHvRaw46jiasdhMDUm+eA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENxuwXZ7+GUv2ObCLaDb92XZCIlYRzIh75pqUczBRlCVCb3dyZBMijykMGZFm9mmSQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9e48f822-851a-45df-88f7-9686c64934fc",
+                            SecurityStamp = "60cab3e2-5c82-4970-b9de-63d0512c96f6",
                             TwoFactorEnabled = false,
                             UserName = "admin@duuty.com"
                         },
@@ -264,17 +181,181 @@ namespace Infrastructure.Migrations
                         {
                             Id = "10000000-0000-0000-0000-000000000002",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a854cf8e-034c-4c3c-9d1b-d320daaf30ad",
+                            ConcurrencyStamp = "691a9d23-4c5b-4684-927a-1ca29273f545",
                             Email = "employer@duuty.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "EMPLOYER@DUUTY.COM",
                             NormalizedUserName = "EMPLOYER@DUUTY.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJNBfFMQqK9zNibmNHq4Wahf4RpVPfjm2ICw7h2E3ej7vH/T3ABVVQqrP+zJUE7Z4w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEB9ZP8/gOP7y+9R5DmIujOpxDFcexObacaam7FxRH6Co1Yh8EeLLswXNhzdVCY1Edg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3fae05a5-7493-4a41-b377-7e25c7728403",
+                            SecurityStamp = "3d625363-eb32-4c44-89bb-b9f9d6d1cf42",
                             TwoFactorEnabled = false,
                             UserName = "employer@duuty.com"
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Address", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("AddressLine1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddressLine2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("DateCreated")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset>("DateUpdated")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Addresses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            AddressLine1 = "95 Manor Road",
+                            AddressLine2 = "",
+                            City = "Newent",
+                            Country = "United Kingdom",
+                            DateCreated = new DateTimeOffset(new DateTime(2025, 5, 16, 14, 28, 22, 933, DateTimeKind.Unspecified).AddTicks(5441), new TimeSpan(0, 0, 0, 0, 0)),
+                            DateUpdated = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            PostalCode = "GL18 1UJ",
+                            State = "Gloucestershire"
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Employer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("DateCreated")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset>("DateUpdated")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("OrganisationId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganisationId");
+
+                    b.ToTable("Employer");
+                });
+
+            modelBuilder.Entity("Domain.Entities.EmployerSubscription", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTimeOffset>("DateCreated")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset>("DateUpdated")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset>("ExpiryDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("JobPostLimit")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Plan")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("StartDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subscriptions");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Organisation", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long?>("AddressId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset>("DateCreated")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset>("DateUpdated")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("OranisationName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AddressId");
+
+                    b.ToTable("Organisations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            AddressId = 1L,
+                            DateCreated = new DateTimeOffset(new DateTime(2025, 5, 16, 14, 28, 22, 933, DateTimeKind.Unspecified).AddTicks(4650), new TimeSpan(0, 0, 0, 0, 0)),
+                            DateUpdated = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            OranisationName = "Arain IT Technologies"
                         });
                 });
 
@@ -396,10 +477,19 @@ namespace Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("DataAccess.Entities.Address", b =>
+            modelBuilder.Entity("DataAccess.Identity.ArainUser", b =>
                 {
-                    b.HasOne("DataAccess.Entities.Organisation", "Organisation")
-                        .WithMany("Addresses")
+                    b.HasOne("Domain.Entities.Organisation", "Organisation")
+                        .WithMany()
+                        .HasForeignKey("OrganisationId");
+
+                    b.Navigation("Organisation");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Employer", b =>
+                {
+                    b.HasOne("Domain.Entities.Organisation", "Organisation")
+                        .WithMany("Employers")
                         .HasForeignKey("OrganisationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -407,19 +497,18 @@ namespace Infrastructure.Migrations
                     b.Navigation("Organisation");
                 });
 
-            modelBuilder.Entity("DataAccess.Identity.DuutyUser", b =>
+            modelBuilder.Entity("Domain.Entities.Organisation", b =>
                 {
-                    b.HasOne("DataAccess.Entities.Organisation", "Organisation")
-                        .WithMany("Users")
-                        .HasForeignKey("OrganisationId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                    b.HasOne("Domain.Entities.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId");
 
-                    b.Navigation("Organisation");
+                    b.Navigation("Address");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("DataAccess.Identity.DuutyRole", null)
+                    b.HasOne("DataAccess.Identity.ArainRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -428,7 +517,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("DataAccess.Identity.DuutyUser", null)
+                    b.HasOne("DataAccess.Identity.ArainUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -437,7 +526,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("DataAccess.Identity.DuutyUser", null)
+                    b.HasOne("DataAccess.Identity.ArainUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -446,13 +535,13 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("DataAccess.Identity.DuutyRole", null)
+                    b.HasOne("DataAccess.Identity.ArainRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataAccess.Identity.DuutyUser", null)
+                    b.HasOne("DataAccess.Identity.ArainUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -461,18 +550,16 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("DataAccess.Identity.DuutyUser", null)
+                    b.HasOne("DataAccess.Identity.ArainUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DataAccess.Entities.Organisation", b =>
+            modelBuilder.Entity("Domain.Entities.Organisation", b =>
                 {
-                    b.Navigation("Addresses");
-
-                    b.Navigation("Users");
+                    b.Navigation("Employers");
                 });
 #pragma warning restore 612, 618
         }

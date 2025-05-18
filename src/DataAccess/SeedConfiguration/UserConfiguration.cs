@@ -14,10 +14,10 @@ public class UserConfiguration : IEntityTypeConfiguration<ArainUser>
         var adminUser = new ArainUser
         {
             Id = DuutySeedConstants.AdminUserId,
-            UserName = "admin@duuty.com",
-            NormalizedUserName = "ADMIN@DUUTY.COM",
-            Email = "admin@duuty.com",
-            NormalizedEmail = "ADMIN@DUUTY.COM",
+            UserName = "admin@duuty.in",
+            NormalizedUserName = "ADMIN@DUUTY.IN",
+            Email = "admin@duuty.in",
+            NormalizedEmail = "ADMIN@DUUTY.IN",
             EmailConfirmed = true,
             SecurityStamp = Guid.NewGuid().ToString("D")
         };

@@ -2,7 +2,7 @@
 
 namespace DataAccess.Identity;
 
-public class ArainRole: IdentityRole<string>
+public class ArainRole : IdentityRole<string>
 {
     public string? Description { get; set; }
 }

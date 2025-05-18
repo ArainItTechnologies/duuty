@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.WebUtilities;
-using System.Net;
 using System.Text;
 
 namespace Web.Server.Features.Public.Register;
@@ -51,7 +50,7 @@ public class RegisterEndpoint : Endpoint<RegisterModel, RegistrationResponse>
         if (!string.IsNullOrWhiteSpace(model.Email))
         {
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            
+
             var encodedToken = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
 
             var confirmationLink = $"{_configuration["ClientAppBaseUrl"]}/confirm?userId={user.Id}&token={encodedToken}";

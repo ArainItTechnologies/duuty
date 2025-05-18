@@ -1,6 +1,6 @@
-﻿namespace SharedKernel;
+﻿namespace SharedKernel.Service;
 
-public interface ICurrentDateTimeProvider
+public interface ITimeProvider
 {
     DateTimeOffset Now { get; }
     DateTimeOffset UtcNow { get; }
